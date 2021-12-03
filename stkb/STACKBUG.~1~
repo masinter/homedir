@@ -1,0 +1,33 @@
+(DEFINE-FILE-INFO READTABLE "XCL" PACKAGE "INTERLISP")
+(FILECREATED " 8-May-2021 15:02:20" |{DSK}<home>larry>STACKBUG.;1| 971    
+
+      |changes| |to:|  (FNS STACKBUG)
+                       (VARS STACKBUGCOMS)
+                       (FUNCTIONS STKBUG1)
+
+      |previous| |date:| " 8-May-2021 15:00:42" |{DSK}<mnt>c>USERS>LARRY>DROPBOX>ILISP>STACKBUG.;1|
+)
+
+
+(PRETTYCOMPRINT STACKBUGCOMS)
+
+(RPAQQ STACKBUGCOMS ((FNS STACKBUG)
+                         (FUNCTIONS STKBUG1)))
+(DEFINEQ
+
+(STACKBUG
+  (LAMBDA NIL                                         (* \; "Edited  8-May-2021 15:01 by larry")
+    (PROG (CHARCODE)
+      LP  (LET* ((MV (CL:MULTIPLE-VALUE-LIST (CL:FUNCALL (FUNCTION STKBUG1)
+                                                    NIL T)))
+                 (CODE (CAR MV)))
+                (SETQ CHARCODE CODE))
+          (OR CHARCODE (RETURN T))
+          (GO LP))))
+)
+
+(CL:DEFUN STKBUG1 ()
+   (CL:VALUES 1 2))
+(DECLARE\: DONTCOPY
+  (FILEMAP (NIL (486 902 (STACKBUG 496 . 900)) (904 948 (STKBUG1 904 . 948)))))
+STOP
