@@ -1,23 +1,0 @@
-(DEFINE-FILE-INFO PACKAGE "INTERLISP" READTABLE "INTERLISP" BASE 10)
-
-(FILECREATED " 5-Dec-2021 21:57:04" {DSK}<home>medley>homedir>INIT.;1 638    
-
-      changes to%:  (VARS INITCOMS)
-
-      previous date%: " 5-Dec-2021 21:40:24" {DSK}<home>medley>INIT.;1)
-
-
-(PRETTYCOMPRINT INITCOMS)
-
-(RPAQQ INITCOMS ((P (PUSHNEW DIRECTORIES (CONCAT "{DSK}<home>medley>homedi>")))
-                     (VARS (MEDLEYDEF "{DSK}<home>medley>medley"))
-                     (FILES LARRY)))
-
-(PUSHNEW DIRECTORIES (CONCAT "{DSK}<home>medley>homedi>"))
-
-(RPAQ MEDLEYDEF "{DSK}<home>medley>medley")
-
-(FILESLOAD LARRY)
-(DECLARE%: DONTCOPY
-  (FILEMAP (NIL)))
-STOP
