@@ -1,0 +1,6 @@
+NIL
+86> (DEFUN COMB (X) (IL:* IL:\; "Edited 18-Jan-2022 18:12 by medley")
+(CONS X (AND X (LET ((Y (COMB (CDR X)))) (MAPC (FUNCTION (LAMBDA (Z)
+(PUSH (CONS (CAR X) Z) Y))) (CDR Y)) Y))))
+COMB
+87> dribble)
