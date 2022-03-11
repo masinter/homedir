@@ -1,99 +1,23 @@
 (DEFINE-FILE-INFO PACKAGE "INTERLISP" READTABLE "XCL" BASE 10)
 
-(FILECREATED "31-Jan-2022 09:38:44" |{DSK}<home>larry>homedir>LARRY.;3| 3959   
+(FILECREATED "21-Feb-2022 17:47:45" |{DSK}<home>larry>homedir>LARRY.;6| 992    
 
       :CHANGES-TO (VARS LARRYCOMS)
+                  (ALISTS (FONTDEFS LARRY))
 
-      :PREVIOUS-DATE "26-Jan-2022 15:42:18" |{DSK}<home>larry>homedir>LARRY.;2|)
+      :PREVIOUS-DATE "21-Feb-2022 17:06:46" |{DSK}<home>larry>homedir>LARRY.;4|)
 
 
 (PRETTYCOMPRINT LARRYCOMS)
 
 (RPAQQ LARRYCOMS
-       ((VARS (MAXDEPTH 30000)
-              (DWIMWAIT 600)
-              (MAXLEVEL 30000)
-              (MAXLOOP 30000)
-              (HELPDEPTH 4)
-              (HELPTIME 20)
-              (MAXLEVEL 5000))
-        (ALISTS (FONTDEFS LARRY))
-        (P (FONTSET 'LARRY)
-           (MOVD? 'NILL 'MAKE-EXTERNALFORMAT))
-        (VARS (*WHO-LINE-NAME-FONT* BOLDFONT)
-              (*WHO-LINE-VALUE-FONT* DEFAULTFONT))
-        (P (INSTALL-WHO-LINE-OPTIONS))
+       ((P (MOVD? 'NILL 'MAKE-EXTERNALFORMAT))
         (ADVISE (ERROR :IN \\DO-DEFINE-FILE-INFO))
-        (FILES BACKGROUND-YIELD GITFNS IDLEHAX LIFE TEDIT-PF-SEE UNIXTELNET FILEWATCH SAMEDIR 
-               WHEELSCROLL CLIPBOARD COMPARESOURCES COMPAREDIRECTORIES MODERNIZE MEDLEY-UTILS MAKE-PS
-               BICLOCK)
+        (FILES BACKGROUND-YIELD GITFNS IDLEHAX LIFE FILEWATCH SAMEDIR MEDLEY-UTILS BICLOCK)
         (P (FILEWATCH :ON)
-           (VIDEOCOLOR T)
            (POSTSCRIPT.INIT))))
 
-(RPAQQ MAXDEPTH 30000)
-
-(RPAQQ DWIMWAIT 600)
-
-(RPAQQ MAXLEVEL 30000)
-
-(RPAQQ MAXLOOP 30000)
-
-(RPAQQ HELPDEPTH 4)
-
-(RPAQQ HELPTIME 20)
-
-(RPAQQ MAXLEVEL 5000)
-
-(ADDTOVAR FONTDEFS
-          (LARRY (FONTCHANGEFLG . ALL)
-                 (FILELINELENGTH . 102)
-                 (FONTPROFILE (DEFAULTFONT 1 (GACHA 12)
-                                     (GACHA 10)
-                                     (TERMINAL 10)
-                                     (POSTSCRIPT (TERMINAL 10)))
-                        (ITALICFONT 1 (HELVETICA 12 MIR)
-                               (GACHA 10 MIR)
-                               (MODERN 10 MIR)
-                               (POSTSCRIPT (TERMINAL 10 MIR)))
-                        (BOLDFONT 2 (HELVETICA 12 BRR)
-                               (HELVETICA 10 BRR)
-                               (MODERN 10 BRR)
-                               (POSTSCRIPT (HELVETICA 12 BRR)))
-                        (LITTLEFONT 3 (HELVETICA 10)
-                               (HELVETICA 6 MIR)
-                               (MODERN 10 MIR)
-                               (POSTSCRIPT (MODERN 10 MIR)))
-                        (TINYFONT 6 (GACHA 10)
-                               (GACHA 6)
-                               (TERMINAL 6)
-                               (POSTSCRIPT (TERMINAL 6)))
-                        (BIGFONT 4 (HELVETICA 12 BRR)
-                               NIL
-                               (MODERN 12 BRR)
-                               (POSTSCRIPT (MODERN 12 BRR)))
-                        (MENUFONT 5 (HELVETICA 12)
-                               (POSTSCRIPT (HELVETICA 12))
-                               (POSTSCRIPT (POSTSCRIPT (HELVETICA 12)))
-                               (POSTSCRIPT (POSTSCRIPT (POSTSCRIPT (HELVETICA 12)))))
-                        (COMMENTFONT 6 (HELVETICA 12)
-                               (HELVETICA 10)
-                               (MODERN 10)
-                               (POSTSCRIPT (MODERN 10)))
-                        (TEXTFONT 7 (TIMESROMAN 12)
-                               NIL
-                               (CLASSIC 12)
-                               (POSTSCRIPT (CLASSIC 12))))))
-
-(FONTSET 'LARRY)
-
 (MOVD? 'NILL 'MAKE-EXTERNALFORMAT)
-
-(RPAQ *WHO-LINE-NAME-FONT* BOLDFONT)
-
-(RPAQ *WHO-LINE-VALUE-FONT* DEFAULTFONT)
-
-(INSTALL-WHO-LINE-OPTIONS)
 
 (XCL:REINSTALL-ADVICE '(ERROR :IN \\DO-DEFINE-FILE-INFO)
        :BEFORE
@@ -102,12 +26,9 @@
 
 (READVISE (ERROR :IN \\DO-DEFINE-FILE-INFO))
 
-(FILESLOAD BACKGROUND-YIELD GITFNS IDLEHAX LIFE TEDIT-PF-SEE UNIXTELNET FILEWATCH SAMEDIR WHEELSCROLL
-       CLIPBOARD COMPARESOURCES COMPAREDIRECTORIES MODERNIZE MEDLEY-UTILS MAKE-PS BICLOCK)
+(FILESLOAD BACKGROUND-YIELD GITFNS IDLEHAX LIFE FILEWATCH SAMEDIR MEDLEY-UTILS BICLOCK)
 
 (FILEWATCH :ON)
-
-(VIDEOCOLOR T)
 
 (POSTSCRIPT.INIT)
 (DECLARE\: DONTCOPY
