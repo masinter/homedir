@@ -1,10 +1,10 @@
-(DEFINE-FILE-INFO PACKAGE "INTERLISP" READTABLE "XCL" BASE 10)
+(DEFINE-FILE-INFO PACKAGE "INTERLISP" READTABLE "INTERLISP" BASE 10)
 
-(FILECREATED "21-Jun-2022 23:42:26" |{DSK}<home>larry>homedir>LARRY.;3| 2246   
+(FILECREATED "25-Jun-2022 08:33:10" {DSK}<home>larry>homedir>LARRY.;6 2247   
 
       :CHANGES-TO (VARS LARRYCOMS)
 
-      :PREVIOUS-DATE " 4-Jun-2022 19:35:45" |{DSK}<home>larry>homedir>LARRY.;2|)
+      :PREVIOUS-DATE "21-Jun-2022 23:42:26" {DSK}<home>larry>INIT.;1)
 
 
 (PRETTYCOMPRINT LARRYCOMS)
@@ -15,13 +15,15 @@
            (DSPFONT '(HELVETICA 18 BRR)
                   PROMPTWINDOW)
            (MOVEW PROMPTWINDOW '(774 . 901))
-           (FONTSET 'BIGGER))
-        (ADVISE (ERROR :IN \\DO-DEFINE-FILE-INFO))
+           (FONTSET 'LARGER))
+        (ADVISE (ERROR :IN \DO-DEFINE-FILE-INFO))
         (FILES BACKGROUND-YIELD GITFNS IDLEHAX LIFE FILEWATCH SAMEDIR SKETCH MEDLEY-UTILS BICLOCK 
                TMAX IMTOOLS VTCHAT)
         (P (FILEWATCH :ON)
            (POSTSCRIPT.INIT))
-        (FNS 3WAY LOWESTVERSION)))
+        (FNS 3WAY LOWESTVERSION)
+        (COMMANDS)
+        (FUNCTIONS)))
 
 (MOVD? 'NILL 'MAKE-EXTERNALFORMAT)
 
@@ -32,14 +34,14 @@
 
 (MOVEW PROMPTWINDOW '(774 . 901))
 
-(FONTSET 'BIGGER)
+(FONTSET 'LARGER)
 
-(XCL:REINSTALL-ADVICE '(ERROR :IN \\DO-DEFINE-FILE-INFO)
+[XCL:REINSTALL-ADVICE '(ERROR :IN \DO-DEFINE-FILE-INFO)
        :BEFORE
        '((:LAST (AND (EQ MESS2 ':FORMAT)
-                     (RETURN)))))
+                     (RETURN]
 
-(READVISE (ERROR :IN \\DO-DEFINE-FILE-INFO))
+(READVISE (ERROR :IN \DO-DEFINE-FILE-INFO))
 
 (FILESLOAD BACKGROUND-YIELD GITFNS IDLEHAX LIFE FILEWATCH SAMEDIR SKETCH MEDLEY-UTILS BICLOCK TMAX 
        IMTOOLS VTCHAT)
@@ -50,23 +52,23 @@
 (DEFINEQ
 
 (3WAY
-  (LAMBDA (X)                                             (* \; "Edited  2-Jun-2022 20:23 by larry")
-    (LET ((CURRENT (INFILEP X))
+  [LAMBDA (X)                                              (* ; "Edited  2-Jun-2022 20:23 by larry")
+    (LET [(CURRENT (INFILEP X))
           (START (INFILEP (PACKFILENAME.STRING 'VERSION (LOWESTVERSION X)
                                  'NAME X)))
           (CLTL2 (INFILEP (PACKFILENAME.STRING 'DIRECTORY (MEDLEYDIR "CLTL2")
-                                 'NAME X))))
+                                 'NAME X]
          (CSBROWSER START CURRENT)
-         (CSBROWSER START CLTL2))))
+         (CSBROWSER START CLTL2])
 
 (LOWESTVERSION
-  (LAMBDA (X)                                             (* \; "Edited  2-Jun-2022 20:14 by larry")
+  [LAMBDA (X)                                              (* ; "Edited  2-Jun-2022 20:14 by larry")
     (LET ((VERS (DIRECTORY (PACKFILENAME.STRING 'VERSION '* 'BODY X)))
           (MIN 9999991))
-         (|for| Y |in| VERS |bind| Z |when| (< (SETQ Z (FILENAMEFIELD Y 'VERSION))
-                                               MIN) |do| (SETQ MIN Z))
-         MIN)))
+         (for Y in VERS bind Z when (< (SETQ Z (FILENAMEFIELD Y 'VERSION))
+                                       MIN) do (SETQ MIN Z))
+         MIN])
 )
-(DECLARE\: DONTCOPY
-  (FILEMAP (NIL (1330 2223 (3WAY 1340 . 1806) (LOWESTVERSION 1808 . 2221)))))
+(DECLARE%: DONTCOPY
+  (FILEMAP (NIL (1355 2224 (3WAY 1365 . 1826) (LOWESTVERSION 1828 . 2222)))))
 STOP
