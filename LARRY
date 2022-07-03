@@ -1,10 +1,10 @@
 (DEFINE-FILE-INFO PACKAGE "INTERLISP" READTABLE "INTERLISP" BASE 10)
 
-(FILECREATED "25-Jun-2022 08:33:10" {DSK}<home>larry>homedir>LARRY.;6 2247   
+(FILECREATED "28-Jun-2022 16:40:12" {DSK}<home>larry>homedir>LARRY.;7 2315   
 
       :CHANGES-TO (VARS LARRYCOMS)
 
-      :PREVIOUS-DATE "21-Jun-2022 23:42:26" {DSK}<home>larry>INIT.;1)
+      :PREVIOUS-DATE "25-Jun-2022 08:33:10" {DSK}<home>larry>homedir>LARRY.;6)
 
 
 (PRETTYCOMPRINT LARRYCOMS)
@@ -23,7 +23,8 @@
            (POSTSCRIPT.INIT))
         (FNS 3WAY LOWESTVERSION)
         (COMMANDS)
-        (FUNCTIONS)))
+        (FUNCTIONS)
+        (VARS (INITIALS "lmm"))))
 
 (MOVD? 'NILL 'MAKE-EXTERNALFORMAT)
 
@@ -69,6 +70,8 @@
                                        MIN) do (SETQ MIN Z))
          MIN])
 )
+
+(RPAQ INITIALS "lmm")
 (DECLARE%: DONTCOPY
-  (FILEMAP (NIL (1355 2224 (3WAY 1365 . 1826) (LOWESTVERSION 1828 . 2222)))))
+  (FILEMAP (NIL (1396 2265 (3WAY 1406 . 1867) (LOWESTVERSION 1869 . 2263)))))
 STOP
