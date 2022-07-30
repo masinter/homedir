@@ -1,12 +1,11 @@
 (DEFINE-FILE-INFO PACKAGE "INTERLISP" READTABLE "INTERLISP" BASE 10)
 
-(FILECREATED " 7-Jul-2022 19:32:39" {DSK}<Users>larry>HOMEDIR>LARRY.;2 2321   
+(FILECREATED "26-Jul-2022 13:02:38" {DSK}<home>larry>homedir>LARRY.;9 2465   
 
-      :CHANGES-TO (ADVICE (ERROR :IN \DO-DEFINE-FILE-INFO))
-                  (FNS 3WAY LOWESTVERSION)
-                  (VARS LARRYCOMS)
+      :CHANGES-TO (VARS LARRYCOMS)
+                  (FNS TESTENVOS)
 
-      :PREVIOUS-DATE "28-Jun-2022 16:40:12" {DSK}<Users>larry>HOMEDIR>LARRY.;1)
+      :PREVIOUS-DATE " 7-Jul-2022 19:32:39" {DSK}<home>larry>homedir>LARRY.;8)
 
 
 (PRETTYCOMPRINT LARRYCOMS)
@@ -22,7 +21,7 @@
         (FILES BACKGROUND-YIELD GITFNS FILEWATCH SAMEDIR SKETCH MEDLEY-UTILS BICLOCK IMTOOLS VTCHAT)
         (P (FILEWATCH :ON)
            (POSTSCRIPT.INIT))
-        (FNS 3WAY LOWESTVERSION)
+        (FNS 3WAY LOWESTVERSION TESTENVOS)
         (VARS (INITIALS "lmm"))))
 
 (MOVD? 'NILL 'MAKE-EXTERNALFORMAT)
@@ -67,9 +66,13 @@
          (for Y in VERS bind Z when (< (SETQ Z (FILENAMEFIELD Y 'VERSION))
                                        MIN) do (SETQ MIN Z))
          MIN])
+
+(TESTENVOS
+  [LAMBDA NIL                                              (* ; "Edited 26-Jul-2022 12:16 by larry")
+    (HCFILES "{DSK}<home>larry>envos>" "{DSK}<home>larry>medley>tmp>psfiles>"])
 )
 
 (RPAQ INITIALS "lmm")
 (DECLARE%: DONTCOPY
-  (FILEMAP (NIL (1402 2271 (3WAY 1412 . 1873) (LOWESTVERSION 1875 . 2269)))))
+  (FILEMAP (NIL (1341 2415 (3WAY 1351 . 1812) (LOWESTVERSION 1814 . 2208) (TESTENVOS 2210 . 2413)))))
 STOP
