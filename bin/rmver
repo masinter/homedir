@@ -1,0 +1,5 @@
+#!/bin/sh
+
+git clean -i
+
+# find . -name "*~" -exec rm {} \;
