@@ -1,3 +1,4 @@
 #!/bin/sh
 
-~/medley/run-medley -noscroll -dimensions 1880x1016 $1
+cd ~/medley
+./run-medley -noscroll -dimensions 1880x1016 $@

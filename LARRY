@@ -1,39 +1,47 @@
 (DEFINE-FILE-INFO PACKAGE "INTERLISP" READTABLE "INTERLISP" BASE 10)
 
-(FILECREATED "17-Aug-2022 18:48:46" {DSK}<home>larry>homedir>LARRY.;2 3135   
+(FILECREATED "27-Aug-2022 06:04:15" {DSK}<home>larry>homedir>LARRY.;9 7452   
 
-      :CHANGES-TO (VARS LARRYCOMS)
+      :CHANGES-TO (ADVICE (ERROR :IN \DO-DEFINE-FILE-INFO))
+                  (VARS LARRYCOMS)
 
-      :PREVIOUS-DATE "16-Aug-2022 10:25:02" {DSK}<home>larry>homedir>LARRY.;1)
+      :PREVIOUS-DATE "24-Aug-2022 08:53:05" {DSK}<home>larry>homedir>LARRY.;8)
 
 
 (PRETTYCOMPRINT LARRYCOMS)
 
 (RPAQQ LARRYCOMS
-       ((P (MOVD? 'NILL 'MAKE-EXTERNALFORMAT)
+       [(P (MOVD? 'NILL 'MAKE-EXTERNALFORMAT)
            (VIDEOCOLOR T)
+           (BKSYSBUF " ")
+           (WINDOWPROP PROMPTWINDOW 'TITLE NIL)
            (DSPFONT '(HELVETICA 18 BRR)
                   PROMPTWINDOW)
            (MOVEW PROMPTWINDOW '(774 . 901))
            (FONTSET 'LARGER)
-           (NLSETQ (FILESLOAD UNIXYCD)))
+           (NLSETQ (FILESLOAD (SYSLOAD)
+                          UNIXYCD)))
         (ADVISE (ERROR :IN \DO-DEFINE-FILE-INFO))
         (FILES (SYSLOAD)
-               IDLEHAX LIFE HANOI BACKGROUND-YIELD GITFNS FILEWATCH SAMEDIR SKETCH MEDLEY-UTILS 
-               BICLOCK IMTOOLS IMNAME VTCHAT PICK BUTTONS)
+               BACKGROUND-YIELD GITFNS FILEWATCH SAMEDIR SKETCH MEDLEY-UTILS VTCHAT PICK BUTTONS 
+               WDWHACKS)
         (P (FILEWATCH :ON)
            (RESTORE-BUTTONS)
            (NLSETQ (POSTSCRIPT.INIT)))
-        (FNS 3WAY LOWESTVERSION HCENVOS)
-        (VARS (*ED-OFFERS-PROPERTY-LIST*)
+        (FNS 3WAY CLOSEI LOWESTVERSION HCENVOS RELOAD)
+        (VARS DWIMWAIT LCASEFLG (*ED-OFFERS-PROPERTY-LIST*)
               (AUTOBACKTRACEFLG 'ALWAYS!)
-              (IDLE.PROFILE '(TIMEOUT 5 SAVEVM 1))
               (INITIALS "lmm")
-              INITIALSLST)))
+              INITIALSLST
+              (DEFAULTPRINTERTYPE 'POSTSCRIPT])
 
 (MOVD? 'NILL 'MAKE-EXTERNALFORMAT)
 
 (VIDEOCOLOR T)
+
+(BKSYSBUF " ")
+
+(WINDOWPROP PROMPTWINDOW 'TITLE NIL)
 
 (DSPFONT '(HELVETICA 18 BRR)
        PROMPTWINDOW)
@@ -42,7 +50,8 @@
 
 (FONTSET 'LARGER)
 
-(NLSETQ (FILESLOAD UNIXYCD))
+(NLSETQ (FILESLOAD (SYSLOAD)
+               UNIXYCD))
 
 [XCL:REINSTALL-ADVICE '(ERROR :IN \DO-DEFINE-FILE-INFO)
        :BEFORE
@@ -52,8 +61,7 @@
 (READVISE (ERROR :IN \DO-DEFINE-FILE-INFO))
 
 (FILESLOAD (SYSLOAD)
-       IDLEHAX LIFE HANOI BACKGROUND-YIELD GITFNS FILEWATCH SAMEDIR SKETCH MEDLEY-UTILS BICLOCK 
-       IMTOOLS IMNAME VTCHAT PICK BUTTONS)
+       BACKGROUND-YIELD GITFNS FILEWATCH SAMEDIR SKETCH MEDLEY-UTILS VTCHAT PICK BUTTONS WDWHACKS)
 
 (FILEWATCH :ON)
 
@@ -72,6 +80,14 @@
          (CSBROWSER START CURRENT)
          (CSBROWSER START CLTL2])
 
+(CLOSEI
+  [LAMBDA NIL                                               (* ; "Edited 19-Feb-2021 14:33 by rmk:")
+
+    (* ;; "Close all inspector windows")
+
+    (FOR W IN (OPENWINDOWS) WHEN (OR (EQ 'INSPECTW.REPAINTFN (WINDOWPROP W 'REPAINTFN))
+                                     (WINDOWPROP W 'INSPECTWINDOW)) DO (CLOSEW W])
+
 (LOWESTVERSION
   [LAMBDA (X)                                              (* ; "Edited  2-Jun-2022 20:14 by larry")
     (LET ((VERS (DIRECTORY (PACKFILENAME.STRING 'VERSION '* 'BODY X)))
@@ -83,19 +99,79 @@
 (HCENVOS
   [LAMBDA NIL                                              (* ; "Edited 26-Jul-2022 12:16 by larry")
     (HCFILES "{DSK}<home>larry>envos>" "{DSK}<home>larry>medley>tmp>psfiles>"])
+
+(RELOAD
+  [LAMBDA (FILES OLDONLY)                                   (* ; "Edited 18-Aug-2021 00:02 by rmk:")
+
+    (* ;; "Reloads new compiled versions and notices symbolics, skipping non-Lisp files in FILES.  Reloads only already present files if OLDONLY.")
+                                                             (* ; 
+                                               "Get rid of versions, and also compile.ext extensions")
+    [SETQ FILES (FOR F EXT INSIDE FILES COLLECT [SETQ EXT (U-CASE (FILENAMEFIELD F 'EXTENSION] 
+                                                             (* ; 
+                                                    "Must wipe out NIL extension to eliminate period")
+                                              (U-CASE (PACKFILENAME 'EXTENSION
+                                                             (AND (NOT (MEMB EXT 
+                                                                             *COMPILED-EXTENSIONS*))
+                                                                  EXT)
+                                                             'VERSION NIL 'BODY F]
+                                                             (* ; 
+                                                     "Eliminate duplicates, even through COMPILE.EXT")
+    (SETQ FILES (FOR FTAIL ON FILES UNLESS (MEMB (CAR FTAIL)
+                                                 (CDR FTAIL)) COLLECT (CAR FTAIL)))
+                                                             (* ; 
+                                                     " is default LDFLG when file hasn't been loaded")
+    (FOR F ROOTFNAME CNAME SNAME LDFLG IN FILES EACHTIME (SETQ ROOTFNAME (ROOTFILENAME F))
+       WHEN (SETQ LDFLG (IF (NOT OLDONLY)
+                          ELSEIF (GETP ROOTFNAME 'FILE)
+                            THEN T
+                          ELSEIF (GETP ROOTFNAME 'FILEDATES)
+                            THEN 'SYSLOAD))
+       WHEN (PROGN (IF (SETQ CNAME (FINDFILE-WITH-EXTENSIONS F NIL *COMPILED-EXTENSIONS*))
+                       THEN (SETQ SNAME (INFILEP (PACKFILENAME 'EXTENSION NIL 'VERSION NIL
+                                                        'BODY CNAME)))
+                     ELSE (SETQ SNAME (FINDFILE F T)))
+                   (CL:WHEN SNAME
+                       (CL:UNLESS (LISPSOURCEFILEP SNAME)
+                              (SETQ SNAME NIL)))
+                   (OR CNAME SNAME (PROGN (PRINTOUT T "NOT FOUND:  " F T)
+                                          NIL)))
+       COLLECT                                               (* ; 
+                                                 "Don't fiddle properties at all if file isn't found")
+                                                             (* ; 
+                        "Don't do DELDEF, cause it will remove it from FILES commands in other files")
+             [FOR LST IN '(FILELST NOTCOMPILEDFILES NOTLISTEDFILES COPYRIGHT)
+                DO (/SETTOPVAL LST (REMOVE ROOTFNAME (GETTOPVAL LST]
+             (/REMPROP ROOTFNAME 'FILE)
+             (/REMPROP ROOTFNAME 'FILECHANGES)
+             (/REMPROP ROOTFNAME 'FILEMAP)
+             (/REMPROP ROOTFNAME 'FILEDATES)
+             (IF CNAME
+                 THEN (LOAD CNAME LDFLG))
+             (IF SNAME
+                 THEN (IF CNAME
+                          THEN (OR (EQ LDFLG 'SYSLOAD)
+                                   (LOADFROM SNAME))
+                        ELSE (LOAD SNAME LDFLG)))
+             (FOR X IN (FILEFNSLST ROOTFNAME) DO (/REMPROP X 'EXPR))
+             (/RPLACD (GETP ROOTFNAME 'FILE))
+             (APPEND (MKLIST CNAME)
+                    (MKLIST SNAME])
 )
+
+(RPAQQ DWIMWAIT 180)
+
+(RPAQQ LCASEFLG T)
 
 (RPAQQ *ED-OFFERS-PROPERTY-LIST* NIL)
 
 (RPAQQ AUTOBACKTRACEFLG ALWAYS!)
 
-(RPAQQ IDLE.PROFILE (TIMEOUT 5 SAVEVM 1))
-
 (RPAQ INITIALS "lmm")
 
-(RPAQQ INITIALSLST (("larry" "Larry" "lmm")
-                    ("pi" "Larry" "lmm")
-                    ("masinter" "Larry" "lmm")))
+(RPAQQ INITIALSLST NIL)
+
+(RPAQQ DEFAULTPRINTERTYPE POSTSCRIPT)
 (DECLARE%: DONTCOPY
-  (FILEMAP (NIL (1746 2818 (3WAY 1756 . 2217) (LOWESTVERSION 2219 . 2613) (HCENVOS 2615 . 2816)))))
+  (FILEMAP (NIL (1947 7199 (3WAY 1957 . 2418) (CLOSEI 2420 . 2774) (LOWESTVERSION 2776 . 3170) (HCENVOS 
+3172 . 3373) (RELOAD 3375 . 7197)))))
 STOP
