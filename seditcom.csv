@@ -1,0 +1,65 @@
+INSERT-NULL-LIST, , (LEFTPAREN)
+CLOSE-LIST, , (RIGHTPAREN)
+INPUT-SQUARE-BRACKET, , (LEFTBRACKET)
+INPUT-TOKENDELIM, , (SEPRCHAR)
+INPUT-STRINGDELIM, , (STRINGDELIM)
+INPUT-ESCAPE, , (ESCAPE)
+INSERT-MULTI-ESCAPE, , (MULTIPLE-ESCAPE)
+INSERT-SPECIAL-CHARACTER, , (PACKAGEDELIM)
+START-COMMENT, , ;
+INPUT-DOT, , .
+INSERT-SPECIAL-CHARACTER, , #
+(INPUT-QUOTE QUOTE), , '
+(INPUT-QUOTE BQUOTE), , `
+(INPUT-QUOTE COMMA), , +
+(INPUT-QUOTE COMMA-AT), , @
+DELETE-SELECTION, , DEL
+BACKSPACE, , BS
+DELETE-WORD, , ^W
+(VERIFY-STRUCTURE NIL T T), , ^L
+(VERIFY-STRUCTURE NIL T NIL), , Meta+^L
+(COMPLETE ABORT NIL), /Abort/M-A/Complete this edit without installing changes., Meta+A
+NULL, ///, 0
+(COMPLETE DONE NIL), /Done/C-X/Complete this edit and leave the window open., ^X
+(COMPLETE CLOSE), /Done & Close/C-M-X/Complete this edit and close the window., Meta+^X
+(COMPLETE DONE T), /Done & Compile/C-C/Complete this edit, compile, and leave the window open., ^C
+(COMPLETE CLOSE T), /Done, Compile, & Close/C-M-C/Complete this edit, compile, and close the window., 
+Meta+^C
+NULL, ///, 0
+UNDO, /Undo/M-U/Undo the last change made., Meta+U
+REDO, /Redo/M-R/Redo the last change undone., Meta+R
+NULL, ///, 0
+FIND-OBJ, /Find/M-F/Find the current selection, or prompt for structure to Find., Meta+F
+(FIND-OBJ NIL T), /Reverse Find/C-M-F/Find the current selection, or prompt for structure to Find., 
+Meta+^F
+(SUBSTITUTE-OBJ NIL NIL T), /Remove/C-M-S/Remove structures from within the current selection., 
+Meta+^S
+SUBSTITUTE-OBJ, /Substitute/M-S/Substitute structures within the current selection., Meta+S
+SKIP-TO-GAP, /Find Gap/M-N/Skip to the next fill in gap., Meta+N
+NULL, ///, 0
+EDIT-HELP, /Arglist/M-H/Show the argument list for the selected function., Meta+H
+CONVERT-COMMENT, /Convert Comment/M-;/Convert the old style comments in the current selection., Meta+;
+COMMENT-OUT-SELECTION, , Meta+^;
+EDIT-SELECTION, /Edit/M-O/Edit the definition of the current selection., Meta+O
+(EDIT-SELECTION (CURRENT)), /Edit Fast/C-M-O/Edit the current definition of the selection., Meta+^O
+EVAL-SELECTION, /Eval/M-E/Evaluate the current selection., Meta+E
+EXPAND, /Expand/M-X/Replace the current selection with its definition., Meta+X
+EXTRACT-CURRENT-SELECTION, /Extract/M-//Extract one level of structure: unquote or unlist., Meta+/
+INSPECT-SELECTION, /Inspect/M-I/Inspect the current selection., Meta+I
+JOIN, /Join/M-J/Join selected items together., Meta+J
+MUTATE, /Mutate/M-Z/Prompt for a function to operate on the current selection., Meta+Z
+(PARENTHESIZE-CURRENT-SELECTION NIL), /Parenthesize/M-(/Parenthesize the current selection., Meta+(
+(PARENTHESIZE-CURRENT-SELECTION T), , Meta+)
+(QUOTE-CURRENT-SELECTION QUOTE), /Quote/M-'/Quote the current selection., Meta+'
+(QUOTE-CURRENT-SELECTION BQUOTE), , Meta+`
+(QUOTE-CURRENT-SELECTION COMMA), , Meta++
+(QUOTE-CURRENT-SELECTION COMMA-AT), , Meta+@
+(QUOTE-CURRENT-SELECTION COMMA-DOT), , Meta+.
+(QUOTE-CURRENT-SELECTION FUNCTION), , Meta+#
+NULL, ///, 0
+CHANGE-PRINTBASE, /Set Print-Base/M-B/Set the print-base for this edit., Meta+B
+CHANGE-PACKAGE, /Set Package/M-P/Set the package to edit in., Meta+P
+ADD-MENU, /Attach Menu/M-M/Attach a command menu., Meta+M
+TRUE, , Meta+ 
+SEDIT.COPYTOCLIPBOARD, , Meta+c
+SEDIT.COPYTOCLIPBOARD, , Meta+C

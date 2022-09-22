@@ -1,11 +1,11 @@
 (DEFINE-FILE-INFO PACKAGE "INTERLISP" READTABLE "INTERLISP" BASE 10)
 
-(FILECREATED "27-Aug-2022 06:04:15" {DSK}<home>larry>homedir>LARRY.;9 7452   
+(FILECREATED "20-Sep-2022 23:51:58" {DSK}<home>larry>homedir>LARRY.;21 9193   
 
-      :CHANGES-TO (ADVICE (ERROR :IN \DO-DEFINE-FILE-INFO))
-                  (VARS LARRYCOMS)
+      :CHANGES-TO (VARS LARRYCOMS)
+                  (ADVICE (ERROR :IN \DO-DEFINE-FILE-INFO))
 
-      :PREVIOUS-DATE "24-Aug-2022 08:53:05" {DSK}<home>larry>homedir>LARRY.;8)
+      :PREVIOUS-DATE "20-Sep-2022 23:00:38" {DSK}<home>larry>homedir>LARRY.;19)
 
 
 (PRETTYCOMPRINT LARRYCOMS)
@@ -13,33 +13,40 @@
 (RPAQQ LARRYCOMS
        [(P (MOVD? 'NILL 'MAKE-EXTERNALFORMAT)
            (VIDEOCOLOR T)
-           (BKSYSBUF " ")
            (WINDOWPROP PROMPTWINDOW 'TITLE NIL)
            (DSPFONT '(HELVETICA 18 BRR)
                   PROMPTWINDOW)
            (MOVEW PROMPTWINDOW '(774 . 901))
            (FONTSET 'LARGER)
            (NLSETQ (FILESLOAD (SYSLOAD)
-                          UNIXYCD)))
+                          UNIXYCD))
+           (MOVD 'VALUEOF 'IT))
         (ADVISE (ERROR :IN \DO-DEFINE-FILE-INFO))
         (FILES (SYSLOAD)
-               BACKGROUND-YIELD GITFNS FILEWATCH SAMEDIR SKETCH MEDLEY-UTILS VTCHAT PICK BUTTONS 
-               WDWHACKS)
+               PAGEHOLD MANAGER BACKGROUND-YIELD GITFNS FILEWATCH SAMEDIR SKETCH MEDLEY-UTILS VTCHAT
+               PICK BUTTONS WDWHACKS)
         (P (FILEWATCH :ON)
            (RESTORE-BUTTONS)
            (NLSETQ (POSTSCRIPT.INIT)))
-        (FNS 3WAY CLOSEI LOWESTVERSION HCENVOS RELOAD)
-        (VARS DWIMWAIT LCASEFLG (*ED-OFFERS-PROPERTY-LIST*)
-              (AUTOBACKTRACEFLG 'ALWAYS!)
+        (FNS 3WAY CLOSEI DE LOWESTVERSION HCENVOS RELOAD SHOWDIFFS)
+        [VARS (LCASEFLG)
+              (*ED-OFFERS-PROPERTY-LIST*)
+              (AUTOBACKTRACEFLG 'ALWAYS)
+              (DEFAULTPRINTERTYPE 'POSTSCRIPT)
+              [INITIALSLST '(("larry" "Larry" "lmm")
+                             ("masinter" "Larry" "lmm")
+                             ("lmm" "Larry" "lmm")
+                             ("pi" "Larry" "lmm"]
               (INITIALS "lmm")
-              INITIALSLST
-              (DEFAULTPRINTERTYPE 'POSTSCRIPT])
+              (IDLE.PROFILE '(TIMEOUT 1 DISPLAYFN IDLE.RANDOM SAVEVM 1 LOGOUT 2]
+        (COMMANDS "who")
+        (DECLARE%: DONTEVAL@LOAD DOEVAL@COMPILE DONTCOPY COMPILERVARS (ADDVARS (NLAMA DE)
+                                                                             (NLAML)
+                                                                             (LAMA])
 
 (MOVD? 'NILL 'MAKE-EXTERNALFORMAT)
 
 (VIDEOCOLOR T)
-
-(BKSYSBUF " ")
 
 (WINDOWPROP PROMPTWINDOW 'TITLE NIL)
 
@@ -53,6 +60,8 @@
 (NLSETQ (FILESLOAD (SYSLOAD)
                UNIXYCD))
 
+(MOVD 'VALUEOF 'IT)
+
 [XCL:REINSTALL-ADVICE '(ERROR :IN \DO-DEFINE-FILE-INFO)
        :BEFORE
        '((:LAST (AND (EQ MESS2 ':FORMAT)
@@ -61,7 +70,8 @@
 (READVISE (ERROR :IN \DO-DEFINE-FILE-INFO))
 
 (FILESLOAD (SYSLOAD)
-       BACKGROUND-YIELD GITFNS FILEWATCH SAMEDIR SKETCH MEDLEY-UTILS VTCHAT PICK BUTTONS WDWHACKS)
+       PAGEHOLD MANAGER BACKGROUND-YIELD GITFNS FILEWATCH SAMEDIR SKETCH MEDLEY-UTILS VTCHAT PICK 
+       BUTTONS WDWHACKS)
 
 (FILEWATCH :ON)
 
@@ -87,6 +97,12 @@
 
     (FOR W IN (OPENWINDOWS) WHEN (OR (EQ 'INSPECTW.REPAINTFN (WINDOWPROP W 'REPAINTFN))
                                      (WINDOWPROP W 'INSPECTWINDOW)) DO (CLOSEW W])
+
+(DE
+  [NLAMBDA X                                               (* ; "Edited 13-Sep-2022 09:05 by larry")
+    (DEFINE (LIST `(,(CAR X)
+                    (LAMBDA ,(CADR X)
+                      ,@(CDDR X])
 
 (LOWESTVERSION
   [LAMBDA (X)                                              (* ; "Edited  2-Jun-2022 20:14 by larry")
@@ -156,22 +172,46 @@
              (/RPLACD (GETP ROOTFNAME 'FILE))
              (APPEND (MKLIST CNAME)
                     (MKLIST SNAME])
+
+(SHOWDIFFS
+  [LAMBDA NIL
+    (FOR X IN FILELST BIND Y Z WHEN [SETQ Y (CDR (GET X 'FILE]
+       DO (PRINTOUT T X Y T)
+          (FOR C IN Y DO (FOR D IN (CDR C) DO (PRINTOUT T X " " (CAR C)
+                                                     " " D ": " (COMPAREDEFS D (CAR C)
+                                                                       '(NIL FILE))
+                                                     T T])
 )
 
-(RPAQQ DWIMWAIT 180)
-
-(RPAQQ LCASEFLG T)
+(RPAQQ LCASEFLG NIL)
 
 (RPAQQ *ED-OFFERS-PROPERTY-LIST* NIL)
 
-(RPAQQ AUTOBACKTRACEFLG ALWAYS!)
+(RPAQQ AUTOBACKTRACEFLG ALWAYS)
+
+(RPAQQ DEFAULTPRINTERTYPE POSTSCRIPT)
+
+(RPAQQ INITIALSLST (("larry" "Larry" "lmm")
+                    ("masinter" "Larry" "lmm")
+                    ("lmm" "Larry" "lmm")
+                    ("pi" "Larry" "lmm")))
 
 (RPAQ INITIALS "lmm")
 
-(RPAQQ INITIALSLST NIL)
+(RPAQQ IDLE.PROFILE (TIMEOUT 1 DISPLAYFN IDLE.RANDOM SAVEVM 1 LOGOUT 2))
 
-(RPAQQ DEFAULTPRINTERTYPE POSTSCRIPT)
+(DEFCOMMAND "who" (&REST LINE)
+   "Dotless MS Query"
+   (MASTERSCOPE (CONS 'WHO LINE)))
+(DECLARE%: DONTEVAL@LOAD DOEVAL@COMPILE DONTCOPY COMPILERVARS 
+
+(ADDTOVAR NLAMA DE)
+
+(ADDTOVAR NLAML )
+
+(ADDTOVAR LAMA )
+)
 (DECLARE%: DONTCOPY
-  (FILEMAP (NIL (1947 7199 (3WAY 1957 . 2418) (CLOSEI 2420 . 2774) (LOWESTVERSION 2776 . 3170) (HCENVOS 
-3172 . 3373) (RELOAD 3375 . 7197)))))
+  (FILEMAP (NIL (2568 8507 (3WAY 2578 . 3039) (CLOSEI 3041 . 3395) (DE 3397 . 3614) (LOWESTVERSION 3616
+ . 4010) (HCENVOS 4012 . 4213) (RELOAD 4215 . 8037) (SHOWDIFFS 8039 . 8505)))))
 STOP
