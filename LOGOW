@@ -1,0 +1,114 @@
+(DEFINE-FILE-INFO PACKAGE "INTERLISP" READTABLE "XCL" BASE 10)
+
+(FILECREATED "26-Sep-2022 20:55:22" |{DSK}<home>larry>homedir>LOGOW.;1| 13378  
+
+      :CHANGES-TO (FNS KOTOLOGOW LOGOW)
+
+      :PREVIOUS-DATE " 4-Mar-2022 19:31:19" |{DSK}<home>larry>medley>sources>LOGOW.;1|)
+
+
+; Copyright (c) 1986-1991, 2022 by Venue.
+
+(PRETTYCOMPRINT LOGOWCOMS)
+
+(RPAQQ LOGOWCOMS ((FNS KOTOLOGOW LOGOW \\DRAWLOGOWINDOWIMAGE)
+                  (VARS LOGOBITMAP)
+                  (INITVARS (LOGOW NIL))
+                  (ADDVARS (AFTERMAKESYSFORMS (LOGOW)))
+                  (PROP (LOGOW FILETYPE))))
+(DEFINEQ
+
+(KOTOLOGOW
+  (LAMBDA (STRING WHERE TITLE ANGLEDELTA)                   (* \; "Edited 26-Sep-2022 19:22 by lmm")
+                                                          (* \; "Edited 28-Feb-2022 20:27 by larry")
+                                                             (* |edited:| " 1-AUG-83 22:55")
+                                                             (* |creates| \a |logo| |window.|)
+    (PROG ((CIRCLESIZE 60)
+           (LOGOXCENTER 70)
+           (LOGOYCENTER 65)
+           (LOGOWINDOWHEIGHT 180)
+           W LOGOWINDOWWIDTH WIMAGEWIDTH WIMAGEHEIGHT (STRING (OR STRING "Interlisp-D")))
+          (OR ANGLEDELTA (SETQ ANGLEDELTA 23))
+          (SETQ WIMAGEWIDTH (FIX (FTIMES CIRCLESIZE 0.62)))
+          (SETQ WIMAGEHEIGHT (FIX (FTIMES CIRCLESIZE 0.5)))
+          (SETQ LOGOWINDOWWIDTH (IPLUS LOGOXCENTER 30 WIMAGEWIDTH (STRINGWIDTH STRING
+                                                                         '(TIMESROMAND 36))))
+          (SETQ W (COND
+                     ((TYPENAMEP WHERE 'WINDOW)
+                      WHERE)
+                     (T (CREATEW (COND
+                                    ((POSITIONP WHERE)
+                                     (|create| REGION
+                                            LEFT _ (|fetch| (POSITION XCOORD) |of| WHERE)
+                                            BOTTOM _ (|fetch| (POSITION YCOORD) |of| WHERE)
+                                            WIDTH _ LOGOWINDOWWIDTH
+                                            HEIGHT _ LOGOWINDOWHEIGHT))
+                                    ((EQ WHERE T)
+                                     (|create| REGION
+                                            HEIGHT _ LOGOWINDOWHEIGHT
+                                            WIDTH _ LOGOWINDOWWIDTH
+                                            LEFT _ (- SCREENWIDTH LOGOWINDOWWIDTH)
+                                            BOTTOM _ (- SCREENHEIGHT LOGOWINDOWHEIGHT)))
+                                    (T (GETBOXREGION LOGOWINDOWWIDTH LOGOWINDOWHEIGHT NIL NIL NIL 
+                                              "Specify location for logo window.")))
+                               (OR TITLE (CONCAT "Copyright (c) by Xerox Corporation" "             "
+                                                (OR MAKESYSDATE (DATE))))))))
+          (|for| ANGLE |from| 0 |to| 270 |by| ANGLEDELTA
+             |do| (\\DRAWLOGOWINDOWIMAGE (IPLUS LOGOXCENTER (FTIMES CIRCLESIZE (COS ANGLE)))
+                         (IPLUS LOGOYCENTER (FTIMES CIRCLESIZE (SIN ANGLE)))
+                         WIMAGEWIDTH WIMAGEHEIGHT 2 W))
+          (MOVETO (IPLUS LOGOXCENTER 10 WIMAGEWIDTH)
+                 (IPLUS 2 (IDIFFERENCE LOGOYCENTER CIRCLESIZE))
+                 W)
+          (DSPFONT '(TIMESROMAND 36)
+                 W)
+          (PRIN3 STRING W)
+          (WINDOWPROP W 'LOGOCENTER (CONS LOGOXCENTER LOGOYCENTER))
+          (RETURN W))))
+
+(LOGOW
+  (LAMBDA (STRING WHERE TITLE TITLE-LOCATION ANGLE)         (* \; "Edited 26-Sep-2022 19:22 by lmm")
+                                                             (* \; "Edited 12-Jul-91 03:12 by jds")
+    (PROG (WINDOW)
+          (CL:WHEN (WINDOWP LOGOW)
+                 (CLOSEW LOGOW))
+          (OR STRING (SETQ STRING (OR "Medley" (CL:STRING-CAPITALIZE MAKESYSNAME))))
+          (OR TITLE (SETQ TITLE (CONCAT "https://Interlisp.org" " " MAKESYSDATE)))
+
+     (* |;;| "(LOGOW NIL) gives default")
+
+          (SETQ WINDOW (KOTOLOGOW STRING T TITLE ANGLE))
+          (WINDOWPROP WINDOW 'BUTTONEVENTFN 'MOVEW)
+          (WINDOWPROP WINDOW 'TYPE 'LOGOW)
+          (WINDOWPROP WINDOW 'CLOSEFN (FUNCTION (LAMBDA NIL
+
+                                                  (* |;;| "Set LOGOW to NIL when closing the window")
+
+                                                  (SETQ LOGOW NIL))))
+          (RETURN (SETQ LOGOW WINDOW)))))
+
+(\\DRAWLOGOWINDOWIMAGE
+  (LAMBDA (XPOS YPOS WIDTH HEIGHT BORDER W)                  (* |rrb| "22-FEB-82 18:04")
+                                                             (* |makes| \a |window| |image.|
+                                                             |This| |is| |part| |of| |the| |logo| 
+                                                             |drawing.|)
+    (BITBLT NIL NIL NIL W XPOS YPOS WIDTH HEIGHT 'TEXTURE 'REPLACE BLACKSHADE)
+    (BITBLT NIL NIL NIL W (IPLUS BORDER XPOS)
+           (IPLUS BORDER YPOS)
+           (IDIFFERENCE WIDTH (ITIMES BORDER 2))
+           (IDIFFERENCE HEIGHT (ITIMES BORDER 3))
+           'TEXTURE
+           'REPLACE WHITESHADE)))
+)
+
+(RPAQQ LOGOBITMAP #*(288 110)@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO@@@@@@@@@@@@@@@@@@@@@@@@@@@OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO@@@@@@@@@@@@@@@@@@@@@@@@@@@OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO@@@@@@@@@@@@@@@@@@@@@@@@@@@OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO@@@@@@@@@@@@@@@@@@@@@OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO@@@@@@@@@@@@@@@@@@@@@OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO@@@@@@@@@@@@@@@@@@@@@OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO@@@@@@@@@@@@@@@@@@@@@OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO@@@@@@@@@@@@@@@@@@@@@OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO@@@@@@@@@@@@@@@@@@@@@OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO@@@@@@@@@@@@@@@@@@@@@OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@OOL@@COO@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@OOL@@COO@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@AN@@@@G@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@AN@@@@G@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@AN@@@@N@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@AN@@@@N@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@O@@@AL@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@O@@@AL@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@O@@@CH@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@O@@@CH@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@O@@@G@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@O@@@G@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@GH@@N@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@GH@@N@@@@CO@@@OL@OH@@GO@@GH@@@OL@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@GH@AL@@@@OOL@@OLGOL@@GO@@GH@@COO@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@GH@AL@@@AOON@@OLOON@@GO@@GH@@GOOH@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@GH@CH@@@CN@O@@OMO@N@@GN@@G@@@OHCL@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@GH@CH@@@GL@G@@COL@N@@AN@@O@@AO@AL@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@CL@G@@@@OH@CH@GOH@N@@AL@@O@@CN@@N@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@CL@G@@@AO@@CH@GO@@N@@CL@@N@@GL@@N@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@CL@N@@@CN@@CH@GL@@N@@CH@@N@@GH@@N@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@CL@N@@@CL@@GH@GL@AN@@GH@AN@@G@@AN@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@CLAL@@@CH@AOH@OH@AL@@G@@AL@@O@@GN@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@CLAL@@@CH@GN@@O@@CL@@O@@AL@@N@AOH@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ANCH@@@GH@OH@@O@@CH@@N@@CL@@N@CN@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ANCH@@@GHCN@@AO@@CH@@N@@CL@AN@OH@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ANG@@@@GOOL@@AN@@GH@AN@@CH@AOOO@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ANG@@@@GOO@@@AN@@G@@AL@@GH@AOOL@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@AON@@@@GOL@@@CN@@O@NAL@@G@@AOO@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@AON@@@@G@@@@@CL@@NANAL@@O@CIL@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@AOL@@@@G@@@N@CL@@NCLAL@@O@CIL@@CH@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@OL@@@@GH@AN@GL@ALCHAN@AO@GIL@@GH@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@OH@@@@GL@CL@GH@ALO@AN@GO@OAN@@O@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@OH@@@@CN@GH@GH@AMN@@OOOOAN@O@AN@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@O@@@@@AOOO@@GH@AOL@@GOOCOL@GOOL@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@O@@@@@@OON@@G@@AOH@@CONCOH@COOH@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@COH@@G@@@O@@@AOHAO@@@ON@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO@@@@@@@@@@@@@@@@@@@@@OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO@@@@@@@@@@@@@@@@@@@@@OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO@@@@@@@@@@@@@@@@@@@@@OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO@@@@@@@@@@@@@@@@@@@@@OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO@@@@@@@@@@@@@@@@@@@@@OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO@@@@@@@@@@@@@@@@@@@@@OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO@@@@@@@@@@@@@@@@@@@@@OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO@@@@@@@@@@@@@@@@@@@@@@@@@@@OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO@@@@@@@@@@@@@@@@@@@@@@@@@@@OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO@@@@@@@@@@@@@@@@@@@@@@@@@@@OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+)
+
+(RPAQ? LOGOW NIL)
+
+(ADDTOVAR AFTERMAKESYSFORMS (LOGOW))
+(PUTPROPS LOGOW COPYRIGHT ("Venue" 1986 1987 1988 1989 1990 1991 2022))
+(DECLARE\: DONTCOPY
+  (FILEMAP (NIL (599 5261 (KOTOLOGOW 609 . 3584) (LOGOW 3586 . 4552) (\\DRAWLOGOWINDOWIMAGE 4554 . 5259)
+))))
+STOP
