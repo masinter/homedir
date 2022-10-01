@@ -1,0 +1,4 @@
+#!/bin/sh
+
+cd ~/medley
+./run-medley -nh-host localhost -noscroll -dimensions 1880x1016 $@
