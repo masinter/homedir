@@ -1,8 +1,9 @@
 ;;; emacs initialization file
 
 (setq debug-on-error t)
-
-(line-number-mode 1)
+(cond (nil
+       
+( line-number-mode 1)
 (column-number-mode 1)
 
 (setq version-control t)
@@ -67,3 +68,4 @@
   (elt choices (random (length choices))))
 
 (setq inhibit-startup-screen t)
+))
