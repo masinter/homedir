@@ -1,13 +1,14 @@
 (DEFINE-FILE-INFO PACKAGE "INTERLISP" READTABLE "INTERLISP" BASE 10)
 
-(FILECREATED "13-Oct-2022 16:22:17" {DSK}<home>larry>homedir>LARRY.;5 6318   
+(FILECREATED "17-Oct-2022 08:46:36" {DSK}<home>larry>homedir>LARRY.;7 10590  
 
-      :CHANGES-TO (ADVICE (ERROR :IN \DO-DEFINE-FILE-INFO)
-                         KOTOLOGOW)
-                  (FNS 3WAY CLOSEI DE LOWESTVERSION HCENVOS RELOAD SHOWDIFFS)
-                  (VARS LARRYCOMS)
+      :CHANGES-TO (COMMANDS show)
+                  (VARS LARRYCOMS BREAKREGIONSPEC WHEELSCROLLDELTA DEFAULTCOPYRIGHTOWNER 
+                        CLEANUPOPTIONS EDITCHARACTERS CUTEFLG **COMMENT**FLG FB.DEFAULT.INFO)
+                  (FNS shell)
+                  (FUNCTIONS WITHOUT.PAGEHOLD)
 
-      :PREVIOUS-DATE "13-Oct-2022 10:41:30" {DSK}<home>larry>homedir>LARRY.;4)
+      :PREVIOUS-DATE "13-Oct-2022 16:22:17" {DSK}<home>larry>homedir>LARRY.;6)
 
 
 (PRETTYCOMPRINT LARRYCOMS)
@@ -24,7 +25,8 @@
                           UNIXYCD))
            (MOVD 'VALUEOF 'IT))
         (ADVISE KOTOLOGOW (ERROR :IN \DO-DEFINE-FILE-INFO))
-        (VARS (LCASEFLG)
+        (VARS BREAKREGIONSPEC WHEELSCROLLDELTA DEFAULTCOPYRIGHTOWNER CLEANUPOPTIONS EDITCHARACTERS 
+              CUTEFLG **COMMENT**FLG FB.DEFAULT.INFO (LCASEFLG)
               (*ED-OFFERS-PROPERTY-LIST*)
               (DEFAULTPRINTERTYPE 'POSTSCRIPT)
               [INITIALSLST '(("larry" "Larry" "lmm")
@@ -45,8 +47,9 @@
         (P (FILEWATCH :ON)
            (RESTORE-BUTTONS)
            (NLSETQ (POSTSCRIPT.INIT)))
-        (FNS 3WAY CLOSEI DE LOWESTVERSION HCENVOS SHOWDIFFS)
-        (COMMANDS "who")
+        (FNS 3WAY CLOSEI DE LOWESTVERSION HCENVOS SHOWDIFFS shell)
+        (COMMANDS show "who")
+        (FUNCTIONS WITHOUT.PAGEHOLD)
         (DECLARE%: DONTEVAL@LOAD DOEVAL@COMPILE DONTCOPY COMPILERVARS (ADDVARS (NLAMA DE)
                                                                              (NLAML)
                                                                              (LAMA])
@@ -79,6 +82,22 @@
                      (RETURN]
 
 (READVISE KOTOLOGOW (ERROR :IN \DO-DEFINE-FILE-INFO))
+
+(RPAQQ BREAKREGIONSPEC (400 -120 500 250))
+
+(RPAQQ WHEELSCROLLDELTA -20)
+
+(RPAQQ DEFAULTCOPYRIGHTOWNER Interlisp.Org)
+
+(RPAQQ CLEANUPOPTIONS (RC ST))
+
+(RPAQQ EDITCHARACTERS (J X Z Y N O))
+
+(RPAQQ CUTEFLG T)
+
+(RPAQQ **COMMENT**FLG NIL)
+
+(RPAQQ FB.DEFAULT.INFO (LENGTH CREATIONDATE))
 
 (RPAQQ LCASEFLG NIL)
 
@@ -159,10 +178,36 @@
                                                      " " D ": " (COMPAREDEFS D (CAR C)
                                                                        '(NIL FILE))
                                                      T T])
+
+(shell
+  [NLAMBDA LINE                                              (* ; "Edited 17-Oct-2022 08:38 by lmm")
+                                                            (* ; "Edited  7-Sep-2020 13:28 by rmk:")
+    [SETQ LINE (CONCATLIST (FOR X IN LINE JOIN (LIST X " "]
+    (CL:WITH-OPEN-FILE (STREAM "{NODIRCORE}shell-dribble.txt" :DIRECTION :IO)
+           (ShellCommand LINE STREAM)
+           (SETFILEPTR STREAM 0)
+           (UNTIL (EOFP STREAM) COLLECT (CL:READ-LINE STREAM :EOF-ERROR-P NIL :EOF-VALUE NIL])
 )
+
+(DEFCOMMAND (show :QUIET) (&REST EVENTSPEC) (CL:PPRINT (VALUOF EVENTSPEC T)
+                                                   T))
 
 (DEFCOMMAND "who" (&REST LINE) "Dotless MS Query"
    (MASTERSCOPE (CONS 'WHO LINE)))
+
+(DEFMACRO WITHOUT.PAGEHOLD (WINDOW &BODY FORMS)
+   `(RESETLST
+        (LET* ((TTYWINDOW ,WINDOW)
+               (ORIGINAL.PAGEFULLFN (WINDOWPROP TTYWINDOW 'PAGEFULLFN))
+               (NEW.PAGEFULLFN (FUNCTION NILL)))
+              (RESETSAVE (WINDOWPROP TTYWINDOW 'PAGEFULLFN NEW.PAGEFULLFN)
+                     (LIST [FUNCTION (LAMBDA (TTYWINDOW NEW.PAGEFULLFN ORIGINAL.PAGEFULLFN)
+                                       (COND
+                                          ((EQ (WINDOWPROP TTYWINDOW 'PAGEFULLFN)
+                                               NEW.PAGEFULLFN)
+                                           (WINDOWPROP TTYWINDOW 'PAGEFULLFN ORIGINAL.PAGEFULLFN]
+                           TTYWINDOW NEW.PAGEFULLFN ORIGINAL.PAGEFULLFN)))
+        ,@FORMS))
 (DECLARE%: DONTEVAL@LOAD DOEVAL@COMPILE DONTCOPY COMPILERVARS 
 
 (ADDTOVAR NLAMA DE)
@@ -171,7 +216,58 @@
 
 (ADDTOVAR LAMA )
 )
+(PRETTYCOMPRINT LARRYCOMS)
+
+(RPAQQ LARRYCOMS
+       [(P (MOVD? 'NILL 'MAKE-EXTERNALFORMAT)
+           (VIDEOCOLOR T)
+           (WINDOWPROP PROMPTWINDOW 'TITLE NIL)
+           (DSPFONT '(HELVETICA 18 BRR)
+                  PROMPTWINDOW)
+           (SHAPEW PROMPTWINDOW '(565 902 758 95))
+           (FONTSET 'LARGER)
+           (NLSETQ (FILESLOAD (SYSLOAD)
+                          UNIXYCD))
+           (MOVD 'VALUEOF 'IT))
+        (ADVISE KOTOLOGOW (ERROR :IN \DO-DEFINE-FILE-INFO))
+        (VARS BREAKREGIONSPEC WHEELSCROLLDELTA DEFAULTCOPYRIGHTOWNER CLEANUPOPTIONS EDITCHARACTERS 
+              CUTEFLG **COMMENT**FLG FB.DEFAULT.INFO (LCASEFLG)
+              (*ED-OFFERS-PROPERTY-LIST*)
+              (DEFAULTPRINTERTYPE 'POSTSCRIPT)
+              [INITIALSLST '(("larry" "Larry" "lmm")
+                             ("masinter" "Larry" "lmm")
+                             ("lmm" "Larry" "lmm")
+                             ("pi" "Larry" "lmm"]
+              (INITIALS "lmm")
+              (IDLE.PROFILE '(TIMEOUT 10 DISPLAYFN IDLE.RANDOM SAVEVM 1 LOGOUT 2))
+              [BICLOCKUSERPROPS `(COLOR BLACK MARKS T DIGITS NIL REGION
+                                        (,(+ (CAR (WINDOWPROP (LOGOW)
+                                                         'REGION))
+                                             27)
+                                         854 130 130]
+              (*UPPER-CASE-FILE-NAMES* NIL)
+              (AUTOBACKTRACEFLG 'ALWAYS!))
+        (FILES (SYSLOAD)
+               PAGEHOLD BICLOCK GITFNS FILEWATCH SAMEDIR MEDLEY-UTILS VTCHAT PICK BUTTONS WDWHACKS)
+        (P (FILEWATCH :ON)
+           (RESTORE-BUTTONS)
+           (NLSETQ (POSTSCRIPT.INIT)))
+        (FNS 3WAY CLOSEI DE LOWESTVERSION HCENVOS SHOWDIFFS shell)
+        (COMMANDS show "who")
+        (FUNCTIONS WITHOUT.PAGEHOLD)
+        (DECLARE%: DONTEVAL@LOAD DOEVAL@COMPILE DONTCOPY COMPILERVARS (ADDVARS (NLAMA shell DE)
+                                                                             (NLAML)
+                                                                             (LAMA])
+(DECLARE%: DONTEVAL@LOAD DOEVAL@COMPILE DONTCOPY COMPILERVARS 
+
+(ADDTOVAR NLAMA shell DE)
+
+(ADDTOVAR NLAML )
+
+(ADDTOVAR LAMA )
+)
 (DECLARE%: DONTCOPY
-  (FILEMAP (NIL (3959 6074 (3WAY 3969 . 4430) (CLOSEI 4432 . 4786) (DE 4788 . 5005) (LOWESTVERSION 5007
- . 5401) (HCENVOS 5403 . 5604) (SHOWDIFFS 5606 . 6072)))))
+  (FILEMAP (NIL (4548 7217 (3WAY 4558 . 5019) (CLOSEI 5021 . 5375) (DE 5377 . 5594) (LOWESTVERSION 5596
+ . 5990) (HCENVOS 5992 . 6193) (SHOWDIFFS 6195 . 6661) (shell 6663 . 7215)) (7437 8206 (
+WITHOUT.PAGEHOLD 7437 . 8206)))))
 STOP
