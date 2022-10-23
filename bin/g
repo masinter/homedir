@@ -2,5 +2,5 @@
 
 echo running medley with dodo network on localhost
 
-cd ~/medley
+cd ~/ilisp/medley
 ./run-medley -nh-host localhost -noscroll -dimensions 1880x1016 $@
