@@ -1,11 +1,10 @@
 (DEFINE-FILE-INFO PACKAGE "INTERLISP" READTABLE "INTERLISP" BASE 10)
 
-(FILECREATED "23-Oct-2022 07:38:21" {DSK}<home>larry>ilisp>homedir>LARRY.;8 10341  
+(FILECREATED " 1-Nov-2022 22:41:58" {DSK}<home>larry>ilisp>homedir>LARRY.;3 12640  
 
-      :CHANGES-TO (VARS LARRYCOMS)
-                  (FUNCTIONS DE)
+      :CHANGES-TO (FNS COMPAREMOVDS)
 
-      :PREVIOUS-DATE "22-Oct-2022 12:56:25" {DSK}<home>larry>ilisp>homedir>LARRY.;6)
+      :PREVIOUS-DATE " 1-Nov-2022 21:03:41" {DSK}<home>larry>ilisp>homedir>LARRY.;2)
 
 
 (PRETTYCOMPRINT LARRYCOMS)
@@ -21,6 +20,7 @@
            (NLSETQ (FILESLOAD (SYSLOAD)
                           UNIXYCD))
            (MOVD? 'VALUEOF 'IT))
+        (PROP FILETYPE LARRY)
         (ADVISE KOTOLOGOW (ERROR :IN \DO-DEFINE-FILE-INFO))
         (VARS BREAKREGIONSPEC WHEELSCROLLDELTA DEFAULTCOPYRIGHTOWNER CLEANUPOPTIONS EDITCHARACTERS 
               CUTEFLG **COMMENT**FLG FB.DEFAULT.INFO NEWFONTVARS (LCASEFLG)
@@ -47,7 +47,8 @@
            (RESTORE-BUTTONS (CONCAT LOGINHOST/DIR "homedir>")
                   NIL)
            (NLSETQ (POSTSCRIPT.INIT)))
-        (FNS 3WAY CLOSEI FINDFONTVARS LOADALL LOOPSCOMPARE LOWESTVERSION HCENVOS SHOWDIFFS shell)
+        (FNS 3WAY CLOSEI COMPAREMOVDS FINDFONTVARS LOADALL LOOPSCOMPARE CDIRS LOWESTVERSION HCENVOS 
+             SHOWDIFFS shell)
         (COMMANDS)
         (FUNCTIONS DE)
         (DECLARE%: DONTEVAL@LOAD DOEVAL@COMPILE DONTCOPY COMPILERVARS (ADDVARS (NLAMA shell)
@@ -72,6 +73,8 @@
 
 (MOVD? 'VALUEOF 'IT)
 
+(PUTPROPS LARRY FILETYPE CL:COMPILE-FILE)
+
 [XCL:REINSTALL-ADVICE 'KOTOLOGOW :BEFORE '((:LAST (SETQ ANLEDELTA 30))
                                            (:LAST (SETQ ANGEDELTA 30))
                                            (:LAST (SETQ ANGLEDELTA 30]
@@ -95,7 +98,7 @@
 
 (RPAQQ CUTEFLG T)
 
-(RPAQQ **COMMENT**FLG NIL)
+(RPAQQ **COMMENT**FLG " ;-- ")
 
 (RPAQQ FB.DEFAULT.INFO (LENGTH CREATIONDATE))
 
@@ -163,6 +166,34 @@
     (FOR W IN (OPENWINDOWS) WHEN (OR (EQ 'INSPECTW.REPAINTFN (WINDOWPROP W 'REPAINTFN))
                                      (WINDOWPROP W 'INSPECTWINDOW)) DO (CLOSEW W])
 
+(COMPAREMOVDS
+  [LAMBDA NIL                                                (* ; "Edited  1-Nov-2022 22:01 by lmm")
+    (FOR PAIR FL WH DEF IN \MAIKO.MOVDS
+       DO (PRINTOUT T (CAR PAIR)
+                 " => "
+                 (CADR PAIR)
+                 T
+                 (SETQ WH (WHEREIS (CAR PAIR)
+                                 'FNS T))
+                 " - " .PPV (COMPARELISTS (OR (GETDEF (CAR PAIR)
+                                                     'FNS
+                                                     'MAIKOETHER
+                                                     'NOERROR)
+                                              (GETDEF (CAR PAIR)
+                                                     'FNS "../SOURCES/MAIKOETHER")
+                                              (HELP (CAR PAIR)
+                                                    "NO 1DEF"))
+                                   (OR (FOR LOC IN (WHEREIS (CADR PAIR)
+                                                          'FNS T) WHEN (SETQ FL (INFILEP LOC))
+                                          WHEN (SETQ DEF (GETDEF (CADR PAIR)
+                                                                'FNS FL 'NOERROR))
+                                          DO (RETURN DEF))
+                                       (HELP (CADR PAIR)
+                                             "NO DEF")))
+                 T)
+          (AND FL DEF (ED (CADR PAIR)
+                          'FNS FL])
+
 (FINDFONTVARS
   [LAMBDA NIL                                                (* ; "Edited 21-Oct-2022 21:15 by lmm")
     (MAPATOMS #'(LAMBDA (X)
@@ -192,18 +223,23 @@
               (MASTERSCOPE `(ANALYZE ANY ON ',X])
 
 (LOOPSCOMPARE
-  [LAMBDA NIL                                                (* ; "Edited 22-Oct-2022 09:41 by lmm")
-    (FOR DIR IN '((system src)
-                  (library library/src)
-                  (users/rules users/rules)
-                  (users users)
-                  (truckin truckin-src)
-                  (truckin/players truckin-src/players))
-       do (CDBROWSER (COMPAREDIRECTORIES (DIRECTORYNAME (CONCAT "/home/larry/ilisp/loops/"
-                                                               (CAR DIR)))
-                            (DIRECTORYNAME (CONCAT "/home/larry/ilisp/loops-redo/" (CAR DIR)))
-                            NIL NIL NIL NIL NIL NIL T))
-          (UNTIL (CL:Y-OR-N-P (CL:FORMAT NIL "Done comparing ~a?" DIR)) do NIL])
+  [LAMBDA NIL                                                (* ; "Edited 28-Oct-2022 20:30 by lmm")
+                                                             (* ; "Edited 27-Oct-2022 07:19 by lmm")
+                                                             (* ; "Edited 22-Oct-2022 09:41 by lmm")
+    (CDIRS "/home/larry/ilisp/loops/" "/home/larry/ilisp/loops-redo/" '((system system)
+                                                                        (library library)
+                                                                        (users/rules users/rules)
+                                                                        (users users-src)
+                                                                        (truckin truckin-src)
+                                                                        (truckin/players 
+                                                                               truckin-src/players])
+
+(CDIRS
+  [LAMBDA (DIR1 DIR2 PAIRS)                                  (* ; "Edited 27-Oct-2022 07:18 by lmm")
+    (FOR DIR IN PAIRS do (CDBROWSER (COMPAREDIRECTORIES (DIRECTORYNAME (CONCAT DIR1 (CAR DIR)))
+                                           (DIRECTORYNAME (CONCAT DIR2 (CADR DIR)))
+                                           NIL NIL NIL NIL NIL NIL T))
+                         (UNTIL (CL:Y-OR-N-P (CL:FORMAT NIL "Done comparing ~a?" DIR)) do NIL])
 
 (LOWESTVERSION
   [LAMBDA (X)                                              (* ; "Edited  2-Jun-2022 20:14 by larry")
@@ -254,7 +290,8 @@
 (ADDTOVAR LAMA )
 )
 (DECLARE%: DONTCOPY
-  (FILEMAP (NIL (5142 10012 (3WAY 5152 . 5613) (CLOSEI 5615 . 5969) (FINDFONTVARS 5971 . 6426) (LOADALL 
-6428 . 7060) (LOOPSCOMPARE 7062 . 7850) (LOWESTVERSION 7852 . 8246) (HCENVOS 8248 . 8449) (SHOWDIFFS 
-8451 . 9456) (shell 9458 . 10010)) (10014 10180 (DE 10014 . 10180)))))
+  (FILEMAP (NIL (5229 12311 (3WAY 5239 . 5700) (CLOSEI 5702 . 6056) (COMPAREMOVDS 6058 . 7569) (
+FINDFONTVARS 7571 . 8026) (LOADALL 8028 . 8660) (LOOPSCOMPARE 8662 . 9661) (CDIRS 9663 . 10149) (
+LOWESTVERSION 10151 . 10545) (HCENVOS 10547 . 10748) (SHOWDIFFS 10750 . 11755) (shell 11757 . 12309)) 
+(12313 12479 (DE 12313 . 12479)))))
 STOP
