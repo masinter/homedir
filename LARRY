@@ -1,22 +1,21 @@
 (DEFINE-FILE-INFO PACKAGE "INTERLISP" READTABLE "INTERLISP" BASE 10)
 
-(FILECREATED " 1-Nov-2022 22:41:58" {DSK}<home>larry>ilisp>homedir>LARRY.;3 12640  
+(FILECREATED "29-Nov-2022 08:20:40" {DSK}<home>larry>ilisp>homedir>LARRY.;61 14029  
 
-      :CHANGES-TO (FNS COMPAREMOVDS)
+      :CHANGES-TO (VARS LARRYCOMS)
+                  (ALISTS (FONTDEFS LARGER))
 
-      :PREVIOUS-DATE " 1-Nov-2022 21:03:41" {DSK}<home>larry>ilisp>homedir>LARRY.;2)
+      :PREVIOUS-DATE " 1-Nov-2022 22:41:58" {DSK}<home>larry>ilisp>homedir>LARRY.;58)
 
 
 (PRETTYCOMPRINT LARRYCOMS)
 
 (RPAQQ LARRYCOMS
        [(P (MOVD? 'NILL 'MAKE-EXTERNALFORMAT)
-           (VIDEOCOLOR T)
            (WINDOWPROP PROMPTWINDOW 'TITLE NIL)
            (DSPFONT '(HELVETICA 18 BRR)
                   PROMPTWINDOW)
            (SHAPEW PROMPTWINDOW '(565 902 758 95))
-           (FONTSET 'LARGER)
            (NLSETQ (FILESLOAD (SYSLOAD)
                           UNIXYCD))
            (MOVD? 'VALUEOF 'IT))
@@ -42,14 +41,16 @@
               (HOMEDIR (CONCAT LOGINHOST/DIR "homedir>"))
               (*BUTTONS-SAVE-DIRECTORY* HOMEDIR))
         (FILES (SYSLOAD)
-               PAGEHOLD BICLOCK GITFNS FILEWATCH SAMEDIR MEDLEY-UTILS VTCHAT PICK BUTTONS WDWHACKS)
+               PAGEHOLD BICLOCK GITFNS FILEWATCH SAMEDIR MEDLEY-UTILS VTCHAT PICK BUTTONS WDWHACKS 
+               IDLEDEMO)
         (P (FILEWATCH :ON)
            (RESTORE-BUTTONS (CONCAT LOGINHOST/DIR "homedir>")
                   NIL)
-           (NLSETQ (POSTSCRIPT.INIT)))
+           (NLSETQ (POSTSCRIPT.INIT))
+           (FONTSET 'LARGER T))
+        (ALISTS (FONTDEFS LARGER))
         (FNS 3WAY CLOSEI COMPAREMOVDS FINDFONTVARS LOADALL LOOPSCOMPARE CDIRS LOWESTVERSION HCENVOS 
              SHOWDIFFS shell)
-        (COMMANDS)
         (FUNCTIONS DE)
         (DECLARE%: DONTEVAL@LOAD DOEVAL@COMPILE DONTCOPY COMPILERVARS (ADDVARS (NLAMA shell)
                                                                              (NLAML)
@@ -57,16 +58,12 @@
 
 (MOVD? 'NILL 'MAKE-EXTERNALFORMAT)
 
-(VIDEOCOLOR T)
-
 (WINDOWPROP PROMPTWINDOW 'TITLE NIL)
 
 (DSPFONT '(HELVETICA 18 BRR)
        PROMPTWINDOW)
 
 (SHAPEW PROMPTWINDOW '(565 902 758 95))
-
-(FONTSET 'LARGER)
 
 (NLSETQ (FILESLOAD (SYSLOAD)
                UNIXYCD))
@@ -90,7 +87,7 @@
 
 (RPAQQ WHEELSCROLLDELTA -20)
 
-(RPAQQ DEFAULTCOPYRIGHTOWNER Interlisp.Org)
+(RPAQQ DEFAULTCOPYRIGHTOWNER "Interlisp.Org")
 
 (RPAQQ CLEANUPOPTIONS (RC F))
 
@@ -138,7 +135,7 @@
 (RPAQ *BUTTONS-SAVE-DIRECTORY* HOMEDIR)
 
 (FILESLOAD (SYSLOAD)
-       PAGEHOLD BICLOCK GITFNS FILEWATCH SAMEDIR MEDLEY-UTILS VTCHAT PICK BUTTONS WDWHACKS)
+       PAGEHOLD BICLOCK GITFNS FILEWATCH SAMEDIR MEDLEY-UTILS VTCHAT PICK BUTTONS WDWHACKS IDLEDEMO)
 
 (FILEWATCH :ON)
 
@@ -146,6 +143,37 @@
        NIL)
 
 (NLSETQ (POSTSCRIPT.INIT))
+
+(FONTSET 'LARGER T)
+
+(ADDTOVAR FONTDEFS
+          [LARGER (FONTCHANGEFLG . ALL)
+                 (FILELINELENGTH . 102)
+                 (FONTPROFILE (DEFAULTFONT 1 (GACHA 14)
+                                     (GACHA 8)
+                                     (TERMINAL 8))
+                        (ITALICFONT 1 (HELVETICA 14 MIR)
+                               (GACHA 8 MIR)
+                               (MODERN 8 MIR))
+                        (BOLDFONT 2 (HELVETICA 14 BRR)
+                               (HELVETICA 8 BRR)
+                               (MODERN 8 BRR))
+                        (LITTLEFONT 3 (HELVETICA 12)
+                               (HELVETICA 6 MIR)
+                               (MODERN 8 MIR))
+                        (TINYFONT 6 (GACHA 10)
+                               (GACHA 6)
+                               (TERMINAL 6))
+                        (BIGFONT 4 (HELVETICA 16 BRR)
+                               (HELVETICA 12 BRR)
+                               (MODERN 10 BRR))
+                        (MENUFONT 5 (HELVETICA 12))
+                        (COMMENTFONT 6 (HELVETICA 10)
+                               (HELVETICA 8)
+                               (MODERN 8))
+                        (TEXTFONT 7 (TIMESROMAN 12)
+                               (TIMESROMAN 10)
+                               (CLASSIC 10])
 (DEFINEQ
 
 (3WAY
@@ -290,8 +318,8 @@
 (ADDTOVAR LAMA )
 )
 (DECLARE%: DONTCOPY
-  (FILEMAP (NIL (5229 12311 (3WAY 5239 . 5700) (CLOSEI 5702 . 6056) (COMPAREMOVDS 6058 . 7569) (
-FINDFONTVARS 7571 . 8026) (LOADALL 8028 . 8660) (LOOPSCOMPARE 8662 . 9661) (CDIRS 9663 . 10149) (
-LOWESTVERSION 10151 . 10545) (HCENVOS 10547 . 10748) (SHOWDIFFS 10750 . 11755) (shell 11757 . 12309)) 
-(12313 12479 (DE 12313 . 12479)))))
+  (FILEMAP (NIL (6618 13700 (3WAY 6628 . 7089) (CLOSEI 7091 . 7445) (COMPAREMOVDS 7447 . 8958) (
+FINDFONTVARS 8960 . 9415) (LOADALL 9417 . 10049) (LOOPSCOMPARE 10051 . 11050) (CDIRS 11052 . 11538) (
+LOWESTVERSION 11540 . 11934) (HCENVOS 11936 . 12137) (SHOWDIFFS 12139 . 13144) (shell 13146 . 13698)) 
+(13702 13868 (DE 13702 . 13868)))))
 STOP
