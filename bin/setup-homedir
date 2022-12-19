@@ -1,6 +1,25 @@
 #!/bin/sh
 
 cd ~
-rm bin
-ln -s homedir/bin
-ln -s homedir/.emacs
+echo setup ~/bin
+rm -f bin
+ln -s il/homedir/bin
+
+echo setup ~/.emacs
+rm -f .emacs
+ln -s il/homedir/dot.emacs.el .emacs
+
+echo setup ~/.bash_aliases
+rm -f .bash_aliases
+ln -s il/homedir/dot.bash_aliases .bash_aliases
+
+echo setup ~/.profile
+rm -f .profile
+ln -s il/homedir/dot.profile .profile
+
+echo setup results
+ls -l ~/bin ~/.emacs ~/.bashrc ~/.profile ~/.bhash_aliases
+
+
+
+

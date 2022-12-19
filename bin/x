@@ -1,6 +1,0 @@
-#!/bin/sh
-
-rm -f /tmp/.X11-unix/X0 && socat -b65536 UNIX-LISTEN:/tmp/.X11-unix/X0,fork,mode=777 VSOCK-CONNECT:2:6000 &
-
-export DISPLAY=:0
-
