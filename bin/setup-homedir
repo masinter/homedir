@@ -18,7 +18,7 @@ rm -f .profile
 ln -s il/homedir/dot.profile .profile
 
 echo setup results
-ls -l ~/bin ~/.emacs ~/.bashrc ~/.profile ~/.bhash_aliases
+ls -l ~/bin ~/.emacs ~/.bashrc ~/.profile ~/.bash_aliases
 
 
 
