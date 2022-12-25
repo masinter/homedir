@@ -22,11 +22,6 @@ if [ -d "$HOME/bin" ] ; then
 fi
 
 # set PATH to include medley lsee
-
-if [ -d "$HOME/il/medley/scripts" ] ; then
-    PATH="$HOME/il/medley/scripts:$PATH"
-fi
-
 # and homedir files
 if [ -d "$HOME/il/homedir/bin" ] ; then
     PATH="$HOME/il/homedir/bin:$PATH"
@@ -34,7 +29,3 @@ fi
 
 # set Lisp home
 export LOGINDIR=$HOME/il
-
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-
-
