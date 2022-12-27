@@ -1,20 +1,18 @@
 (DEFINE-FILE-INFO PACKAGE "INTERLISP" READTABLE "INTERLISP" BASE 10)
 
-(FILECREATED "15-Nov-2022 12:13:55" {DSK}<home>medley>il>INIT.;4 634    
+(FILECREATED "18-Oct-2022 17:15:09" {DSK}<home>larry>ilisp>homedir>INIT.;1 519    
 
       :CHANGES-TO (VARS INITCOMS)
 
-      :PREVIOUS-DATE "15-Nov-2022 12:12:19" {DSK}<home>medley>il>INIT.;3)
+      :PREVIOUS-DATE "18-Oct-2022 11:25:43" {DSK}<home>larry>ilisp>INIT.;2)
 
 
 (PRETTYCOMPRINT INITCOMS)
 
-(RPAQQ INITCOMS ([P (PUSHNEW DIRECTORIES (DIRECTORYNAME (CONCAT (CNDIR T)
-                                                               "HOMEDIR>"]
+(RPAQQ INITCOMS ((P (PUSHNEW DIRECTORIES (CONCAT LOGINHOST/DIR "homedir>")))
                  (FILES LARRY)))
 
-(PUSHNEW DIRECTORIES (DIRECTORYNAME (CONCAT (CNDIR T)
-                                           "HOMEDIR>")))
+(PUSHNEW DIRECTORIES (CONCAT LOGINHOST/DIR "homedir>"))
 
 (FILESLOAD LARRY)
 (DECLARE%: DONTCOPY

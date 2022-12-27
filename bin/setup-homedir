@@ -17,8 +17,15 @@ echo setup ~/.profile
 rm -f .profile
 ln -s il/homedir/dot.profile .profile
 
+echo setup INIT
+cd il
+rm -f INIT
+ln -s homedir/INIT
+
+
 echo setup results
-ls -l ~/bin ~/.emacs ~/.bashrc ~/.profile ~/.bash_aliases
+ls -l ~/bin ~/.emacs ~/.bashrc ~/.profile ~/.bash_aliases ~/il/INIT
+
 
 
 
