@@ -1,12 +1,11 @@
 (DEFINE-FILE-INFO PACKAGE "INTERLISP" READTABLE "INTERLISP" BASE 10)
 
-(FILECREATED "16-Dec-2022 11:20:57" {DSK}<home>larry>il>homedir>LARRY.;2 14071  
+(FILECREATED "27-Dec-2022 12:40:50" {DSK}<home>larry>il>homedir>LARRY.;2 14556  
 
-      :CHANGES-TO (ADVICE (ERROR :IN \DO-DEFINE-FILE-INFO)
-                         KOTOLOGOW)
-                  (VARS LARRYCOMS)
+      :CHANGES-TO (VARS LARRYCOMS)
+                  (ALISTS (FONTDEFS LARGER))
 
-      :PREVIOUS-DATE "29-Nov-2022 08:20:40" {DSK}<home>larry>il>homedir>LARRY.;1)
+      :PREVIOUS-DATE "16-Dec-2022 11:20:57" {DSK}<home>larry>il>homedir>LARRY.;1)
 
 
 (PRETTYCOMPRINT LARRYCOMS)
@@ -40,7 +39,7 @@
               (*UPPER-CASE-FILE-NAMES* NIL)
               (AUTOBACKTRACEFLG 'ALWAYS!)
               (HOMEDIR (CONCAT LOGINHOST/DIR "homedir>"))
-              (*BUTTONS-SAVE-DIRECTORY* HOMEDIR))
+              (*BUTTONS-SAVE-DIRECTORY* LOGINHOST/DIR))
         (FILES (SYSLOAD)
                PAGEHOLD BICLOCK GITFNS FILEWATCH SAMEDIR MEDLEY-UTILS VTCHAT PICK BUTTONS WDWHACKS 
                IDLEDEMO)
@@ -49,7 +48,7 @@
         (ALISTS (FONTDEFS LARGER))
         (P (FILEWATCH :ON)
            (RESTORE-BUTTONS (CONCAT LOGINHOST/DIR "homedir>")
-                  NIL)
+                  T)
            (NLSETQ (POSTSCRIPT.INIT))
            (FONTSET 'LARGER T))
         (FUNCTIONS DE)
@@ -133,7 +132,7 @@
 
 (RPAQ HOMEDIR (CONCAT LOGINHOST/DIR "homedir>"))
 
-(RPAQ *BUTTONS-SAVE-DIRECTORY* HOMEDIR)
+(RPAQ *BUTTONS-SAVE-DIRECTORY* LOGINHOST/DIR)
 
 (FILESLOAD (SYSLOAD)
        PAGEHOLD BICLOCK GITFNS FILEWATCH SAMEDIR MEDLEY-UTILS VTCHAT PICK BUTTONS WDWHACKS IDLEDEMO)
@@ -272,36 +271,45 @@
 (ADDTOVAR FONTDEFS
           [LARGER (FONTCHANGEFLG . ALL)
                  (FILELINELENGTH . 102)
-                 (FONTPROFILE (DEFAULTFONT 1 (GACHA 14)
+                 (FONTPROFILE (DEFAULTFONT 1 (GACHA 12)
                                      (GACHA 8)
-                                     (TERMINAL 8))
+                                     (TERMINAL 8)
+                                     (POSTSCRIPT (TERMINAL 8)))
                         (ITALICFONT 1 (HELVETICA 14 MIR)
                                (GACHA 8 MIR)
-                               (MODERN 8 MIR))
+                               (MODERN 8 MIR)
+                               (POSTSCRIPT (MODERN 8 MIR)))
                         (BOLDFONT 2 (HELVETICA 14 BRR)
                                (HELVETICA 8 BRR)
-                               (MODERN 8 BRR))
+                               (MODERN 8 BRR)
+                               (POSTSCRIPT (MODERN 8 BRR)))
                         (LITTLEFONT 3 (HELVETICA 12)
                                (HELVETICA 6 MIR)
-                               (MODERN 8 MIR))
+                               (MODERN 8 MIR)
+                               (POSTSCRIPT (MODERN 8 MIR)))
                         (TINYFONT 6 (GACHA 10)
                                (GACHA 6)
-                               (TERMINAL 6))
+                               (TERMINAL 6)
+                               (POSTSCRIPT (TERMINAL 6)))
                         (BIGFONT 4 (HELVETICA 16 BRR)
                                (HELVETICA 12 BRR)
-                               (MODERN 10 BRR))
-                        (MENUFONT 5 (HELVETICA 12))
+                               (MODERN 10 BRR)
+                               (POSTSCRIPT (MODERN 10 BRR)))
+                        (MENUFONT 5 (HELVETICA 12)
+                               (POSTSCRIPT (HELVETICA 12)))
                         (COMMENTFONT 6 (HELVETICA 10)
                                (HELVETICA 8)
-                               (MODERN 8))
+                               (MODERN 8)
+                               (POSTSCRIPT (MODERN 8)))
                         (TEXTFONT 7 (TIMESROMAN 12)
                                (TIMESROMAN 10)
-                               (CLASSIC 10])
+                               (CLASSIC 10)
+                               (POSTSCRIPT (CLASSIC 10])
 
 (FILEWATCH :ON)
 
 (RESTORE-BUTTONS (CONCAT LOGINHOST/DIR "homedir>")
-       NIL)
+       T)
 
 (NLSETQ (POSTSCRIPT.INIT))
 
@@ -319,8 +327,8 @@
 (ADDTOVAR LAMA )
 )
 (DECLARE%: DONTCOPY
-  (FILEMAP (NIL (5200 12282 (3WAY 5210 . 5671) (CLOSEI 5673 . 6027) (COMPAREMOVDS 6029 . 7540) (
-FINDFONTVARS 7542 . 7997) (LOADALL 7999 . 8631) (LOOPSCOMPARE 8633 . 9632) (CDIRS 9634 . 10120) (
-LOWESTVERSION 10122 . 10516) (HCENVOS 10518 . 10719) (SHOWDIFFS 10721 . 11726) (shell 11728 . 12280)) 
-(13744 13910 (DE 13744 . 13910)))))
+  (FILEMAP (NIL (5160 12242 (3WAY 5170 . 5631) (CLOSEI 5633 . 5987) (COMPAREMOVDS 5989 . 7500) (
+FINDFONTVARS 7502 . 7957) (LOADALL 7959 . 8591) (LOOPSCOMPARE 8593 . 9592) (CDIRS 9594 . 10080) (
+LOWESTVERSION 10082 . 10476) (HCENVOS 10478 . 10679) (SHOWDIFFS 10681 . 11686) (shell 11688 . 12240)) 
+(14229 14395 (DE 14229 . 14395)))))
 STOP
