@@ -1,0 +1,11 @@
+#!/bin/sh
+
+src="$1"
+dest="$2"
+
+export LC_ALL=C
+
+echo $src "-> " $dest
+
+tr '\r' '\n' < "$src" > "$dest"
+
