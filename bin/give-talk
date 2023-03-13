@@ -1,0 +1,10 @@
+#!/bin/sh
+
+echo running medley with no nethub networking
+
+cd ~/il/medley
+# ./run-medley -noscroll -dimensions 1880x1016 $@
+
+./run-medley -noscroll -dimensions 1410x810 $@
+
+
