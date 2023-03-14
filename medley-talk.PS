@@ -1,0 +1,720 @@
+%!PS-Adobe-2.0%%Title: {LI}<homedir>medley-talk.PS;2%%Creator: PostScript Driver Copyright (C) 1988-1992 Venue and others%%CreationDate: 13-Mar-2023 21:43:28%%EndComments/bdef {bind def} bind def
+/ldef {load def} bdef
+/S /show ldef
+/M /moveto ldef
+/DR {transform round exch round exch itransform} bdef
+/L {gsave newpath setlinewidth 0 setlinecap
+  M lineto currentpoint stroke grestore M} bdef
+/L1 {gsave newpath 0 setdash setgray setlinewidth 0 setlinecap
+  M lineto currentpoint stroke grestore M} bdef
+/F {findfont exch scalefont setfont} bdef
+/CLP {newpath M dup 0 rlineto exch 0 exch rlineto
+  neg 0 rlineto closepath clip newpath} bdef
+/R {gsave setgray newpath M dup 0 rlineto exch 0 exch
+  rlineto neg 0 rlineto closepath eofill grestore} bdef
+/ellipsedict 9 dict def
+ellipsedict /mtrx matrix put
+/ellipse
+ { ellipsedict begin
+  /endangle exch def
+  /startangle exch def
+  /orientation exch def
+  /minorrad exch def
+  /majorrad exch def
+  /y exch def
+  /x exch def
+  /savematrix mtrx currentmatrix def
+  x y translate
+  orientation rotate
+  majorrad minorrad scale
+  0 0 1 startangle endangle arc
+  savematrix setmatrix
+ end } bdef
+/concatprocs
+ {/proc2 exch cvlit def
+  /proc1 exch cvlit def
+  /newproc proc1 length proc2 length add array def
+  newproc 0 proc1 putinterval
+  newproc proc1 length proc2 putinterval
+  newproc cvx
+ } bdef
+/resmatrix matrix def
+/findresolution
+ {72 0 resmatrix defaultmatrix dtransform
+  /yres exch def /xres exch def
+  xres dup mul yres dup mul add sqrt
+ } bdef
+/thebitimage
+ {/maskp exch def
+  /bihgt exch def
+  /biwid exch def
+  /byte 1 string def
+  /strbufl biwid 8 div ceiling cvi def
+  /strbuf strbufl string def
+  maskp not{{1 exch sub} currenttransfer concatprocs settransfer} if
+  biwid bihgt
+  maskp { true } { 1 } ifelse
+  [biwid 0 0 bihgt 0 0]
+  {/col 0 def
+   {currentfile byte readhexstring pop 0 get
+    dup 16#B2 eq {pop
+    currentfile byte readhexstring pop 0 get 1 add
+    currentfile byte readhexstring pop pop /nbyte byte 0 get def
+    { strbuf col nbyte put /col col 1 add def} repeat}
+   {dup 16#B3 eq {pop /col col
+    currentfile byte readhexstring pop
+    0 get add 1 add def}
+    {16#B4 eq {currentfile byte readhexstring pop pop} if
+     strbuf col byte 0 get put /col col 1 add def} ifelse
+   } ifelse
+   col strbufl ge { exit } if } loop
+   strbuf }
+  maskp { imagemask } { image } ifelse
+ } bdef
+/setuserscreendict 22 dict def
+setuserscreendict begin
+ /tempctm matrix def
+ /temprot matrix def
+ /tempscale matrix def
+end
+/setuserscreen
+ {setuserscreendict begin
+   /spotfunction exch def
+   /screenangle exch def
+   /cellsize exch def
+   /m tempctm currentmatrix def
+   /rm screenangle temprot rotate def
+   /sm cellsize dup tempscale scale def
+   sm rm m m concatmatrix m concatmatrix pop
+   1 0 m dtransform /y1 exch def /x1 exch def
+   /veclength x1 dup mul y1 dup mul add sqrt def
+   /frequency findresolution veclength div def
+   /newscreenangle y1 x1 atan def
+   m 2 get m 1 get mul m 0 get m 3 get mul sub
+   0 gt { { neg } /spotfunction load concatprocs
+          /spotfunction exch def } if
+   frequency newscreenangle /spotfunction load setscreen
+  end
+ } bdef
+/setpatterndict 18 dict def
+setpatterndict begin
+ /bitison
+  {/ybit exch def /xbit exch def
+   /bytevalue bstring ybit bwidth mul xbit 8 idiv add get def
+   /mask 1 7 xbit 8 mod sub bitshift def
+   bytevalue mask and 0 ne
+  } bdef
+end
+/bitpatternspotfunction
+ {setpatterndict begin
+   /y exch def /x exch def
+   /xindex x 1 add 2 div bpside mul 1 sub cvi def
+   /yindex y 1 add 2 div bpside mul 1 sub cvi def
+   xindex yindex bitison
+    {/onbits onbits 1 add def 1}
+    {/offbits offbits 1 add def 0} ifelse
+  end
+ } bdef
+/setpattern
+ {setpatterndict begin
+   /cellsz exch def
+   /angle exch def
+   /bwidth exch def
+   /bpside exch def
+   /bstring exch def
+   /onbits 0 def /offbits 0 def
+   cellsz angle /bitpatternspotfunction load setuserscreen
+   {} settransfer
+   offbits offbits onbits add div setgray
+  end
+ } bdef
+% - - - - - Fraction-setting code, to support NS fonts better - - - - -
+/fractiondict 20 dict def
+/fractionshow 
+{ fractiondict begin
+/denom exch def 
+/num exch def 
+/regfont currentfont def
+/fractfont currentfont [.65 0 0 .6 0 0] makefont def 
+gsave newpath 0 0 moveto 
+(1) true charpath flattenpath pathbbox 
+/height exch def pop pop pop
+ grestore
+0 .4 height mul rmoveto
+fractfont setfont num show
+0 .4 height mul neg rmoveto regfont setfont (\244) show
+fractfont setfont denom show regfont setfont end } bdef
+/f14 { (1) (4) fractionshow } bdef
+/f12 { (1) (2) fractionshow } bdef
+/f34 { (3) (4) fractionshow } bdef
+/f18 { (1) (8) fractionshow } bdef
+/f38 { (3) (8) fractionshow } bdef
+/f58 { (5) (8) fractionshow } bdef
+/f78 { (7) (8) fractionshow } bdef
+/f13 { (1) (3) fractionshow } bdef
+/f23 { (2) (3) fractionshow } bdef
+/bboxdict 20 dict def
+/bboxchk { bboxdict begin
+/regfont currentfont def
+/chkfont currentfont [1.25 0 0 1.25 0 0] makefont def 
+gsave newpath 0 0 moveto 
+(\161) true charpath flattenpath pathbbox 
+/height exch def pop pop pop 
+ grestore 
+ currentpoint 
+ .2 height mul .3 height mul rmoveto
+chkfont setfont (\063) show
+ moveto
+ regfont setfont
+(\161) show end } bdef
+/rencdict 15 dict def
+/encodefont { rencdict begin
+/newname exch def
+/oldfont exch def
+/newcodes [
+8#001 /Aacute
+8#002 /Acircumflex
+8#003 /Adieresis
+8#004 /Agrave
+8#005 /Aring
+8#006 /Atilde
+8#007 /Ccedilla
+8#010 /Eacute
+8#011 /Ecircumflex
+8#012 /Edieresis
+8#013 /Egrave
+8#014 /Iacute
+8#015 /Icircumflex
+8#016 /Idieresis
+8#017 /Igrave
+8#020 /Ntilde
+8#021 /Oacute
+8#022 /Ocircumflex
+8#023 /Odieresis
+8#024 /Ograve
+8#025 /Otilde
+8#026 /Scaron
+8#027 /Uacute
+8#030 /Ucircumflex
+8#031 /Udieresis
+8#032 /Ugrave
+8#033 /Ydieresis
+8#034 /Zcaron
+8#177 /periodinferior
+8#201 /aacute
+8#202 /acircumflex
+8#203 /adieresis
+8#204 /agrave
+8#205 /aring
+8#206 /atilde
+8#207 /ccedilla
+8#210 /eacute
+8#211 /ecircumflex
+8#212 /edieresis
+8#213 /egrave
+8#214 /iacute
+8#215 /icircumflex
+8#216 /idieresis
+8#217 /igrave
+8#220 /ntilde
+8#221 /oacute
+8#222 /ocircumflex
+8#223 /odieresis
+8#224 /ograve
+8#225 /otilde
+8#226 /scaron
+8#227 /uacute
+8#230 /ucircumflex
+8#231 /udieresis
+8#232 /ugrave
+8#233 /ydieresis
+8#234 /zcaron
+8#235 /Eth
+8#236 /eth
+8#237 /Thorn
+8#240 /thorn
+ ] def
+/olddict oldfont findfont def /newfont olddict maxlength dict def
+olddict { exch dup /FID ne { dup /Encoding eq
+{ exch dup length array copy newfont 3 1 roll put }
+{ exch newfont 3 1 roll put } ifelse }
+ { pop pop } ifelse } forall
+newfont /FontName newname put
+newcodes aload pop
+newcodes length 2 idiv { newfont /Encoding get 3 1 roll put } repeat 
+newname newfont definefont pop end } def
+ /accentdict 10 dict def 
+ /accentor { accentdict begin /scaler exch def /delta exch def 
+/unders exch def /accents exch def /mainch exch def /scrt (X) def
+ /w1 mainch stringwidth pop def 
+ currentpoint mainch show currentpoint 4 2 roll 
+accents { /ch exch def 2 copy moveto 
+         scrt 0 ch put 
+         /w2 scrt stringwidth pop def 
+         w1 w2 sub 2 div delta rmoveto scrt show 
+         /delta delta 150 scaler mul 9 div add def
+        } forall 
+unders { /ch exch def 2 copy moveto 
+         scrt 0 ch put 
+         /w2 scrt stringwidth pop def 
+         ch 46 eq { w1 w2 sub 2 div -175 scaler mul 9 div rmoveto scrt show 0 175 rmoveto }
+           { w1 w2 sub 2 div 0 rmoveto scrt show } ifelse 
+        } forall 
+ pop pop moveto end } def 
+%%EndProlog
+%%BeginSetup
+letter/imagesizefactor 1 def%%EndSetup/Courier /Courier-Acnt encodefont
+800 /Courier-Acnt F
+
+%%Page: 1 1
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Palatino-Bold /Palatino-Bold-Acnt encodefont
+2400 /Palatino-Bold-Acnt F
+26433 70278 M (Demos:) S
+24068 65478 M (Wheelscroll) S
+25001 63078 M (Clipboard) S
+19236 60678 M (Modernize windows) S
+21903 58278 M (Running online) S
+7200 55878 M (D) S
+/Palatino-Roman /Palatino-Roman-Acnt encodefont
+1000 /Palatino-Roman-Acnt F
+(e) S
+54001 55978 9679 55978 200 L
+2400 /Palatino-Bold-Acnt F
+16572 53478 M (nstrate features \(this talk\)) S
+1800 /Palatino-Roman-Acnt F
+9600 51508 M (Applications built in Interlisp) S
+9600 49308 M (- Notecards) S
+9600 47108 M (- Rooms) S
+9600 44908 M (- Loops) S
+9600 42708 M (- Spin-Pro) S
+9600 40508 M (- ... algebra ...) S
+9600 38308 M (-  others? Dendral STRGEN) S
+9600 36108 M (- Impro) S
+/Palatino-Italic /Palatino-Italic-Acnt encodefont
+1800 /Palatino-Italic-Acnt F
+(ve maintainabili) S
+/Palatino-BoldItalic /Palatino-BoldItalic-Acnt encodefont
+1800 /Palatino-BoldItalic-Acnt F
+(ty) S
+9600 33908 M (- Gather docum) S
+1800 /Palatino-Italic-Acnt F
+(en) S
+1800 /Palatino-BoldItalic-Acnt F
+(tation) S
+9600 31708 M (bibliography, s) S
+1800 /Palatino-Italic-Acnt F
+(of) S
+1800 /Palatino-BoldItalic-Acnt F
+(tware archive;) S
+1800 /Palatino-Italic-Acnt F
+( pr) S
+1800 /Palatino-BoldItalic-Acnt F
+(oduce updated) S
+9600 29508 M (docu) S
+1800 /Palatino-Italic-Acnt F
+(mentation) S
+9600 25108 M (2) S
+9600 20708 M (Residen) S
+1800 /Palatino-BoldItalic-Acnt F
+(tial Environment) S
+9600 16308 M (- Define, e) S
+1800 /Palatino-Italic-Acnt F
+(dit, debug in the live environment) S
+9600 14108 M (- write out to files to save for future session.) S
+grestore savepage restore showpage
+
+%%Page: 2 2
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Helvetica /Helvetica-Acnt encodefont
+1000 /Helvetica-Acnt F
+7200 75600 M (\0002) S
+/Palatino-Italic /Palatino-Italic-Acnt encodefont
+1800 /Palatino-Italic-Acnt F
+9600 66308 M (\(DEFINEQ \(FOO \(X\) \(PLUSS X X]) S
+9600 64108 M (PP FO) S
+/Palatino-Roman /Palatino-Roman-Acnt encodefont
+1800 /Palatino-Roman-Acnt F
+(O) S
+9600 61908 M (\(FOO 6]) S
+9600 59708 M (PP FOO) S
+9600 57508 M (FILES?\)) S
+9600 50908 M (\(CLEANUP\)) S
+9600 48708 M (SEE BAR) S
+1800 /Palatino-Italic-Acnt F
+9600 44308 M (\000) S
+54001 44408 9601 44408 200 L
+/Times-Roman /Times-Roman-Acnt encodefont
+3600 /Times-Roman-Acnt F
+28674 40721 M (\000) S
+/Palatino-Bold /Palatino-Bold-Acnt encodefont
+2400 /Palatino-Bold-Acnt F
+(\000\005\000\006\000.\000$\000B\000\000\000\000\000\000\000\004\002\001\000\000\000\000\000\000\000) S
+1800 /Palatino-Roman-Acnt F
+(\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000.\000\000\000\000\000\000\000) S
+grestore savepage restore showpage
+
+%%Page: 3 3
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Helvetica /Helvetica-Acnt encodefont
+1000 /Helvetica-Acnt F
+53444 75600 M (\0003) S
+/Palatino-Roman /Palatino-Roman-Acnt encodefont
+1800 /Palatino-Roman-Acnt F
+9600 69321 M (\000\000\000\000\002\001\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000.\000$\000B\000\000\000\000\000\000\000\000\002\001\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000/\000\000\000\000\000\000\000$\000\000\000\000\002\003\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\001T\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000.\000\000\000\000\000\000\000$\000\000\000\000) S
+2400 /Palatino-Roman-Acnt F
+(\002) S
+54001 69421 16495 69421 200 L
+/Times-Roman /Times-Roman-Acnt encodefont
+3600 /Times-Roman-Acnt F
+54000 69321 M (\000) S
+/Palatino-Bold /Palatino-Bold-Acnt encodefont
+2400 /Palatino-Bold-Acnt F
+(\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000) S
+1800 /Palatino-Bold-Acnt F
+(\000) S
+1800 /Palatino-Roman-Acnt F
+(\000\000) S
+9600 66708 M (.\000\000\000\000\000\000\000\000\000\000\000\000\002\001\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000: \000\000\000\000\000\000\004\000\010\000\320\000\005GACHA\000\022\000\000\000\000\000\000\002\000\000\320\000\005GACHA\000) S
+grestore savepage restore showpage
+
+%%Page: 4 4
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Helvetica /Helvetica-Acnt encodefont
+1000 /Helvetica-Acnt F
+7200 75600 M (\0004) S
+/Palatino-Roman /Palatino-Roman-Acnt encodefont
+1800 /Palatino-Roman-Acnt F
+9600 70708 M (\000\000\000\000\000\000\002\000\000\024\000\006OPTIMA\000\022\000\000\000\000\000\000\000\000\000\024\000\006OPTIMA\000\022\000\000\000\000\000\000\002\000\000\024\000\006OPTIMA\000\030\000\000\000\000\000\000\002\000\000\030\000) S
+9600 68908 M (TIMESROMAN\000$\000\000\000\000\000\000\000\000\000\024\000\006OPTIMA\000) S
+9600 67108 M (\000\000\000\000\000\000\000\000\000Y\000K\(DEFAULTFONT 1 \(GACHA 12\) \(GACHA 8\) \(TERMINAL 8\)) S
+7200 65308 M (\(POand RIPT \(TERMINAL 8\)\)\)\000) S
+grestore savepage restore showpage
+
+%%Page: 5 5
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Helvetica /Helvetica-Acnt encodefont
+1000 /Helvetica-Acnt F
+53444 75600 M (\0005) S
+/Palatino-Roman /Palatino-Roman-Acnt encodefont
+1800 /Palatino-Roman-Acnt F
+7200 70708 M (\000\000\000\000\000\000\000\000\000\000\000\000are many \000\000\000\000\010\000\000\000\000\000\002\000\006\000\000\000\001\000\000\000\000\010\000\000\000\000\000\002\000\006\000\000\000) S
+grestore savepage restore showpage
+
+%%Page: 6 6
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Helvetica /Helvetica-Acnt encodefont
+1000 /Helvetica-Acnt F
+7200 75600 M (\0006) S
+/Palatino-Roman /Palatino-Roman-Acnt encodefont
+1800 /Palatino-Roman-Acnt F
+7200 70708 M (\000\000\000\000\010\000\000\000\000\000\002\000\006\000\000\000) S
+7200 67521 M (\000\000\000\000\010\000\000\000\000\000\002\000\006\000\000\000) S
+54001 67621 7201 67621 200 L
+/Times-Roman /Times-Roman-Acnt encodefont
+3600 /Times-Roman-Acnt F
+54000 67521 M (\000) S
+/Palatino-Bold /Palatino-Bold-Acnt encodefont
+2400 /Palatino-Bold-Acnt F
+(\000\000\010\000\000\000\000\000\002\000\006\000\000\000\017\000\000\000) S
+1800 /Palatino-Roman-Acnt F
+(\000\010\000\000\000\000\000\002\000\006\000\000\000) S
+9600 65308 M (!\000\000\000\000\010\000\000\000\000\000\002\000\006\000\000\000 \000\000\000\000\010\000\000\000\000\000\002\000\006\000\000\000) S
+grestore savepage restore showpage
+
+%%Page: 7 7
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Helvetica /Helvetica-Acnt encodefont
+1000 /Helvetica-Acnt F
+53444 75600 M (\0007) S
+/Palatino-Roman /Palatino-Roman-Acnt encodefont
+1800 /Palatino-Roman-Acnt F
+9600 70708 M (\000\000\000\000\010\000\000\000\000\000\002\000\006\000\000\000\010\000\000\000\000\010\000\000\000\000\000\002\000\006\000\000\000\010\000\000\000\000\010\000\000\000\000\000\002\000\006\000\000\000\013\000\000\000\000\010\000\000\000\000\000\002\000\006\000\000\000\022\000\000\000\000\010\000\000\000\000\000\002\000\006software\010\000\000\000\000\000\002\000\006\000\000\000\032\000\000\000\000\010\000 \000\000\000\000\002\000\006\000\000\000\027\000\000\000\000\010\000\000\000\000\000\002\000\006\000\000\000>\000\000\000\000\010\000\000\000\000\000) S
+7200 66708 M (-  Common Lisp) S
+9600 64078 M (developers\002) S
+54001 64178 18367 64178 200 L
+1800 /Palatino-Roman-Acnt F
+54000 64078 M (\000) S
+/Palatino-Bold /Palatino-Bold-Acnt encodefont
+2400 /Palatino-Bold-Acnt F
+(\000\000\001\000\000\000\000\010\000\000\000\000\000\002\000\005\000\000\000\002) S
+1800 /Palatino-Roman-Acnt F
+7200 59908 M (+\001\000\013HRULE.GETFN\001\000\024\000\006OPTIMA\000) S
+9600 57708 M (\000\000\000\000\000\000\000\000\000\000 and expectations\000+\000\000\000\000\006\000\000\000\000\000\002\000\004\000\000\000\030\000\000\000\000\005\000\000\000+\000\002\000\003\000\000\000\001\000\000\000\000\004\000\000\000\000\000\002\000\002\000\000\000.\000\000\000\000\003\000\000\000\000\000\002\000\002\000\000\0001+\000\000\000\003\000 revive\000\000\000\000\002\000\003\000\000\000\001\000\000\000\000\004\000\000\000) S
+9600 55078 M (\000\002\000\003\000\000\000\001\000\000\000\000\004\000\000\000\000\000\002+\003\000\000\000\001\000\000\000\000\004\000\000\000\000\000\002\000\001\000\000\000\036\000\000\000\000\002\000\000\000\000\000\002\000\001\000\000\000`\000\000\000+\002\000\000\000\000\000\002\000\001\000\000\000\010\000\000\000\000\002\000\000\000\000\000\002\000\001\000\000\000`\000\000\000) S
+54001 55178 12783 55178 200 L
+54000 55078 M (\000) S
+2400 /Palatino-Bold-Acnt F
+(\000\000\000\000\002\000\001\000\000\000\010\000\000\000\000\002\000) S
+1800 /Palatino-Roman-Acnt F
+7200 50908 M (+\000\000\000\002\000\001\000\000\000\001\000\000\000\000 \000\000\000\000\000\002\000\001\000\000\000\001\000\000\000\000\002\000\000\000\000\000\002\000\001\000 \(30 year gap\)\000\000) S
+9600 48708 M (D\000\002\000\001\000\000\000\010\000\000\000\000\002\000\000\000\000\000\002\000\002\000\000\000\001\000\000\000\000\001\000\000\000\000\000\002\000\002\000\000\000\000\000\002 \(recursive) S
+9600 45121 M (revivers\)\000\001\000\000\002\022\000Kz\272\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000+\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000) S
+54001 45221 20865 45221 200 L
+/Times-Roman /Times-Roman-Acnt encodefont
+3600 /Times-Roman-Acnt F
+54000 45121 M (\000) S
+2400 /Palatino-Bold-Acnt F
+(\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000) S
+1800 /Palatino-Roman-Acnt F
+(\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000) S
+7200 39321 M (+\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000+\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000) S
+54001 39421 9383 39421 200 L
+3600 /Times-Roman-Acnt F
+54000 39321 M (\000) S
+2400 /Palatino-Bold-Acnt F
+(\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000) S
+1800 /Palatino-Bold-Acnt F
+(\000) S
+1800 /Palatino-Roman-Acnt F
+(\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000) S
+7200 36708 M (... \000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000) S
+7200 33708 M (- System tracks what changed) S
+/Palatino-Italic /Palatino-Italic-Acnt encodefont
+1800 /Palatino-Italic-Acnt F
+7200 29321 M (Demo:\000) S
+1800 /Palatino-Bold-Acnt F
+(\000) S
+/Courier-Bold /Courier-Bold-Acnt encodefont
+1200 /Courier-Bold-Acnt F
+(\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000) S
+1800 /Palatino-Roman-Acnt F
+(\000) S
+54001 29421 11962 29421 200 L
+/Times-Bold /Times-Bold-Acnt encodefont
+3600 /Times-Bold-Acnt F
+54000 29321 M (\000) S
+2400 /Palatino-Bold-Acnt F
+(\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000) S
+1800 /Palatino-Roman-Acnt F
+(\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000) S
+1200 /Courier-Bold-Acnt F
+(\000\000\000\000\000\000\000\000\000\000\000\000\000) S
+1800 /Palatino-Roman-Acnt F
+(\000\000\000\000\000\000\000\000\000\000\000) S
+1200 /Courier-Bold-Acnt F
+10800 27619 M (??) S
+10800 26019 M (\000\000\000\000\000) S
+/Courier /Courier-Acnt encodefont
+1200 /Courier-Acnt F
+(\000\000\000\000\000\000\000\000\000\000\000\000\000) S
+1200 /Courier-Bold-Acnt F
+(\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000  ) S
+1200 /Courier-Acnt F
+( <change to \(+ X PARAM\) >) S
+1200 /Courier-Bold-Acnt F
+10800 24419 M (\(FOO 6\)) S
+10800 22819 M (RETRY) S
+10800 19321 M (\000\000) S
+54001 19421 10801 19421 200 L
+3600 /Times-Bold-Acnt F
+54000 19321 M (\000) S
+2400 /Palatino-Bold-Acnt F
+(\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000) S
+1800 /Palatino-Roman-Acnt F
+(\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000) S
+9600 16708 M (interactive \000\000\000\000\000\000\000\000\000\000\000\000\000) S
+9600 13121 M (searche\000) S
+1200 /Courier-Bold-Acnt F
+(\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000) S
+1800 /Palatino-Roman-Acnt F
+(\000) S
+1200 /Courier-Bold-Acnt F
+(\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000) S
+2400 /Palatino-Roman-Acnt F
+(\000\000\000) S
+1800 /Palatino-Roman-Acnt F
+(\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000) S
+1200 /Courier-Bold-Acnt F
+(\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000) S
+1800 /Palatino-Roman-Acnt F
+(\000) S
+54001 13221 15546 13221 200 L
+3600 /Times-Roman-Acnt F
+54000 13121 M (\000) S
+2400 /Palatino-Bold-Acnt F
+(\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000) S
+1800 /Palatino-Roman-Acnt F
+(\000\000\000\000) S
+12000 10508 M ("TTY" editor: original structure editor: powerful, programma) S
+3600 8708 M (ble,) S
+12000 8708 M (short commands \(BO 3\) P Q. Easy to get into unreadable state) S
+3600 6908 M (,) S
+grestore savepage restore showpage
+
+%%Page: 8 8
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Helvetica /Helvetica-Acnt encodefont
+1000 /Helvetica-Acnt F
+7200 75600 M (\0008) S
+/Palatino-Roman /Palatino-Roman-Acnt encodefont
+1800 /Palatino-Roman-Acnt F
+12000 70708 M (because reading the code isn't necessary to edit it. Use:) S
+12000 68908 M (EDITMODE\(TELETYPE\)) S
+7200 64708 M (- DEDIT: Like TTY editor with menu and showing code.) S
+12000 62908 M (EDITMODE\(DEDIT\)) S
+7200 58708 M (- SEDIT: \(maintains illusion that\) you are editing structure. Parenth) S
+3600 56908 M (eses) S
+12000 56908 M (are balanced at all times, but you can just type and backspace) S
+3600 55108 M (. No) S
+12000 55108 M ("commands" per se. Careful use of placeholeders.) S
+12000 53308 M (EDITMODE\(SEDIT:SEDIT\)) S
+7200 49108 M (Common to all: User never counts parentheses, modify whitespace,) S
+12000 47308 M (decide on line breaks or indentation) S
+7200 43108 M (Correlary: diff tools are) S
+12000 39921 M (awkward\000) S
+65401 40021 19615 40021 200 L
+/Times-Roman /Times-Roman-Acnt encodefont
+3600 /Times-Roman-Acnt F
+3600 36321 M (\000) S
+/Palatino-Bold /Palatino-Bold-Acnt encodefont
+2400 /Palatino-Bold-Acnt F
+22401 33678 M (Modernization) S
+1800 /Palatino-Roman-Acnt F
+7200 29308 M (- I\000\000\000\000\000\000\000\000\000\000\000 excuses\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000, \000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000- Overall, make using Medley interface like other tools: ) S
+3600 27508 M (Oops,) S
+12000 27508 M (there werew no other tools. UIs established before Macintosh,) S
+12000 25708 M (before Windows, before Apple UI guidelines.  Xerox Star diff) S
+3600 23908 M (erent) S
+12000 23908 M (from PARC systems) S
+7200 19708 M (\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000ize on corner. Warning: Exec windows. Consolation: you can do it a) S
+3600 17908 M (ll) S
+12000 17908 M (with menus. Reduction: some menus are invoked by "middle) S
+3600 16108 M (") S
+12000 16108 M (mouse button which on some mice is hard to press.) S
+7200 11908 M (- Keyboard: Desired state: compatible keystrokes. A "help wanted" i) S
+3600 10108 M (ssue.) S
+12000 10108 M (Subtasks: decide what keystrokes do what; slash through 7 la) S
+3600 8308 M (yers) S
+12000 8308 M (of keyboard re-iterpretation.) S
+grestore savepage restore showpage
+
+%%Page: 9 9
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Helvetica /Helvetica-Acnt encodefont
+1000 /Helvetica-Acnt F
+53444 75600 M (\0009) S
+54001 69421 7201 69421 200 L
+/Times-Roman /Times-Roman-Acnt encodefont
+3600 /Times-Roman-Acnt F
+54000 69321 M (\000) S
+grestore savepage restore showpage
+
+%%Page: 10 10
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Helvetica /Helvetica-Acnt encodefont
+1000 /Helvetica-Acnt F
+7200 75600 M (\0001\0000) S
+/Palatino-Bold /Palatino-Bold-Acnt encodefont
+2400 /Palatino-Bold-Acnt F
+17234 70278 M (Reduce Barriers to Entry) S
+/Palatino-Roman /Palatino-Roman-Acnt encodefont
+1800 /Palatino-Roman-Acnt F
+7200 67108 M (- Running Online ) S
+7200 64108 M (    Demo: ) S
+/Courier-Bold /Courier-Bold-Acnt encodefont
+1200 /Courier-Bold-Acnt F
+7200 61619 M (         OPEN-URL\("https://online.interlisp.org"\)) S
+1800 /Palatino-Roman-Acnt F
+7200 58708 M (- Installation instructions) S
+7200 55708 M (    Demo:) S
+1200 /Courier-Bold-Acnt F
+7200 53219 M (        OPEN-URL\("https://interlisp.org/running/"\)) S
+grestore savepage restore showpage
+
+%%Page: 11 11
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Helvetica /Helvetica-Acnt encodefont
+1000 /Helvetica-Acnt F
+52888 75600 M (\0001\0001) S
+54001 69421 7201 69421 200 L
+/Times-Roman /Times-Roman-Acnt encodefont
+3600 /Times-Roman-Acnt F
+54000 69321 M (\000) S
+/Palatino-Bold /Palatino-Bold-Acnt encodefont
+2400 /Palatino-Bold-Acnt F
+(\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000) S
+/Palatino-Roman /Palatino-Roman-Acnt encodefont
+1800 /Palatino-Roman-Acnt F
+(\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000) S
+/Palatino-Italic /Palatino-Italic-Acnt encodefont
+1800 /Palatino-Italic-Acnt F
+(\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000) S
+54001 69421 54001 69421 200 L
+3600 /Times-Roman-Acnt F
+54000 69321 M (\000) S
+2400 /Palatino-Bold-Acnt F
+(\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000) S
+1800 /Palatino-Bold-Acnt F
+(\000) S
+1800 /Palatino-Roman-Acnt F
+(\000\000\000\000) S
+grestore savepage restore showpage
+
+%%Trailer

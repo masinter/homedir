@@ -1,0 +1,27 @@
+(DEFINE-FILE-INFO PACKAGE "INTERLISP" READTABLE "INTERLISP" BASE 10)
+
+(FILECREATED "13-Mar-2023 11:42:31" {DSK}<home>larry>il>homedir>BAR.;2 603    
+
+      :EDIT-BY "lmm"
+
+      :CHANGES-TO (VARS BARCOMS)
+                  (FNS FOO)
+
+      :PREVIOUS-DATE "13-Mar-2023 11:40:01" {DSK}<home>larry>il>homedir>BAR.;1)
+
+
+(PRETTYCOMPRINT BARCOMS)
+
+(RPAQQ BARCOMS ((FNS FOO)
+                (VARS (BAZ 12))))
+(DEFINEQ
+
+(FOO
+  [LAMBDA (X)                                                (* ; "Edited 13-Mar-2023 10:27 by lmm")
+    (PLUS X X])
+)
+
+(RPAQQ BAZ 12)
+(DECLARE%: DONTCOPY
+  (FILEMAP (NIL (415 560 (FOO 425 . 558)))))
+STOP
