@@ -1,0 +1,22 @@
+(DEFINE-FILE-INFO PACKAGE "INTERLISP" READTABLE "INTERLISP" BASE 10)
+
+(FILECREATED "14-Mar-2023 16:06:53" {DSK}<home>larry>il>homedir>BAZ.;1 471    
+
+      :EDIT-BY "lmm"
+
+      :CHANGES-TO (VARS BAZCOMS)
+                  (FNS FOO))
+
+
+(PRETTYCOMPRINT BAZCOMS)
+
+(RPAQQ BAZCOMS ((FNS FOO)))
+(DEFINEQ
+
+(FOO
+  [LAMBDA (X)                                                (* ; "Edited 14-Mar-2023 16:05 by lmm")
+    (PLUS X X])
+)
+(DECLARE%: DONTCOPY
+  (FILEMAP (NIL (303 448 (FOO 313 . 446)))))
+STOP
