@@ -1,4 +1,4 @@
-%!PS-Adobe-2.0%%Title: {DSK}<home>larry>il>homedir>medley-talk.PS;7%%Creator: PostScript Driver Copyright (C) 1988-1992 Venue and others%%CreationDate: 16-Mar-2023 13:22:30%%EndComments/bdef {bind def} bind def
+%!PS-Adobe-2.0%%Title: {DSK}<home>larry>il>homedir>medley-talk.PS;8%%Creator: PostScript Driver Copyright (C) 1988-1992 Venue and others%%CreationDate: 19-Mar-2023 13:42:19%%EndComments/bdef {bind def} bind def
 /ldef {load def} bdef
 /S /show ldef
 /M /moveto ldef
@@ -276,10 +276,56 @@ gsave
  79200 61200 0 0 CLP
 /Palatino-Bold /Palatino-Bold-Acnt encodefont
 2400 /Palatino-Bold-Acnt F
-21369 70278 M (Medley Interlisp) S
-19798 64278 M (2023 Project Update) S
-22867 58278 M (18 March 2023) S
-23767 52278 M (Interlisp.org) S
+11872 70278 M (Residential environment supports) S
+16235 66278 M (Incremental Development ) S
+/Palatino-Italic /Palatino-Italic-Acnt encodefont
+1800 /Palatino-Italic-Acnt F
+7200 60108 M ( Define, edit, debug in the live environment; write out to files to) S
+7200 58308 M (save for future session.  System tracks what changed. Features) S
+7200 56508 M (work together.) S
+7200 53508 M (DWIM - Do What I Mean, Spelling Correction) S
+/Courier-Bold /Courier-Bold-Acnt encodefont
+1200 /Courier-Bold-Acnt F
+10200 50419 M (\(DEFINEQ \(FOO1 \(X\) \(PLUSS X X]      ) S
+1200 /Courier-Acnt F
+(<-- PLUS misspell) S
+1200 /Courier-Bold-Acnt F
+(.) S
+10200 48819 M (Superparen) S
+10200 47219 M (PP FOO1) S
+10200 45619 M (\(FOO1 6]) S
+10200 44019 M (y) S
+10200 42419 M (PP FOO1) S
+1800 /Palatino-Italic-Acnt F
+7200 39108 M (History, UNDO  ) S
+1200 /Courier-Acnt F
+(<) S
+1200 /Courier-Bold-Acnt F
+10200 36219 M (??) S
+10200 34619 M (UNDO ) S
+1200 /Courier-Acnt F
+(<dwim event>) S
+1200 /Courier-Bold-Acnt F
+10200 33019 M (PP* FOO1) S
+1800 /Palatino-Italic-Acnt F
+7200 29708 M (file manager - tracks what's been defined, changed, WHEREIS) S
+1200 /Courier-Bold-Acnt F
+10200 26819 M (FILES?\)           ) S
+10200 25219 M (y FILEB) S
+10200 23619 M (\(CLEANUP\)) S
+10200 21508 M (SEE ) S
+/Palatino-Roman /Palatino-Roman-Acnt encodefont
+1800 /Palatino-Roman-Acnt F
+(FILEB) S
+1800 /Palatino-Italic-Acnt F
+7200 17508 M (- Helpsys and DInfo interactive docs) S
+1200 /Courier-Bold-Acnt F
+10200 15819 M (MAN INFILE) S
+10200 14219 M (MAN CL:WITH-OPEN-FILE) S
+1200 /Courier-Bold-Acnt F
+10200 12619 M (MAN CLHS.OPENER) S
+1200 /Courier-Acnt F
+10200 11019 M (<right click DInfo>) S
 grestore savepage restore showpage
 
 %%Page: 2 2
@@ -293,6 +339,455 @@ gsave
 /Helvetica /Helvetica-Acnt encodefont
 1000 /Helvetica-Acnt F
 7200 75600 M (\0002) S
+/Palatino-Roman /Palatino-Roman-Acnt encodefont
+1800 /Palatino-Roman-Acnt F
+7200 70708 M (Masterscope \(interactive cross reference\)) S
+/Courier-Bold /Courier-Bold-Acnt encodefont
+1200 /Courier-Bold-Acnt F
+10200 69019 M (LOAD\(HELPSYS PROP\)) S
+10200 67419 M (. ANALYZE ON HELPSYS) S
+10200 65819 M (. SHOW WHERE ANY CALLS CLHS.OPENER) S
+10200 64219 M (USE EDIT FOR SHOW) S
+10200 62619 M (. SHOW PATHS FROM HELPSYS) S
+/Courier /Courier-Acnt encodefont
+1200 /Courier-Acnt F
+10200 61019 M (<load in fuller.database>) S
+grestore savepage restore showpage
+
+%%Page: 3 3
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Helvetica /Helvetica-Acnt encodefont
+1000 /Helvetica-Acnt F
+53444 75600 M (\0003) S
+54001 71899 7201 71899 200 L
+/Palatino-Bold /Palatino-Bold-Acnt encodefont
+2400 /Palatino-Bold-Acnt F
+9004 66478 M (Common Lisp and Interlisp Integration) S
+/Palatino-Roman /Palatino-Roman-Acnt encodefont
+1800 /Palatino-Roman-Acnt F
+15920 63908 M (an Inter-medley of Uncommon Lisps) S
+7200 58508 M (- freely intermix CL and IL function, macro, variable) S
+7200 56708 M (definitions) S
+7200 51308 M (- All datatypes are common: lists, NIL, symbols, arrays,) S
+7200 49508 M (strings, structures, numbers) S
+7200 44108 M (- many functions and special forms are the same: CAR,) S
+7200 42308 M (COND, ED) S
+7200 36908 M (- Some are slightly different: CL:EVAL vs. IL:EVAL,) S
+7200 35108 M (CL:LAMBDA vs. IL:LAMBDA, ...) S
+7200 29708 M (- Extend CL to include IL and IL to include CL) S
+7200 24308 M (- Common Lisp definitions and declarations managed by) S
+7200 22508 M (Interlisp environment) S
+/Palatino-Italic /Palatino-Italic-Acnt encodefont
+1800 /Palatino-Italic-Acnt F
+7200 17108 M (Demo: ) S
+/Courier-Bold /Courier-Bold-Acnt encodefont
+1200 /Courier-Bold-Acnt F
+10200 10419 M (. SHOW WHERE ANY ON HELPSYS CALLS CL:WHEN) S
+10200 8819 M (USE EDIT FOR SHOW) S
+grestore savepage restore showpage
+
+%%Page: 4 4
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Helvetica /Helvetica-Acnt encodefont
+1000 /Helvetica-Acnt F
+7200 75600 M (\0004) S
+grestore savepage restore showpage
+
+%%Page: 5 5
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Helvetica /Helvetica-Acnt encodefont
+1000 /Helvetica-Acnt F
+53444 75600 M (\0005) S
+54001 71899 7201 71899 200 L
+/Palatino-Bold /Palatino-Bold-Acnt encodefont
+2400 /Palatino-Bold-Acnt F
+21136 66478 M ( Structure editors ) S
+/Courier-Bold /Courier-Bold-Acnt encodefont
+1200 /Courier-Bold-Acnt F
+7200 60908 M (EDITMODE\(TELETYPE\) ) S
+/Palatino-Roman /Palatino-Roman-Acnt encodefont
+1800 /Palatino-Roman-Acnt F
+( original structure editor: powerful,) S
+10200 59108 M (programmable, short commands \(BO 3\) P \(SW 1 2\). Useful for) S
+10200 57308 M (editing huge list structures or Lisp functions.) S
+1200 /Courier-Bold-Acnt F
+7200 51908 M (EDITMODE\(DEDIT\) ) S
+1800 /Palatino-Roman-Acnt F
+(   \(Load it to try\). Like the TTY editor with menu and) S
+10200 50108 M (showing the results in a window.) S
+1200 /Courier-Bold-Acnt F
+7200 44708 M (EDITMODE\(SEDIT:SEDIT\)) S
+1800 /Palatino-Roman-Acnt F
+(  Default editor. SEdit maintains illusion that yo) S
+3600 42908 M (u) S
+10200 42908 M (are editing structure. Parentheses are balanced at all times, but) S
+10200 41108 M (you can just type and backspace. Keyboard controls and) S
+10200 39308 M (attached menu.) S
+7200 33908 M (Common to all: User never counts parentheses, modifies) S
+10200 32108 M (whitespace, or needs to fiddle with line breaks or indentation) S
+grestore savepage restore showpage
+
+%%Page: 6 6
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Helvetica /Helvetica-Acnt encodefont
+1000 /Helvetica-Acnt F
+7200 75600 M (\0006) S
+54001 71899 7201 71899 200 L
+/Palatino-Bold /Palatino-Bold-Acnt encodefont
+2400 /Palatino-Bold-Acnt F
+14734 66478 M (The Virtual Machine and OS) S
+/Palatino-Roman /Palatino-Roman-Acnt encodefont
+1800 /Palatino-Roman-Acnt F
+7200 63308 M ( MAIKO / MEDLEY ) S
+7200 60308 M (- D-machines had microcode to interpret a bytecoded) S
+7200 58508 M (insruction set) S
+7200 55508 M (    Microcode ported to C ....) S
+7200 52508 M (- The memory images are portable -only the emulator is) S
+7200 50708 M (machine/os specific) S
+7200 47708 M (-) S
+1800 /Palatino-Bold-Acnt F
+( Medley is small) S
+1800 /Palatino-Roman-Acnt F
+( \(relatively speaking\). Bytecodes are) S
+7200 45908 M (compact) S
+7200 42908 M (- Interlisp-D was the ) S
+1800 /Palatino-Bold-Acnt F
+(whole operating system) S
+1800 /Palatino-Roman-Acnt F
+(: ) S
+7200 39908 M (   scheduler, window manager, network, drivers) S
+7200 36908 M (- Now can rely on host OS for device drivers) S
+7200 33908 M (Medley online uses 16MB/user \(64MB max\). Installed,) S
+7200 32108 M (256mb max. Time to make new image 15 seconds; restart a) S
+7200 30308 M (saved image in a blink.) S
+1000 /Palatino-Roman-Acnt F
+( ) S
+grestore savepage restore showpage
+
+%%Page: 7 7
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Helvetica /Helvetica-Acnt encodefont
+1000 /Helvetica-Acnt F
+53444 75600 M (\0007) S
+54001 71899 7201 71899 200 L
+54001 71899 54001 71899 200 L
+/Palatino-Bold /Palatino-Bold-Acnt encodefont
+2400 /Palatino-Bold-Acnt F
+13796 64278 M (GIT:  A Repository for Medley) S
+24269 61878 M (Definitions) S
+1800 /Palatino-Bold-Acnt F
+7200 57508 M (Conventionally, GIT tracks and compares files) S
+/Palatino-Roman /Palatino-Roman-Acnt encodefont
+1800 /Palatino-Roman-Acnt F
+7200 54508 M (- Change detection and presentation based on line-editing) S
+7200 52708 M (semantics:  Mismatching character sequence = significant) S
+7200 50908 M (difference) S
+1800 /Palatino-Bold-Acnt F
+7200 46708 M (Medley's source files:   external archives for structured) 258 0 32 4 -1 roll widthshow
+7200 44908 M (definitions with metadata) S
+1800 /Palatino-Roman-Acnt F
+7200 41908 M (- Saved and loaded, maybe printed, but never edited) S
+7200 38908 M (- A given definition can be represented in different \(but) S
+7200 37108 M (semantically equivalent\) line and character sequences) S
+1800 /Palatino-Bold-Acnt F
+7200 32908 M (Medley interface to GIT:  Definition-based change) 876 0 32 4 -1 roll widthshow
+7200 31108 M (tracking ) S
+1800 /Palatino-Roman-Acnt F
+7200 27308 M ( ) S
+1800 /Palatino-Bold-Acnt F
+14400 27308 M (P) S
+1800 /Palatino-Roman-Acnt F
+(\(ull\)) S
+1800 /Palatino-Bold-Acnt F
+(R) S
+1800 /Palatino-Roman-Acnt F
+(\(equest\)) S
+1800 /Palatino-Bold-Acnt F
+(C) S
+1800 /Palatino-Roman-Acnt F
+(\(ompare\)   command   \(demo\)) S
+7200 23508 M ( - Retrieve changed files from GIT, find/parse PR vs) S
+7200 21708 M (master alternative definitions, compare as Lisp-structure) S
+7200 19908 M (differences) S
+1800 /Palatino-Bold-Acnt F
+7200 15308 M (Eventually, load and manage definitions at commit-level) 43 0 32 4 -1 roll widthshow
+7200 13508 M (granularity) S
+grestore savepage restore showpage
+
+%%Page: 8 8
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Helvetica /Helvetica-Acnt encodefont
+1000 /Helvetica-Acnt F
+7200 75600 M (\0008) S
+/Palatino-Roman /Palatino-Roman-Acnt encodefont
+1800 /Palatino-Roman-Acnt F
+7200 70708 M ( - If function FOO is included in commits C and D,) S
+7200 68908 M (definitions FOO;C and FOO;D are co-resident:  compare,) S
+7200 67108 M (edit, test) S
+grestore savepage restore showpage
+
+%%Page: 9 9
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Helvetica /Helvetica-Acnt encodefont
+1000 /Helvetica-Acnt F
+53444 75600 M (\0009) S
+54001 71899 7201 71899 200 L
+54001 71899 54001 71899 200 L
+/Palatino-Bold /Palatino-Bold-Acnt encodefont
+2400 /Palatino-Bold-Acnt F
+16127 66478 M (BACK TO POWERPOINT) S
+grestore savepage restore showpage
+
+%%Page: 10 10
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Helvetica /Helvetica-Acnt encodefont
+1000 /Helvetica-Acnt F
+7200 75600 M (\0001\0000) S
+54001 70378 7201 70378 200 L
+/Palatino-Bold /Palatino-Bold-Acnt encodefont
+2400 /Palatino-Bold-Acnt F
+54000 70278 M ( ) S
+2400 /Palatino-Bold-Acnt F
+12170 64278 M (Remnants \(moved to PowerPoint\)) S
+/Courier-Bold /Courier-Bold-Acnt encodefont
+1200 /Courier-Bold-Acnt F
+7200 61619 M (OPEN-URL\("https://www.youtube.com/watch?v=mI3Ga5LyIlI"\)) S
+grestore savepage restore showpage
+
+%%Page: 11 11
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Helvetica /Helvetica-Acnt encodefont
+1000 /Helvetica-Acnt F
+52888 75600 M (\0001\0001) S
+54001 71899 7201 71899 200 L
+/Palatino-Bold /Palatino-Bold-Acnt encodefont
+2400 /Palatino-Bold-Acnt F
+11366 64278 M (Revive LispUsers, Library, Internal) S
+/Palatino-Roman /Palatino-Roman-Acnt encodefont
+1800 /Palatino-Roman-Acnt F
+7200 61108 M (\(Favorite LispUsers\)) S
+7200 58108 M (Some other development tools: SPY, File Browser) S
+grestore savepage restore showpage
+
+%%Page: 12 12
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Helvetica /Helvetica-Acnt encodefont
+1000 /Helvetica-Acnt F
+7200 75600 M (\0001\0002) S
+54001 71899 7201 71899 200 L
+/Palatino-Bold /Palatino-Bold-Acnt encodefont
+2400 /Palatino-Bold-Acnt F
+11036 64278 M (Revive Applications using Interlisp) S
+/Palatino-Roman /Palatino-Roman-Acnt encodefont
+1800 /Palatino-Roman-Acnt F
+7200 61108 M (Notecards - early HyperText) S
+7200 58108 M (Rooms - Screen / Desktop management) S
+7200 55108 M (LOOPS - Lisp Object Oriented Programming System \(not) S
+7200 53308 M (CLOS\)) S
+7200 50308 M (Truckin' - LOOPS game for teaching "Knowledge) S
+7200 48508 M (Representation") S
+7200 45508 M (LFG - Lexical Functional Grammar) S
+7200 42508 M (.... and others) S
+grestore savepage restore showpage
+
+%%Page: 13 13
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Helvetica /Helvetica-Acnt encodefont
+1000 /Helvetica-Acnt F
+52888 75600 M (\0001\0003) S
+54001 71899 7201 71899 200 L
+/Palatino-Bold /Palatino-Bold-Acnt encodefont
+2400 /Palatino-Bold-Acnt F
+18901 66478 M (Modernizing Medley) S
+1800 /Palatino-Bold-Acnt F
+7200 62108 M (Goals) S
+/Palatino-Roman /Palatino-Roman-Acnt encodefont
+1800 /Palatino-Roman-Acnt F
+7200 59108 M (- Adapt Medley UI to current hardware) S
+7200 56108 M (- Make Medley work more like current applications for) S
+7200 54308 M (comfort) S
+1800 /Palatino-Bold-Acnt F
+7200 50108 M (Mouse) S
+1800 /Palatino-Roman-Acnt F
+(: Wheel Scroll, Window move on title, Window) S
+7200 48308 M (resize on corner. Warning: Exec windows. Consolation:) S
+7200 46508 M (you can do it all with menus. Reduction: some menus are) S
+7200 44708 M (invoked by "middle" mouse button which on some mice is) S
+7200 42908 M (hard to press.) S
+1800 /Palatino-Bold-Acnt F
+7200 38708 M (Keyboard) S
+1800 /Palatino-Roman-Acnt F
+(: Desired state: compatible keystrokes. Subtasks:) S
+7200 36908 M (decide what keystrokes do what; slash through umpteen) S
+7200 35108 M (layers of keyboard re-iterpretation.) S
+1800 /Palatino-Bold-Acnt F
+7200 30908 M (Display: ) S
+1800 /Palatino-Roman-Acnt F
+(Color, high-resolution displays, modern fonts.) S
+grestore savepage restore showpage
+
+%%Page: 14 14
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Helvetica /Helvetica-Acnt encodefont
+1000 /Helvetica-Acnt F
+7200 75600 M (\0001\0004) S
+54001 71899 7201 71899 200 L
+/Palatino-Bold /Palatino-Bold-Acnt encodefont
+2400 /Palatino-Bold-Acnt F
+17234 66478 M (Reduce Barriers to Entry) S
+/Palatino-Roman /Palatino-Roman-Acnt encodefont
+1800 /Palatino-Roman-Acnt F
+7200 63308 M (- Running Online ) S
+/Courier-Bold /Courier-Bold-Acnt encodefont
+1200 /Courier-Bold-Acnt F
+7200 60819 M (         OPEN-URL\("https://www.youtube.com/watch?v=mI3Ga5LyIlI"\)) S
+7200 58419 M (         OPEN-URL\("https://online.interlisp.org"\)) S
+1800 /Palatino-Roman-Acnt F
+7200 55508 M (- Installation Instructions) S
+1200 /Courier-Bold-Acnt F
+7200 53019 M (        OPEN-URL\("https://interlisp.org/running/"\)) S
+54001 48899 7201 48899 200 L
+2400 /Palatino-Bold-Acnt F
+9568 43478 M (More on Running on Modern Systems) S
+1800 /Palatino-Roman-Acnt F
+7200 37908 M (- about K&R C and C standards; type declarations, big-) S
+7200 36108 M (endian vs. little endian, 32 bit vs 64 eliminating errors, file-) S
+7200 34308 M (sytem changes, process handles, bugs left over from 24- to) S
+7200 32508 M (28-bit address space) S
+7200 27108 M (- docker, installers, CO/CI\(?\), two levels of virtualization) S
+7200 21708 M (- online.interlisp.org: connect in seconds. Sessions ) S
+7200 16308 M (- Mysteries in the code we inherited, "software) S
+7200 14508 M (archeology") S
+7200 9108 M (- Robust "loadup process", all day vs seconds) S
+grestore savepage restore showpage
+
+%%Page: 15 15
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Helvetica /Helvetica-Acnt encodefont
+1000 /Helvetica-Acnt F
+52888 75600 M (\0001\0005) S
+/Palatino-Roman /Palatino-Roman-Acnt encodefont
+1800 /Palatino-Roman-Acnt F
+7200 70708 M (- bytecode virtual machine aids portability.) S
+/Courier-Bold /Courier-Bold-Acnt encodefont
+1200 /Courier-Bold-Acnt F
+7200 65819 M (fb {li}<maiko>bin/makefile-*.*-x) S
+1800 /Palatino-Roman-Acnt F
+7200 64108 M (Linux, Mac, Windows \(WSL1, WSL2, Cygwin\)) S
+7200 62308 M (Docker, FreeBSD, OpenBSD, SunOS5) S
+7200 60508 M (x86_64, i386, arm7l, arm64, and older) S
+grestore savepage restore showpage
+
+%%Page: 16 16
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Helvetica /Helvetica-Acnt encodefont
+1000 /Helvetica-Acnt F
+7200 75600 M (\0001\0006) S
+54001 70378 7201 70378 200 L
+/Palatino-Bold /Palatino-Bold-Acnt encodefont
+2400 /Palatino-Bold-Acnt F
+54000 70278 M ( ) S
+21369 64278 M (Medley Interlisp) S
+19798 58278 M (2023 Project Update) S
+22867 52278 M (18 March 2023) S
+23767 46278 M (Interlisp.org) S
+grestore savepage restore showpage
+
+%%Page: 17 17
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Helvetica /Helvetica-Acnt encodefont
+1000 /Helvetica-Acnt F
+52888 75600 M (\0001\0007) S
 54001 70378 7201 70378 200 L
 /Palatino-Bold /Palatino-Bold-Acnt encodefont
 2400 /Palatino-Bold-Acnt F
@@ -341,17 +836,9 @@ gsave
 3600 33508 M (zes) S
 1800 /Palatino-Italic-Acnt F
 3600 33508 M ( ... enjoy) S
-82801 32499 7201 32499 200 L
-2400 /Palatino-Bold-Acnt F
-12204 26678 M (Who might use Medley Interlisp?) S
-1800 /Palatino-Roman-Acnt F
-7200 22908 M (- Retrocomputing enthusiasts) S
-7200 18908 M (- Researchers, IDE tool creators, looking into ideas) S
-7200 14908 M (- Software and AI historians \(present and future\) ) S
-7200 10908 M (- Software archivists \(SPN, technical infrastructure\)) S
 grestore savepage restore showpage
 
-%%Page: 3 3
+%%Page: 18 18
 %%BeginPageSetup
 /savepage save def
 0.01 imagesizefactor mul dup scale
@@ -361,23 +848,7 @@ gsave
  79200 61200 0 0 CLP
 /Helvetica /Helvetica-Acnt encodefont
 1000 /Helvetica-Acnt F
-53444 75600 M (\0003) S
-/Palatino-Roman /Palatino-Roman-Acnt encodefont
-1800 /Palatino-Roman-Acnt F
-7200 70708 M (- Developers of new applications) S
-grestore savepage restore showpage
-
-%%Page: 4 4
-%%BeginPageSetup
-/savepage save def
-0.01 imagesizefactor mul dup scale
-%%EndPageSetup
-gsave
- 0 rotate 
- 79200 61200 0 0 CLP
-/Helvetica /Helvetica-Acnt encodefont
-1000 /Helvetica-Acnt F
-7200 75600 M (\0004) S
+7200 75600 M (\0001\0008) S
 54001 71899 7201 71899 200 L
 /Palatino-Bold /Palatino-Bold-Acnt encodefont
 2400 /Palatino-Bold-Acnt F
@@ -397,7 +868,7 @@ gsave
 7200 27708 M (+ Gather and update documentation) S
 grestore savepage restore showpage
 
-%%Page: 5 5
+%%Page: 19 19
 %%BeginPageSetup
 /savepage save def
 0.01 imagesizefactor mul dup scale
@@ -407,7 +878,31 @@ gsave
  79200 61200 0 0 CLP
 /Helvetica /Helvetica-Acnt encodefont
 1000 /Helvetica-Acnt F
-53444 75600 M (\0005) S
+52888 75600 M (\0001\0009) S
+54001 71899 7201 71899 200 L
+/Palatino-Bold /Palatino-Bold-Acnt encodefont
+2400 /Palatino-Bold-Acnt F
+12204 66078 M (Who might use Medley Interlisp?) S
+/Palatino-Roman /Palatino-Roman-Acnt encodefont
+1800 /Palatino-Roman-Acnt F
+7200 62308 M (- Retrocomputing enthusiasts) S
+7200 58308 M (- Researchers, IDE tool creators, looking into ideas) S
+7200 54308 M (- Software and AI historians \(present and future\) ) S
+7200 50308 M (- Software archivists \(SPN, technical infrastructure\)) S
+7200 46308 M (- Developers of new applications) S
+grestore savepage restore showpage
+
+%%Page: 20 20
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Helvetica /Helvetica-Acnt encodefont
+1000 /Helvetica-Acnt F
+7200 75600 M (\0002\0000) S
 54001 71899 7201 71899 200 L
 /Palatino-Bold /Palatino-Bold-Acnt encodefont
 2400 /Palatino-Bold-Acnt F
@@ -436,7 +931,7 @@ gsave
 7200 33819 M ( \(MEDLEY-CONTRIB "Interlisp.github.io"\)) S
 grestore savepage restore showpage
 
-%%Page: 6 6
+%%Page: 21 21
 %%BeginPageSetup
 /savepage save def
 0.01 imagesizefactor mul dup scale
@@ -446,418 +941,42 @@ gsave
  79200 61200 0 0 CLP
 /Helvetica /Helvetica-Acnt encodefont
 1000 /Helvetica-Acnt F
-7200 75600 M (\0006) S
+52888 75600 M (\0002\0001) S
 54001 71899 7201 71899 200 L
 /Palatino-Bold /Palatino-Bold-Acnt encodefont
 2400 /Palatino-Bold-Acnt F
-16004 66478 M (Medley Interlisp is an IDE) S
+16004 66078 M (Medley Interlisp is an IDE) S
 /Palatino-Roman /Palatino-Roman-Acnt encodefont
 1800 /Palatino-Roman-Acnt F
-7200 60908 M (- Residential system for incremental development ... write,) S
-7200 59108 M (debug, edit in the live environment.) S
+7200 60508 M (- Residential system for incremental development ... write,) S
+7200 58708 M (debug, edit in the live environment.) S
 /Palatino-Italic /Palatino-Italic-Acnt encodefont
 1800 /Palatino-Italic-Acnt F
-14400 54308 M (In Interlisp, you could refer to a function you hadn't written yet) S
-3600 52508 M (, run your code until it broke,) S
-14400 52108 M (and from the break have it pop open an editor with the signature ) S
-3600 50308 M (of your function. You could) S
-14400 49908 M (also inspect the values of the arguments passed. You could then ) S
-3600 48108 M (write the function and) S
-14400 47708 M (continue the computation. ) S
-14400 42508 M (Similarly if your code broke with an error, you could edit the fun) S
-3600 40708 M (ction on the stack to correct) S
-14400 40308 M (the error, and continue the computation. ...) S
-14400 37708 M (When demonstrating this capability in Interlisp.the response wa) S
-3600 35908 M (s along the lines of "why) S
-14400 35508 M (would I ever want that?"  ... If you've never used an environme) S
-3600 33708 M (nt focused on programmer) S
-14400 33308 M (productivity you have no idea how to even think along those line) S
-3600 31508 M (s.    -- Simon Brooke) S
-grestore savepage restore showpage
-
-%%Page: 7 7
-%%BeginPageSetup
-/savepage save def
-0.01 imagesizefactor mul dup scale
-%%EndPageSetup
-gsave
- 0 rotate 
- 79200 61200 0 0 CLP
-/Helvetica /Helvetica-Acnt encodefont
-1000 /Helvetica-Acnt F
-53444 75600 M (\0007) S
-54001 71899 7201 71899 200 L
-/Palatino-Bold /Palatino-Bold-Acnt encodefont
-2400 /Palatino-Bold-Acnt F
-16235 66478 M (Incremental Development ) S
-/Palatino-Roman /Palatino-Roman-Acnt encodefont
-1800 /Palatino-Roman-Acnt F
-7200 61508 M (- Define, edit, debug in the live environment ) S
-7200 58508 M (    ... write out to files to save for future session) S
-7200 55508 M (- System tracks what changed) S
-/Palatino-Italic /Palatino-Italic-Acnt encodefont
-1800 /Palatino-Italic-Acnt F
-7200 52508 M (spelling correction ) S
-/Courier-Bold /Courier-Bold-Acnt encodefont
-1200 /Courier-Bold-Acnt F
-10200 49419 M (\(DEFINEQ \(FOO \(X\) \(PLUSS X X]) S
-10200 47819 M (PP FOO) S
-10200 46219 M (\(FOO 6]) S
-10200 44619 M (PP FOO) S
-1800 /Palatino-Italic-Acnt F
-7200 41308 M (file manager) S
-1200 /Courier-Bold-Acnt F
-10200 38419 M (FILES?\)) S
-10200 36819 M (y BAR) S
-10200 35219 M (\(CLEANUP\)) S
-10200 33619 M (SEE BAR) S
-1800 /Palatino-Italic-Acnt F
-7200 30308 M (History) S
-1200 /Courier-Bold-Acnt F
-10200 27419 M (??) S
-10200 25819 M (UNDO ) S
-/Courier /Courier-Acnt encodefont
-1200 /Courier-Acnt F
-(<dwim event>) S
-1200 /Courier-Bold-Acnt F
-10200 24219 M (PP* FOO) S
-10200 22619 M (FIX DEFINEQ  ) S
-1200 /Courier-Acnt F
-( <change to \(+ X PARAM\) >) S
-1200 /Courier-Bold-Acnt F
-10200 21019 M (\(FOO 6\)) S
-10200 19419 M (RETRY) S
-1800 /Palatino-Roman-Acnt F
-7200 15508 M (- Helpsys and DInfo interactive ) S
-1200 /Courier-Bold-Acnt F
-(docs) S
-10200 13819 M (MAN INFILE) S
-10200 12219 M (MAN CL:WITH-OPEN-FILE) S
-1200 /Courier-Bold-Acnt F
-10200 10619 M (MAN CLHS.OPENER) S
-1200 /Courier-Acnt F
-10200 9019 M (<right click DInfo>) S
-grestore savepage restore showpage
-
-%%Page: 8 8
-%%BeginPageSetup
-/savepage save def
-0.01 imagesizefactor mul dup scale
-%%EndPageSetup
-gsave
- 0 rotate 
- 79200 61200 0 0 CLP
-/Helvetica /Helvetica-Acnt encodefont
-1000 /Helvetica-Acnt F
-7200 75600 M (\0008) S
-/Palatino-Roman /Palatino-Roman-Acnt encodefont
-1800 /Palatino-Roman-Acnt F
-7200 70708 M (Masterscope \(interactive cross reference\)) S
-/Courier-Bold /Courier-Bold-Acnt encodefont
-1200 /Courier-Bold-Acnt F
-10200 69019 M (LOAD\(HELPSYS PROP\)) S
-10200 67419 M (. ANALYZE ON HELPSYS) S
-10200 65819 M (. SHOW WHERE ANY CALLS CLHS.OPENER) S
-10200 64219 M (USE EDIT FOR SHOW) S
-10200 62619 M (. SHOW PATHS FROM HELPSYS) S
-/Courier /Courier-Acnt encodefont
-1200 /Courier-Acnt F
-10200 61019 M (<load in fuller.database>) S
-grestore savepage restore showpage
-
-%%Page: 9 9
-%%BeginPageSetup
-/savepage save def
-0.01 imagesizefactor mul dup scale
-%%EndPageSetup
-gsave
- 0 rotate 
- 79200 61200 0 0 CLP
-/Helvetica /Helvetica-Acnt encodefont
-1000 /Helvetica-Acnt F
-53444 75600 M (\0009) S
-54001 71899 7201 71899 200 L
-/Palatino-Bold /Palatino-Bold-Acnt encodefont
-2400 /Palatino-Bold-Acnt F
-9004 66478 M (Common Lisp and Interlisp Integration) S
-/Palatino-Roman /Palatino-Roman-Acnt encodefont
-1800 /Palatino-Roman-Acnt F
-15695 63908 M (an Inter- medley of Uncommon Lisps) S
-7200 58508 M (- freely intermix CL and IL function, macro, variable) S
-7200 56708 M (definitions/declarations) S
-7200 51308 M (- All datatypes are common: lists, NIL, symbols, arrays,) S
-7200 49508 M (strings, structures, numbers, etc) S
-7200 44108 M (- many functions and special forms are the same: CAR,) S
-7200 42308 M (CDR, CONS, COND) S
-7200 36908 M (- Some are slightly different: CL:EVAL vs. IL:EVAL,) S
-7200 35108 M (CL:LAMBDA vs. IL:LAMBDA, ...) S
-7200 29708 M (- Extend CL to include IL and IL to include CL) S
-7200 24308 M (- Common Lisp definitions and declarations managed by) S
-7200 22508 M (Interlisp environment) S
-/Palatino-Italic /Palatino-Italic-Acnt encodefont
-1800 /Palatino-Italic-Acnt F
-7200 17108 M (Demo: Look at History  ED\(FOO\), change *PACKAGE*, look) S
-7200 15308 M (at changes; edit it to use CL:) S
-grestore savepage restore showpage
-
-%%Page: 10 10
-%%BeginPageSetup
-/savepage save def
-0.01 imagesizefactor mul dup scale
-%%EndPageSetup
-gsave
- 0 rotate 
- 79200 61200 0 0 CLP
-/Helvetica /Helvetica-Acnt encodefont
-1000 /Helvetica-Acnt F
-7200 75600 M (\0001\0000) S
-54001 71899 7201 71899 200 L
-/Palatino-Bold /Palatino-Bold-Acnt encodefont
-2400 /Palatino-Bold-Acnt F
-21136 66478 M ( Structure editors ) S
-/Courier-Bold /Courier-Bold-Acnt encodefont
-1200 /Courier-Bold-Acnt F
-7200 60908 M (EDITMODE\(TELETYPE\) ) S
-/Palatino-Roman /Palatino-Roman-Acnt encodefont
-1800 /Palatino-Roman-Acnt F
-( original structure editor: powerful,) S
-10200 59108 M (programmable, short commands \(BO 3\) P \(SW 1 2\). Useful for) S
-10200 57308 M (editing huge list structures or Lisp functions.) S
-1200 /Courier-Bold-Acnt F
-7200 51908 M (EDITMODE\(DEDIT\) ) S
-1800 /Palatino-Roman-Acnt F
-(   \(Load it to try\). Like the TTY editor with menu and) S
-10200 50108 M (showing the results in a window.) S
-1200 /Courier-Bold-Acnt F
-7200 44708 M (EDITMODE\(SEDIT:SEDIT\)) S
-1800 /Palatino-Roman-Acnt F
-(  Default editor. SEdit maintains illusion that yo) S
-3600 42908 M (u) S
-10200 42908 M (are editing structure. Parentheses are balanced at all times, but) S
-10200 41108 M (you can just type and backspace. Keyboard controls and) S
-10200 39308 M (attached menu.) S
-7200 33908 M (Common to all: User never counts parentheses, modifies) S
-10200 32108 M (whitespace, or needs to fiddle with line breaks or indentation) S
-grestore savepage restore showpage
-
-%%Page: 11 11
-%%BeginPageSetup
-/savepage save def
-0.01 imagesizefactor mul dup scale
-%%EndPageSetup
-gsave
- 0 rotate 
- 79200 61200 0 0 CLP
-/Helvetica /Helvetica-Acnt encodefont
-1000 /Helvetica-Acnt F
-52888 75600 M (\0001\0001) S
-54001 71899 7201 71899 200 L
-/Palatino-Bold /Palatino-Bold-Acnt encodefont
-2400 /Palatino-Bold-Acnt F
-14734 66478 M (The Virtual Machine and OS) S
-/Palatino-Roman /Palatino-Roman-Acnt encodefont
-1800 /Palatino-Roman-Acnt F
-7200 61508 M (- Interlisp-D was the ) S
-1800 /Palatino-Bold-Acnt F
-(whole operating system) S
-1800 /Palatino-Roman-Acnt F
-(: ) S
-7200 58508 M (   scheduler, window manager, network, drivers) S
-7200 55508 M (- Now can rely on host OS for device drivers) S
-7200 49508 M ( MAIKO / MEDLEY ) S
-7200 46508 M (- D-machines had microcode to interpret a byte-coded) S
-7200 44708 M (insruction set) S
-7200 41708 M (    Microcode ported to C ....) S
-7200 38708 M (- The images are portable -only the emulator is) S
-7200 36908 M (machine/os specific) S
-7200 33908 M (-) S
-1800 /Palatino-Bold-Acnt F
-( Medley is small) S
-1800 /Palatino-Roman-Acnt F
-( \(relatively speaking\). Bytecode are) S
-7200 32108 M (compact. CDR-coding is effective. Medley online uses) S
-7200 30308 M (16MB/user \(64MB max\). Installed, 256mb max. Time to) S
-7200 28508 M (make new image 15 seconds; restart a saved image in a) S
-7200 26708 M (blink.) S
-1000 /Palatino-Roman-Acnt F
-( ) S
-7200 22082 M (Demo: show stats?) S
-grestore savepage restore showpage
-
-%%Page: 12 12
-%%BeginPageSetup
-/savepage save def
-0.01 imagesizefactor mul dup scale
-%%EndPageSetup
-gsave
- 0 rotate 
- 79200 61200 0 0 CLP
-/Helvetica /Helvetica-Acnt encodefont
-1000 /Helvetica-Acnt F
-7200 75600 M (\0001\0002) S
-54001 71899 7201 71899 200 L
-/Palatino-Bold /Palatino-Bold-Acnt encodefont
-2400 /Palatino-Bold-Acnt F
-11366 64278 M (Revive LispUsers, Library, Internal) S
-/Palatino-Roman /Palatino-Roman-Acnt encodefont
-1800 /Palatino-Roman-Acnt F
-7200 61108 M (\(Favorite LispUsers\)) S
-7200 58108 M (Some other development tools: SPY, File Browser) S
-7200 55108 M (GitHub GITFNS prc) S
-grestore savepage restore showpage
-
-%%Page: 13 13
-%%BeginPageSetup
-/savepage save def
-0.01 imagesizefactor mul dup scale
-%%EndPageSetup
-gsave
- 0 rotate 
- 79200 61200 0 0 CLP
-/Helvetica /Helvetica-Acnt encodefont
-1000 /Helvetica-Acnt F
-52888 75600 M (\0001\0003) S
-54001 71899 7201 71899 200 L
-/Palatino-Bold /Palatino-Bold-Acnt encodefont
-2400 /Palatino-Bold-Acnt F
-11036 64278 M (Revive Applications using Interlisp) S
-/Palatino-Roman /Palatino-Roman-Acnt encodefont
-1800 /Palatino-Roman-Acnt F
-7200 61108 M (Notecards - early HyperText) S
-7200 58108 M (Rooms - Screen / Desktop management) S
-7200 55108 M (LOOPS - Lisp Object Oriented Programming System \(not) S
-7200 53308 M (CLOS\)) S
-7200 50308 M (Truckin' - LOOPS game for teaching "Knowledge) S
-7200 48508 M (Representation") S
-7200 45508 M (LFG - Lexical Functional Grammar) S
-7200 42508 M (.... and others) S
-grestore savepage restore showpage
-
-%%Page: 14 14
-%%BeginPageSetup
-/savepage save def
-0.01 imagesizefactor mul dup scale
-%%EndPageSetup
-gsave
- 0 rotate 
- 79200 61200 0 0 CLP
-/Helvetica /Helvetica-Acnt encodefont
-1000 /Helvetica-Acnt F
-7200 75600 M (\0001\0004) S
-54001 71899 7201 71899 200 L
-/Palatino-Bold /Palatino-Bold-Acnt encodefont
-2400 /Palatino-Bold-Acnt F
-13967 66478 M (More on Modernizing Medley) S
-1800 /Palatino-Bold-Acnt F
-7200 62108 M (Goals) S
-/Palatino-Roman /Palatino-Roman-Acnt encodefont
-1800 /Palatino-Roman-Acnt F
-7200 59108 M (- Adapt Medley UI to current hardware) S
-7200 56108 M (- Make Medley work more like current applications for) S
-7200 54308 M (comfort) S
-1800 /Palatino-Bold-Acnt F
-7200 50108 M (Mouse) S
-1800 /Palatino-Roman-Acnt F
-(: Wheel Scroll, Window move on title, Window) S
-7200 48308 M (resize on corner. Warning: Exec windows. Consolation:) S
-7200 46508 M (you can do it all with menus. Reduction: some menus are) S
-7200 44708 M (invoked by "middle" mouse button which on some mice is) S
-7200 42908 M (hard to press.) S
-1800 /Palatino-Bold-Acnt F
-7200 38708 M (Keyboard) S
-1800 /Palatino-Roman-Acnt F
-(: Desired state: compatible keystrokes. Subtasks:) S
-7200 36908 M (decide what keystrokes do what; slash through umpteen) S
-7200 35108 M (layers of keyboard re-iterpretation.) S
-1800 /Palatino-Bold-Acnt F
-7200 30908 M (Display: ) S
-1800 /Palatino-Roman-Acnt F
-(Color, high-resolution displays, modern fonts.) S
-grestore savepage restore showpage
-
-%%Page: 15 15
-%%BeginPageSetup
-/savepage save def
-0.01 imagesizefactor mul dup scale
-%%EndPageSetup
-gsave
- 0 rotate 
- 79200 61200 0 0 CLP
-/Helvetica /Helvetica-Acnt encodefont
-1000 /Helvetica-Acnt F
-52888 75600 M (\0001\0005) S
-54001 71899 7201 71899 200 L
-/Palatino-Bold /Palatino-Bold-Acnt encodefont
-2400 /Palatino-Bold-Acnt F
-17234 66478 M (Reduce Barriers to Entry) S
-/Palatino-Roman /Palatino-Roman-Acnt encodefont
-1800 /Palatino-Roman-Acnt F
-7200 63308 M (- Running Online ) S
-/Courier-Bold /Courier-Bold-Acnt encodefont
-1200 /Courier-Bold-Acnt F
-7200 60819 M (         OPEN-URL\("https://www.youtube.com/watch?v=mI3Ga5LyIlI"\)) S
-7200 58419 M (         OPEN-URL\("https://online.interlisp.org"\)) S
-1800 /Palatino-Roman-Acnt F
-7200 55508 M (- Installation Instructions) S
-1200 /Courier-Bold-Acnt F
-7200 53019 M (        OPEN-URL\("https://interlisp.org/running/"\)) S
-54001 48899 7201 48899 200 L
-2400 /Palatino-Bold-Acnt F
-9568 43478 M (More on Running on Modern Systems) S
-1800 /Palatino-Roman-Acnt F
-7200 37908 M (- about K&R C and C standards; type declarations, big-) S
-7200 36108 M (endian vs. little endian, 32 bit vs 64 eliminating errors, file-) S
-7200 34308 M (sytem changes, process handles, bugs left over from 24- to) S
-7200 32508 M (28-bit address space) S
-7200 27108 M (- docker, installers, CO/CI\(?\), two levels of virtualization) S
-7200 21708 M (- online.interlisp.org: connect in seconds. Sessions ) S
-7200 16308 M (- Mysteries in the code we inherited, "software) S
-7200 14508 M (archeology") S
-7200 9108 M (- Robust "loadup process", all day vs seconds) S
-grestore savepage restore showpage
-
-%%Page: 16 16
-%%BeginPageSetup
-/savepage save def
-0.01 imagesizefactor mul dup scale
-%%EndPageSetup
-gsave
- 0 rotate 
- 79200 61200 0 0 CLP
-/Helvetica /Helvetica-Acnt encodefont
-1000 /Helvetica-Acnt F
-7200 75600 M (\0001\0006) S
-/Palatino-Roman /Palatino-Roman-Acnt encodefont
-1800 /Palatino-Roman-Acnt F
-7200 70708 M (- bytecode virtual machine aids portability.) S
-/Courier-Bold /Courier-Bold-Acnt encodefont
-1200 /Courier-Bold-Acnt F
-7200 65819 M (fb {li}<maiko>bin/makefile-*.*-x) S
-1800 /Palatino-Roman-Acnt F
-7200 64108 M (Linux, Mac, Windows \(WSL1, WSL2, Cygwin\)) S
-7200 62308 M (Docker, FreeBSD, OpenBSD, SunOS5) S
-7200 60508 M (x86_64, i386, arm7l, arm64, and older) S
-54001 56299 7201 56299 200 L
-/Palatino-Bold /Palatino-Bold-Acnt encodefont
-2400 /Palatino-Bold-Acnt F
-21168 50878 M (Getting Involved) S
-1800 /Palatino-Roman-Acnt F
-7200 45308 M (- Try things out, report new problems, or new) S
-7200 43508 M (reproducible cases) S
-1200 /Courier-Bold-Acnt F
-7200 38619 M (\(OPEN-URL "https://github.com/interlisp/medley/issues"\)) S
-7200 33819 M (\(FILESLOAD PICK\)) S
-7200 29019 M (PICK ISSUE) S
-1800 /Palatino-Roman-Acnt F
-7200 23708 M (- Testers, common lisp implementers?) S
-7200 18308 M (- Maker projects? SoC + eInk projects?) S
+14400 53908 M (In Interlisp, you could refer to a function you hadn't written yet) S
+3600 52108 M (, run your code until it broke,) S
+14400 51708 M (and from the break have it pop open an editor with the signature ) S
+3600 49908 M (of your function. You could) S
+14400 49508 M (also inspect the values of the arguments passed. You could then ) S
+3600 47708 M (write the function and) S
+14400 47308 M (continue the computation. ) S
+14400 42108 M (Similarly if your code broke with an error, you could edit the fun) S
+3600 40308 M (ction on the stack to correct) S
+14400 39908 M (the error, and continue the computation. ...) S
+14400 37308 M (When demonstrating this capability in Interlisp.the response wa) S
+3600 35508 M (s along the lines of "why) S
+14400 35108 M (would I ever want that?"  ... If you've never used an environme) S
+3600 33308 M (nt focused on programmer) S
+14400 32908 M (productivity you have no idea how to even think along those line) S
+3600 31108 M (s.    -- Simon Brooke) S
+54001 28299 7201 28299 200 L
 2400 /Palatino-Roman-Acnt F
-7200 12478 M (- Network emulatio) S
+7200 22878 M (- Network emulatio) S
 1800 /Palatino-Roman-Acnt F
 (n ) S
+7200 17308 M (Donate? See our GitHub sponsor page) S
 grestore savepage restore showpage
 
-%%Page: 17 17
+%%Page: 22 22
 %%BeginPageSetup
 /savepage save def
 0.01 imagesizefactor mul dup scale
@@ -867,10 +986,19 @@ gsave
  79200 61200 0 0 CLP
 /Helvetica /Helvetica-Acnt encodefont
 1000 /Helvetica-Acnt F
-52888 75600 M (\0001\0007) S
+7200 75600 M (\0002\0002) S
+/Palatino-Bold /Palatino-Bold-Acnt encodefont
+2400 /Palatino-Bold-Acnt F
+21168 64478 M (Getting Involved) S
 /Palatino-Roman /Palatino-Roman-Acnt encodefont
 1800 /Palatino-Roman-Acnt F
-7200 70708 M (Donate? See our GitHub sponsor page) S
+7200 58908 M (- Try things out, report new problems, or new) S
+7200 57108 M (reproducible cases) S
+/Courier-Bold /Courier-Bold-Acnt encodefont
+1200 /Courier-Bold-Acnt F
+7200 52219 M (\(OPEN-URL "https://github.com/interlisp/medley/issues"\)) S
+7200 47419 M (\(FILESLOAD PICK\)) S
+7200 42619 M (PICK ISSUE) S
 grestore savepage restore showpage
 
 %%Trailer
