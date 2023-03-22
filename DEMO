@@ -1,0 +1,23 @@
+(DEFINE-FILE-INFO PACKAGE "INTERLISP" READTABLE "INTERLISP" BASE 10)
+
+(FILECREATED "21-Mar-2023 06:51:05" {DSK}<home>larry>il>medley>sources>DEMO.;1 611    
+
+      :EDIT-BY "0")
+
+
+(PRETTYCOMPRINT DEMOCOMS)
+
+(RPAQQ DEMOCOMS [(VARS (HELPTIME 1)
+                       (AUTOBACKTRACEFLG 'ALWAYS))
+                 (P (FOR X IN FILELST DO (CL:SETF (CDR (GET X 'FILE))
+                                                NIL])
+
+(RPAQQ HELPTIME 1)
+
+(RPAQQ AUTOBACKTRACEFLG ALWAYS)
+
+(FOR X IN FILELST DO (CL:SETF (CDR (GET X 'FILE))
+                            NIL))
+(DECLARE%: DONTCOPY
+  (FILEMAP (NIL)))
+STOP
