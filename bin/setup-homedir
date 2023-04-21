@@ -33,10 +33,3 @@ rm -f il/INIT
 cd il
 cp -p homedir/INIT INIT
 ls -l homedir/INIT
-
-
-
-
-
-
-

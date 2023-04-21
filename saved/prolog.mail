@@ -1,0 +1,1600 @@
+*start*
+00500 00024 US 
+Date: 11 Jun 86 11:44 PDT
+From: adler.pa
+Subject: XQP/TEdit Questions
+To: Sybalsky.pa
+cc: adler.pa, Rhoades.pa, James.pa
+
+John,
+
+Peter Schachte would like to talk with you about Texec/Tedit in order to resolve the current bugs in XQP.  Are you the appropriate person (at least for first call on where to go next)?  If so, please call him at 494-3612 when you can (but he is trying to resolve these even as we speak).  If not, let me know to whom I should direct him.
+
+Annette
+*start*
+00459 00024 US 
+Date: 18 Jul 86 15:54 PDT
+From: adler.pa
+Subject: Re: Proposal: XQP installation procedure
+In-reply-to: James.pa's message of 18 Jul 86 11:01 PDT
+To: James.pa
+cc: adler.pa, sybalsky.pa, Daniels.pa, rhoades.pa, Raim.pasa, Murage.pa, Wilkie.pa, Kiewiet.pasa
+
+If anyone, the appropriate interviewers would be Customer Support.  If that group does not have time or feels that such discussions is unnecessary--then we won't do it.
+
+Annette
+*start*
+00546 00024 US 
+Date: 18 Jul 86 16:00 PDT
+From: kiewiet.pasa
+Subject: Re: Proposal: XQP installation procedure
+In-reply-to: adler.pa's message of 18 Jul 86 15:54 PDT
+To: adler.pa
+cc: James.pa, sybalsky.pa, Daniels.pa, rhoades.pa, Raim.pasa, Murage.pa, Wilkie.pa, Kiewiet.pasa
+
+I think it should be Sales: they're in the field with the customers.  And they give their input to Product Management, right?  Beta Testing assumes that the company has already spec'd out the product to development and tested it to spec internally.
+
+--Lorraine
+*start*
+00521 00024 US 
+Date: 18 Jul 86 16:14 PDT
+From: adler.pa
+Subject: Re: Proposal: XQP installation procedure
+In-reply-to: kiewiet.pasa's message of 18 Jul 86 16:00 PDT
+To: kiewiet.pasa
+cc: adler.pa, James.pa, sybalsky.pa, Daniels.pa, rhoades.pa, Raim.pasa, Murage.pa, Wilkie.pa
+
+The problem, of course, is that we don't have prolog customers yet--except for beta sites.  It seems that the approach of going with option 4--for now, until the next release if things are that ghastly, is the best way to go.
+
+Annette 
+*start*
+02228 00024 US 
+Date: 18 Jul 86 17:55:06 PDT (Friday)
+From: murage.PA
+Subject: Re: Proposal: XQP installation procedure
+In-reply-to: rhoades' message of 17 Jul 86 12:35 PDT
+To: rhoades
+cc: James, Raim.pasa, Sybalsky, Daniels, Murage, Adler, Wilkie.pa, Kiewiet.pasa
+
+	Before this thing gets totally out of hand or LTQ'd to death, 
+	let me make some comments on booting and microcode.
+	
+	   A.  We DO NOT support full blown alternate disk booting yet. It 
+	       only works partially in Mesa and that is how one is able to 
+	       choose between some Mesa volume and Lisp. Alternate disk booting 
+	       does NOT work in Lisp.
+	       
+	   B.  The differences between Prolog and Lisp microcode is currently 
+	       only floating point and drawline. Eventually with Lyric, the 
+	       differences will also include CL microcode. Any decision must 
+	       keep this in mind.
+	       
+	   C.  There are two microcode files, LispDove.db and PrologDove.db 
+	       each of which reflects the differences mentioned in (B) above. 
+	       In addition, LispDove.db has two flavors within it; 4K and 8K 
+	       control store versions. PrologDove.db of course only supports
+	       an 8K control store machine. 
+	       
+	   D.  When full blown alternate disk booting is finished, anyone 
+	       desiring to take full advantage of it will have to make sure 
+	       that microcode and sysout RESIDE ON THE SAME logical volume 
+	       (partition for most people here). 
+	       
+       The following then are my views about your proposal.
+       
+         i)  Since customers were clamoring for floating point microcode for 
+	     so long, any solution that precludes it should be discarded. That 
+	     axes solution 3.
+	     
+        ii)  Points A and D above rule out solutions 1* and 2. [* If the customer 
+	     can do a set physical volume with each change, then 1 is still 
+	     viable.]
+	     
+       iii)  Only solution 4 is left and since it only requires a script file 
+	     change and some documentation updates, well . . .  
+	     
+	     
+	     
+     .murage.
+     
+     
+ p.s.  This is NOT a flame nor is it an invitation to discussion - however 
+       I will answer questions should anyone have any.      
+*start*
+00469 00024 US 
+Date: 22 Jul 86 10:19 PDT
+From: Haney.pa
+Subject: Re: Installation Utility change spec for 1186 Prolog installation
+In-reply-to: Kiewiet.pasa's message of 22 Jul 86 08:22 PDT
+To: Kiewiet.pasa
+cc: rhoades.pa, Raim.pasa, James.pa, Sybalsky.pa, Adler.pa
+
+"What happens if you try and boot prolog with lisp microcode?"
+
+
+Lisp will run until you try to start Prolog.  After a little while but before Prolog has started, Lisp dies with MP 9308.
+
+Gary
+*start*
+00667 00024 US 
+Date: 21 Jul 86 11:53 PDT
+From: rhoades.pa
+Subject: Re: Installation Utility change spec for 1186 Prolog installation
+In-reply-to: James.pa's message of 17 Jul 86 16:13 PDT
+To: James.pa
+cc: Raim.pasa, Kiewiet.pasa, Rhoades.pa, Sybalsky.pa, Adler.pa
+
+"4. When the correct floppy is inserted, the microcode file PrologDove.db should be loaded into the partition labeled LispFiles. "
+
+
+4a. If <lispfiles> is too full to load, the installation code should advise the user to delete some stuff and try again.  
+
+If you are sure you want to hardcode the name of ST floppy #6 rather than just look for the correct ucode file name, it looks ok to me.
+*start*
+00526 00024 US 
+Date: 21 Jul 86 16:10 PDT
+From: Raim.pasa
+Subject: Re: Installation Utility change spec for 1186 Prolog installation
+In-reply-to: rhoades.pa's message of 21 Jul 86 11:53 PDT
+To: rhoades.pa
+cc: James.pa, Raim.pasa, Kiewiet.pasa, Sybalsky.pa, Adler.pa
+
+Gary,
+
+I'm still waiting for answers to the following:
+
+What happens if you try and boot prolog with lisp microcode?
+
+What happens if you try and boot lisp with prolog microcode?
+
+We ought to get hard answers before comitting to this option.
+
+>>Marty
+*start*
+00512 00024 UU?
+Date: 21 Jul 86 16:43 PDT
+From: rhoades.pa
+Subject: Re: Installation Utility change spec for 1186 Prolog installation
+In-reply-to: Raim.pasa's message of 21 Jul 86 16:10 PDT
+To: Raim.pasa
+cc: rhoades.pa, James.pa, Kiewiet.pasa, Sybalsky.pa, Adler.pa
+
+Sorry.
+
+"What happens if you try and boot prolog with lisp microcode?"
+ Lisp wont run.
+
+"What happens if you try and boot lisp with prolog microcode?"
+Lisp will run but there will be no support for DrawLine, floating point or CML.
+
+Gary
+*start*
+01810 00024 UU?
+Date: 21 Jul 86 16:50 PDT
+From: James.pa
+Subject: [James.pa: Installation Utility change spec for 1186 Prolog installation]
+To: Sybalsky
+
+one more time...
+
+     ----- Begin Forwarded Messages -----
+
+Date: 17 Jul 86 16:13 PDT
+From: James.pa
+Subject: Installation Utility change spec for 1186 Prolog installation
+To: Raim.pasa, Kiewiet.pasa, Rhoades.pa, Sybalsky.pa, Adler.pa
+cc: James.pa
+
+This spec is for the change to the Installation Utility according to proposal #4 in Gary's message earlier today.  I need Lorraine, Marty, John, and Gary to sign-off on this spec before we can proceed with development, test and documentation.
+ 
+	1. New Installation Utility menu option "16) Install Prolog Microcode Only"
+
+	2. When this option is selected, the user is warned this option is for use only with Xerox Quintus Prolog and that the local disk must be partitioned as described in the XQP 1186 Installation Guide.  Confirmation to continue should occur at this point.
+
+	3. Positive confirmation results in the user being prompted to insert floppy PROLOGSYSTEMFILES #6.  Only a floppy with this name should be accepted.
+
+	4. When the correct floppy is inserted, the microcode file PrologDove.db should be loaded into the partition labeled LispFiles. 
+
+	5. The conclusion of the microcode loading operation should return the user to the Installation Utility menu.
+
+
+This spec is an attempt to minimize the extent of changes that are required to enable the installation and operation of Prolog on an 1186.  This change is needed to allow the loading of Prolog microcode, PrologDove.db, which can not be accomplished with the present tool.  All information on partitioning requirements will be handled in the Installation Guide for the 1186.  
+
+Cheryl
+
+     ----- End Forwarded Messages -----
+*start*
+00424 00024 US 
+Date: 23 Jul 86 15:25 PDT
+From: Daniels.pa
+Subject: Prolog installation script
+To: James
+cc: Daniels.pa, Sybalsky
+
+{pele:}<Daniels>Prolog>Prolog-Installation.dovescript. This must be installed on the floppies as LispInstallation.script and Prom.script. If you don't replace the latter, the prolog ucode installation command will be lost if the user makes a custom partitioning script.
+
+		-- Andy. --
+*start*
+00483 00024 US 
+Date: 22 Jul 86 08:22 PDT
+From: Kiewiet.pasa
+Subject: Re: Installation Utility change spec for 1186 Prolog installation
+In-reply-to: rhoades.pa's message of 21 Jul 86 16:43 PDT
+To: rhoades.pa
+cc: Raim.pasa, James.pa, Kiewiet.pasa, Sybalsky.pa, Adler.pa
+
+"What happens if you try and boot prolog with lisp microcode?"
+ Lisp wont run.
+
+Do you mean it won't boot? Will there be an mp (cursor) code? A black screen?  The windows and then the mp code?
+
+--Lorraine
+*start*
+01534 00024 USh
+Date: 22 Jul 86 12:29 PDT
+From: James.pa
+Subject: Installation Utility change spec
+To: Sybalsky.pa
+cc: James.pa, Kiewiet.pasa, Raim.pasa, Rhoades.pa, Adler.pa
+
+	1. New Installation Utility menu option "16) Install Prolog Microcode Only"
+
+	2. When this option is selected, the user is warned this option is for use only with Xerox Quintus Prolog and that the local disk must be partitioned as described in the XQP 1186 Installation Guide.  Confirmation to continue should occur at this point.
+
+	3. Positive confirmation results in the user being prompted to insert floppy "Prolog System Files #6".  Only a floppy with this name should be accepted.
+
+	4. When the correct floppy is inserted, the microcode file PrologDove.db should be loaded into the partition labeled LispFiles. 
+
+	5. The conclusion of the microcode loading operation should return the user to the Installation Utility menu.
+
+
+This spec is an attempt to minimize the extent of changes that are required to enable the installation and operation of Prolog on an 1186.  This change is needed to allow the loading of Prolog microcode, PrologDove.db, which can not be accomplished with the present tool.  All information on partitioning requirements will be handled in the Installation Guide for the 1186.  
+
+This reflects the change in the case and spacing of the name of the floppy with PrologDove.db, which everyone who has signed off on this spec agreed to verbally. Lorraine Kiewiet, Marty Raim, and Gary Rhoades have signed off on this spec. 
+
+*start*
+02848 00024 US 
+Date: 17 Jul 86 12:35 PDT
+From: rhoades.pa
+Subject: Proposal: XQP installation procedure
+To: James,Raim.pasa
+cc: rhoades.pa,Sybalsky,Daniels,Murage,Adler
+Format: TEdit
+
+Marty and I discussed the following alternatives for offering 1186 XQP installation.  Marty recommends option number 4, because it minimizes the extent of changes that must be made to support it.
+
+1. Support only a single kind of lisp on the machine, i.e. either Lisp or Prolog.  
+Pro
+	only one ucode
+	can use two standard partitions and copy vmem 
+	requires minimal change to existing installation docs
+con
+	XQP customers can't run vanilla lisp
+
+2. Support both (floating point) Lisp and Prolog at same time in separate partitions.
+Pro
+	Coresident systems available to same customer via Alternate Disk Booting.
+Con
+	Requires two ucodes on volume, 
+	which requires support of Alternate Disk Booting, 
+	which requires new documentation.
+	High potential for use of Makecript to violate this capability.
+
+3. Support both (non floating point) Lisp and Prolog at same time in separate partitions with only one delivered ucode.
+Pro 
+	Coresident systems available to same customer via alternate lisp booting from ST.  Only one ucode (prolog) is used on volume to drive both sysouts.
+	Compatible with Makecript.
+Con
+	Customer gives up floating point, DrawLine ucode support in Lisp.
+	Can't use extra patition to copy vmem from.
+	
+4. Support both (floating point) Lisp and Prolog at same time in separate partitions with only one disk- resident ucode.
+Pro
+	Coresident systems available to same customer via Installation Utility reload.
+	Only one new feature has to be documented (prometheus option - Install Prolog Ucode).
+	Compatible with Makecript.
+
+Con
+	Customer gives up floating point, DrawLine ucode support in Lisp.
+	Can't use extra patition to copy vmem from.
+	Customer must return to Installation Utility and reload correct ucode for lisp version they want to run.
+       .   $           $                          (                                            
+TIMESROMAN                                            .                          -                                       Ä                          T                                       0             7                          &                          V                          K                          !             4             #             A                          x                          •                                       C             -                          y                          P             W                                                    C             -             j            Ž Yzº*start*
+00823 00024 US 
+Date: 18 Jul 86 08:43 PDT
+From: adler.pa
+Subject: Re: Proposal: XQP installation procedure
+In-reply-to: sybalsky.pa's message of 17 Jul 86 16:14 PDT
+To: sybalsky.pa
+cc: Daniels.pa, rhoades.pa, James.pa, Raim.pasa, Murage.pa, Adler.pa, Wilkie.pa
+
+The suggestion of talking to customers is a good one and one that here to fore we have not pursued because we have not had a "product" to discuss with them.  Both Martin Marietta and SDC would be good candidates of the relatively "pure" XQP user (although MM likes XQP for the Lisp graphics).  Lawrence Livermore, as it is using LOOPS and XQP together, represents another type of user.  Finally, Ken Kahn, Eric Tribble, Mark Miller etc. at PARC represent in-house users.  It would be appropriate to poll these users before finalizing the spec.
+
+Annette
+*start*
+03969 00024 US 
+Date: 18 Jul 86 10:47 PDT
+From: rhoades.pa
+Subject: Re: Proposal: XQP installation procedure
+In-reply-to: rhoades.pa's message of 17 Jul 86 12:35 PDT
+To: Daniels
+cc: James.pa, Raim.pasa, Sybalsky.pa, Rhoades.pa, Murage.pa, Adler.pa
+Format: TEdit
+
+My comments in italics. Gary
+
+1. 	"which requires support of Alternate Disk Booting"
+
+Alternate disk booting is already supported...
+
+While techincally available, this set of procedures, i.e. F1+0..9 is not documented in the Koto release 1186 UG.  This is a set of software functionality that is not currently delivered in fully supported, i.e. documented and advertised, form.  Support in this case requires rewriting (and redistributing) a part of the 1186 UG.  
+
+2. 	"High potential for use of Makecript [sic] to violate this capability"
+
+In what way? 
+
+The only way proposed so far to deliver coresident lisp & prolog sysouts with accompanying microcodes is to invisibly provide an explicit partition name  ("Prolog") to the prometheus Prolog microcode installation procedure to be selected by the customer.  Unlike Promethes users, Makescript users are under no obligation to name their prolog partion "Prolog".  
+
+The only way the alternate partition can be booted is by knowing which logical volume the alternate parition is.   While Makescript users would know which logical volume they intend to put Prolog into, the operation of Alternate Disk Booting is not currently documented and without this information, the Makescirpt user would not know how to boot their arbitrary logical (prolog) volume.  I didn't say it wouldn't  work; I'm suggesting the Makescript user needs a lot more info than we have made available in the 1186 UG.  We don't document Makescript adequately as it is now, and any changes would require significant work to make it right.
+
+	"3. Support both (non floating point) Lisp and Prolog ... Alternate disk booting is given as a Pro in this case, when it was a Con in the previous one. Which is it?
+
+That's not what I said: "Coresident systems available to same customer via alternate lisp booting from ST." In other words, the fact that the vehicle for delivery is already provided in ST ("Boot!" specified volume) and doucmented is a pro. 
+
+	"4 - Con: Customer gives up floating point, DrawLine ucode support in Lisp"
+
+
+This is a shift-select error, and in complete contradiction to the proposal.  My apologies for the oversight.
+
+	"Customer must return to Installation Utility and reload correct ucode for lisp version they want to run"
+
+This is a crock. Having said that, how often do you expect people to do this? If it's once every couple of days, it might not be so bad, but I'd have to try it.
+ 
+I presume you are saying the procedure is a crock.  I agree that the procedure is the least elegant of our alternatives.
+
+ÿÿ  D o e s   a n y b o d y   k n o w   h o w   P r o l o g   c u s t o m e r s  ÿ intendÿÿ    t o   u s e   t h e   s y s t e m ?ÿ  ... ÿÿ  p e r h a p s   w e   s h o u l d   t a l k   t o   s o m e   o f   t h e   p e o p l e   t h a t   w e ' r e   c o n s i d e r i n g   f o i s t i n g   t h e s e   " s o l u tÿ ions" on.
+
+The memo was specifically sent to Marty, who is our immediate customer, and is the most accurate spokeman for the needs of the actual customer available to us at this time.  I think the purpose of the memo is obvious.
+
+thanks for the rigorous feedback. Gary
+        
+TIMESROMAN          
+TIMESROMAN       €  
+TIMESROMAN          
+TIMESROMAN 
+         
+TIMESROMAN           
+TIMESROMAN 
+          
+TIMESROMAN            ÷                            0       3      H                            $                           í              4       q       K              ‡                     @              n                     g       ¤              y              Q             )             µ      
+                   
+@ )zº*start*
+00527 00024 US 
+Date: 18 Jul 86 11:01 PDT
+From: James.pa
+Subject: Re: Proposal: XQP installation procedure
+In-reply-to: adler.pa's message of 18 Jul 86 08:43 PDT
+To: adler.pa
+cc: sybalsky.pa, Daniels.pa, rhoades.pa, James.pa, Raim.pasa, Murage.pa, Wilkie.pa, Kiewiet.pasa
+
+Talking to people is a wonderful idea.  Who is going to do it?  Are we going to sit around and wait for each other to do it?  It would be nice to have some resolution on this issue.  If not resolution, at least a schedule for resolution.
+
+Cheryl
+*start*
+00316 00024 US 
+Date: 18 Jul 86 13:56 PDT
+From: kiewiet.pasa
+Subject: Re: Installation Utility change spec for 1186 Prolog installation
+In-reply-to: James.pa's message of 17 Jul 86 16:13 PDT
+To: James.pa
+cc: Raim.pasa, Kiewiet.pasa, Rhoades.pa, Sybalsky.pa, Adler.pa
+
+Consider this my signature.
+
+--Lorraine
+*start*
+02360 00024 USa
+Date: 17 Jul 86 15:13 PDT
+From: Daniels.pa
+Subject: Re: Proposal: XQP installation procedure
+In-reply-to: rhoades.pa's message of 17 Jul 86 12:35 PDT
+To: rhoades.pa
+cc: James.pa, Raim.pasa, Sybalsky.pa, Daniels.pa, Murage.pa, Adler.pa
+
+	"which requires support of Alternate Disk Booting"
+
+Alternate disk booting is already supported, though not under that name. To boot the system tools you must use the occult mantra "F1  0". Wouldn't it in the long run be easier to credit customers with some intelligence and explain just what this mystical process is?
+
+	"High potential for use of Makecript [sic] to violate this capability"
+
+In what way? You haven't provided enough information to assess the validity of this claim. On the surface, I don't understand what the problem is, since Make Script only adds a command for partitioning the disk. It says nothing about what gets installed where.
+
+	"3. Support both (non floating point) Lisp and Prolog ... "
+
+Alternate disk booting is given as a Pro in this case, when it was a Con in the previous one. Which is it?
+
+	"4 - Con: Customer gives up floating point, DrawLine ucode support in Lisp"
+
+Huh? This would only happen if you negleted to put LispDove.db back after running Prolog.
+
+	"Customer must return to Installation Utility and reload correct ucode for lisp version they want to run"
+
+This is a crock. Having said that, how often do you expect people to do this? If it's once every couple of days, it might not be so bad, but I'd have to try it.
+
+ÿÿ  D o e s   a n y b o d y   k n o w   h o w   P r o l o g   c u s t o m e r s  ÿ intendÿÿ    t o   u s e   t h e   s y s t e m ?   S e e m s   t o   m e   t h a t   i n   t h i s   w o n d e r f u l   n e w   w o r l d   w h e r e   Q U A L I T Y  ïr   W H A T   T H E   C U S T O M E R   W A N T S   t h a t   p e r h a p s   w e   s h o u l d   t a l k   t o   s o m e   o f   t h e   p e o p l e   t h a t   w e ' r e   c o n s i d e r i n g   f o i s t i n g   t h e s e   " s o l u tÿ ions" on.
+
+		-- Andy. --
+        
+TIMESROMAN 
+         	HELVETICA 
+         
+TIMESROMAN           
+TIMESROMAN 
+           î       0             $                           4              @       `       g       ¥       Q             ‘                              .      ¾            â zº*start*
+01570 00024 US 
+Date: 17 Jul 86 16:13 PDT
+From: James.pa
+Subject: Installation Utility change spec for 1186 Prolog installation
+To: Raim.pasa, Kiewiet.pasa, Rhoades.pa, Sybalsky.pa, Adler.pa
+cc: James.pa
+
+This spec is for the change to the Installation Utility according to proposal #4 in Gary's message earlier today.  I need Lorraine, Marty, John, and Gary to sign-off on this spec before we can proceed with development, test and documentation.
+ 
+	1. New Installation Utility menu option "16) Install Prolog Microcode Only"
+
+	2. When this option is selected, the user is warned this option is for use only with Xerox Quintus Prolog and that the local disk must be partitioned as described in the XQP 1186 Installation Guide.  Confirmation to continue should occur at this point.
+
+	3. Positive confirmation results in the user being prompted to insert floppy PROLOGSYSTEMFILES #6.  Only a floppy with this name should be accepted.
+
+	4. When the correct floppy is inserted, the microcode file PrologDove.db should be loaded into the partition labeled LispFiles. 
+
+	5. The conclusion of the microcode loading operation should return the user to the Installation Utility menu.
+
+
+This spec is an attempt to minimize the extent of changes that are required to enable the installation and operation of Prolog on an 1186.  This change is needed to allow the loading of Prolog microcode, PrologDove.db, which can not be accomplished with the present tool.  All information on partitioning requirements will be handled in the Installation Guide for the 1186.  
+
+Cheryl
+*start*
+00339 00024 US 
+Date: 17 Jul 86 16:14 PDT
+From: sybalsky.pa
+Subject: Re: Proposal: XQP installation procedure
+In-reply-to: Daniels.pa's message of 17 Jul 86 15:13 PDT
+To: Daniels.pa
+cc: rhoades.pa, James.pa, Raim.pasa, Sybalsky.pa, Murage.pa, Adler.pa
+
+Andy's suggestion of asking folks seems good to me.  Have we done it already?
+*start*
+00803 00024 US 
+Date: 17 Jul 86 16:47 PDT
+From: Raim.pasa
+Subject: Re: Proposal: XQP installation procedure
+In-reply-to: rhoades.pa's message of 17 Jul 86 12:35 PDT
+To: rhoades.pa
+cc: James.pa, Raim.pasa, Sybalsky.pa, Daniels.pa, Murage.pa, Adler.pa
+
+Gary,
+
+Some questions about option 4:
+
+1.  What happens if the user installs Lisp microcode and tries to boot Prolog.sysout?
+
+2.  What happens if the user installs Prolog microcode and tries to boot Lisp.sysout?
+
+I like option 4 because it gives the user his choice of microcode and minimizes our  re-documentation and testing of installation software.  The goal is to focus our limited resources on Prolog, itself.  We can always release more sophisticated Prolog installation software once 1186 Prolog has been launched on schedule.
+
+>>Marty
+*start*
+00922 00024 US 
+Date: 15 Sep 86 15:55 PDT
+From: adler.pa
+Subject: Quintus Meetings:  Cancelations and Changes
+To: Charnley.pa, Jellinek.pa, Wilkie.pa, Rhoades.pa, James.pa, Sybalsky.pa, Mueller.pa, Biggs.pa
+cc: adler.pa
+Format: TEdit
+
+Due to Cindy's and Gary's absense and the lack of a formal technical report of desirable changes to present to Quintus, the first meeting ("#1:  Tuesday, 9/16, 10am at Xerox.  Topic:  Changes Xerox would like to see in XQP 2.0  (Wilkie to present)" ) is canceled.  Cindy will reschedule this upon her return.
+
+The second meeting ("#2:  Thursday, 9/18, 10am at Quintus Topic:  Changes from Koto to Lyric and XQP 1.5 to 2.0--mutual discussion.") will still happen on Thursday at 10, but at Xerox instead of Quintus.
+
+Sorry about the confusion.
+
+Annette
+
+        
+TIMESROMAN          
+TIMESROMAN            E             
+       k       T       n       o       zº*start*
+00555 00024 US 
+Date: 17 Sep 86 15:13 PDT
+From: Adler.pa
+Subject: REMINDER:  Meeting with Quintus on Lyric
+To: Charnley.pa, Jellinek.pa, Wilkie.pa, Rhoades.pa, James.pa, Sybalsky.pa, Mueller.pa, Biggs.pa
+cc: Adler.pa, 
+Format: TEdit
+
+
+Quintus Meeting #2:  Thursday, 9/18, 10am at Xerox (small conference room) 
+
+Topic:  Changes from Koto to Lyric and XQP 1.5 to 2.0--mutual discussion.
+
+
+Annette
+        
+TIMESROMAN          
+TIMESROMAN           
+TIMESROMAN            _       ]                            –             | zº*start*
+00744 00024 US 
+Date: 18 Sep 86 15:21 PDT
+From: Adler.pa
+Subject: "Changes to XQP 2.0" Meeting 
+To: Charnley.pa, Jellinek.pa, Wilkie.pa, Rhoades.pa, James.pa, Sybalsky.pa, Mueller.pa, Biggs.pa, Raim.pasa, RClarke.pasa, Kiewiet.pasa
+cc: Adler.pa, Ricci.pa
+Format: TEdit
+
+Please note new (and final) time:
+
+Topic:  Changes Xerox would like to see in XQP 2.0 (Wilkie to present)
+
+Thursday, 9/25, 10am at Quintus
+
+
+Cindy will circulate the document we will give to Quintus beforehand for comments and additions.  (see my informal mail note summary for information before that).
+
+Annette
+
+
+        
+TIMESROMAN          
+TIMESROMAN           
+TIMESROMAN            T       \       p       G                     ±      9 zº*start*
+01660 00024 US 
+Date: 18 Dec 86 16:12 PST
+From: adler.pa
+Subject: [Charnley.pa: DayBreak needed for  Prolog]
+To: Sybalsky, Keller
+cc: adler.pa, Ricci, Melville.pasa, Charnley
+
+For your information and action, if you consider it appropriate.  Don's request for an 1186 is in order for him to do the work necessary to complete his portion of XQP 2.0.  One of the key customer complaints about the first release and one that we are addressing in this release is performance.  XQP performance is based on two factors:  cleverness of lisp and prolog program code and Xerox microcode.  Quintus is addressing the first; Don is working on the second, working directly with Quintus.  For him to do his work, he requires the 1186 as key microcode features are different and additional register resources are available to help XQP performance on the 1186.
+
+Please let me know if you need any further information or if I can answer any questions about this.
+
+Thank you in advance for your help in expediting this.
+
+Annette Adler
+
+     ----- Begin Forwarded Messages -----
+
+Date: 18 Dec 86 15:08:31 PST (Thursday)
+From: Charnley.pa
+Subject: DayBreak needed for  Prolog
+To: Adler, Wilkie
+cc: Charnley
+
+   I need to aquire an 1186, for Prolog microcode development.  I currently need to port new code from the 1108 world, and soon I need to investigate speed-ups and code compaction resulting from using the available 1186 fast registers.  The 1186 is the primary target for the next Prolog release, and I require one to verify and experiment with new microcode constructs which cannot be implemented on an 1108.
+
+        don
+
+     ----- End Forwarded Messages -----
+*start*
+00429 00024 US 
+Date: 16 Dec 86 16:44 PST
+From: adler.pa
+Subject: Machines
+To: Sybalsky
+cc: adler.pa
+
+Don Charnley needs an 1186 for his work on XQP---on an on-going (and probably permanent) basis.  I noticed that Jim Blum has one.  Does he need it now that PCE is done?  Could that machine be given to Don?  Will you/Gordon formally request an 1186 for Don (given there is no formal technical manager for XQP)?
+
+Annette
+*start*
+00252 00024 US 
+Date:  6 Jan 87 09:07 PST
+From: adler.pa
+Subject: Machine Available
+To: AISBU-PA^.pa
+cc: adler.pa
+
+An 1109 from Quintus is available if anyone needs it.  Please make your request to John Henning or Diana Burks-Goodman.
+
+Annette
+*start*
+00342 00024 US 
+Date:  6 Jan 87 09:09 PST
+From: adler.pa
+Subject: Daybreak for Prolog
+To: Sybalsky
+cc: adler.pa, Charnley
+
+Diana Burks-Goodman will get an 1186 for Don once she gets an official capital equipment request from you (or Gordon).  She thinks it is a fine idea and will get it up here ASAP once she gets that form
+
+Annette
+*start*
+00616 00024 UU?
+Date: 29 Jan 87 09:13 PST
+From: Adler.pa
+Subject: 1186
+To: Burns, Sybalsky
+cc: Adler.pa
+
+Craig Sweat, the Atlanta tech rep, will be appearing at Hanover St. on Feb 10 for 3 days to work on XQP and Arity Prolog.  He will require access on a full-time basis during that period to an 1186.  Both Mary's and Kevin's should be available.  I would like to "reserve" one of these for him, to avoid the confusion that happened last week (preferably Kevin's, since that is closer).  He needs the PCE board as well.
+
+Please let me know if there will be any problems with this request.
+
+Thanks
+
+annette
+*start*
+00533 00024 USf
+Date: 29 Jan 87 12:07:44 PST (Thursday)
+From: Charnley.pa
+Subject: New Lisp Opcode for Prolog
+To: Sybalsky
+cc: Adler, Wilkie, Charnley
+
+We have need to add a new Lisp opcode to the Prolog System.  I don't suspect that it would be of any value to Lisp itself, so it would be in the same class with the other 5 Lisp opcodes now used by Prolog.  There would not need to be any UFN code, but the opcode would need to be known to the compiler(s).  What is the proper procedure for me to accomplish this?
+
+     don
+*start*
+00770 00024 US 
+Date: 29 Jan 87 13:47 PST
+From: sybalsky.pa
+Subject: [Charnley.pa: New Lisp Opcode for Prolog]
+To: PEDERSEN, PAVEL, VANMELLE
+cc: sybalsky.pa
+
+What say?
+
+     ----- Begin Forwarded Messages -----
+
+Date: 29 Jan 87 12:07:44 PST (Thursday)
+From: Charnley.pa
+Subject: New Lisp Opcode for Prolog
+To: Sybalsky
+cc: Adler, Wilkie, Charnley
+
+We have need to add a new Lisp opcode to the Prolog System.  I don't suspect that it would be of any value to Lisp itself, so it would be in the same class with the other 5 Lisp opcodes now used by Prolog.  There would not need to be any UFN code, but the opcode would need to be known to the compiler(s).  What is the proper procedure for me to accomplish this?
+
+     don
+
+     ----- End Forwarded Messages -----
+*start*
+01468 00024 US 
+Date: 29 Jan 87 15:25 PST
+From: Adler.pa
+Subject: [Charnley.pa: My DayBreak & Prolog]
+To: Burns
+cc: Adler.pa, Charnley, Sybalsky
+
+Brad,
+
+Here is problem we discussed outlined by Don.  Don--Brad thought he could switch prom boards for you to one that's registered to get you going, which will help somewhat.  If that doesn't work, go ahead and take Kevin's machine.
+
+Annette
+
+     ----- Begin Forwarded Messages -----
+
+Date: 29 Jan 87 15:16:43 PST (Thursday)
+From: Charnley.pa
+Subject: My DayBreak & Prolog
+To: Hostrop, Murage
+cc: Adler, Wilkie, Charnley
+
+Well, the problem really is that while I can bring up the Prolog Sysout, I can't complete the Prolog initialization.  My 1186 goes into an 9305.  This is normally an extremely easy problem to diagnose, but several problems prevent any of the easy solutions.  The machine thinks its net address is 0000, which is impossible to teleraid.  The current 1186 IOP code is unwilling to debug an 1186 (Julian: is it possible to post-mortem a problem, or are all interactions impossible?).
+
+It has now been one week since I requested registration of my 1186.  Was weekly additions to the registration lists a lie?  Please forward this to any appropriate people, it is definitely holding me up.  Who in SV knows about the inability to interface the debugger to the 1186?  Can I use older versions of the IOP code to solve this on an interim basis?
+
+     don
+
+     ----- End Forwarded Messages -----
+*start*
+01876 00024 UU?
+Date: 11 Feb 87 16:52 PST
+From: Adler.pa
+Subject: XQP Resource Issue--CRITICAL
+To: Keller
+cc: Adler, "JBacker:Sunnyvale:Xerox".NS, Rhoades, Ricci, Sybalsky 
+
+Gordon,
+
+I must raise to your attention an absolutely unacceptable stance regarding support for XQP.  Reportedly, last week, during the regular XQP Rel 2.0 meeting, Cindy Wilkie announced that she would no longer be working on XQP due to her having been reassigned to Lyric testing.  Xerox is contractually obligated to provide support to Quintus and this action by Cindy leaves XAIS in a difficult position and threatens an already shaky relationship with Quintus.  In short, this action exposes Xerox to a potential breach of contract objection by Quintus.  In addition, I was neither consulted nor even informed until today (and only then, by accident) of this--despite the fact that I am in ongoing negotiations with Quintus on an almost daily basis regarding the contents and schedule for 2.0.
+
+Xerox paid Quintus nearly $1 million dollars for the first release and this second release--that money has already been spent and may now be in jeopardy of being lost due to your reassignment of personnel.  In no event should Cindy have ever told Quintus that she would not be continuing to work on XQP----now it appears that Xerox will not be assigning anyone and that would constitute breach of contract.
+
+Gordon, I have raised XQP's resource issues with you repeatedly now for several months and I find it amazing that you have allowed this act to take place without at least consulting with or even informing me so that I could take the appropriate steps to protect XAIS legally.
+
+I need to know how XAIS will fulfill its contractual obligations to Quintus for the duration of XQP 2.0 development.  In lieu of that, we will need to inform the lawyers and prepare for legal action.
+
+Annette
+*start*
+02418 00024 US 
+Date: 24 Mar 87 10:13 PST
+From: Adler.pa
+Subject: [Guy Lapalme <lapalme%iro.udem.cdn%ubc.csnet@RELAY.CS.NET>: Xerox Quintus Prolog]
+To: Sybalsky, Wilkie
+cc: Adler.pa
+
+FYI--a bit of bad news.
+
+Annette
+
+     ----- Begin Forwarded Messages -----
+
+Return-Path: <@SUMEX-AIM.STANFORD.EDU:lapalme%iro.udem.cdn%ubc.csnet@RELAY.CS.NET>
+Redistributed: Info-1100-Redistribute^.X
+Received: from SUMEX-AIM.STANFORD.EDU by Xerox.COM ; 24 MAR 87 06:46:44 PST
+Received: from RELAY.CS.NET by SUMEX-AIM.STANFORD.EDU with TCP; Tue 24 Mar 87 05:50:44-PST
+Received: from relay2.cs.net by RELAY.CS.NET id aa21350; 24 Mar 87 8:50 EST
+Received: from ubc by RELAY.CS.NET id aa17250; 24 Mar 87 8:46 EST
+Received: by ubc.csnet id AA07215; Tue, 24 Mar 87 05:26:21 pst
+Date: 24 Mar 87 13:26 +0500
+From: Guy Lapalme <lapalme%iro.udem.cdn%ubc.csnet@RELAY.CS.NET>
+To: bug-1100@SUMEX-AIM.STANFORD.EDU
+Message-Id: <329*lapalme@iro.udem.cdn>
+Subject: Xerox Quintus Prolog
+
+Does anybody knows how to easily make Xerox Quintus Prolog use a Lisp
+Stream. I know we can do it using a Lisp function a go through it to
+write in a window for example, but I am looking for an easy way to
+associate a Prolog stream to a Lisp one.
+
+It seems that in writing long terms, XQP writes carriage returns at some
+strange place so that for example we end up with things like:
+        _123,_
+124)
+  and so when we try rereading this in Prolog, we come up with a syntax
+error. It would be "nice" if XQP would be able to reread what it wrote...
+
+And a "big question":
+  has anybody been able to do something useful with XQP?
+  we are here very disappointed with this implementation of Prolog,
+  we were expecting a much better integration in the Lisp environnement,
+   but the fact that we have to use a Text editor to edit the programs,
+  the fact that the lisp and Prolog memory and distinct, makes it very
+  awkward to use and combine with the wonderful Interlisp-D environment.
+  In fact, the interpreter seems to us the one of the slowest in the world
+  and for our experience here, we are better off developing in Prolog
+  in another environment, because we spend so much time trying to go 
+  around the problems and annoyances of the XQP environment...
+Thank You
+Guy Lapalme
+Departement d'informatique et recherche operationnelle
+Universite de Montreal
+CP 6128, Succ A
+Montreal, Quebec, Canada
+H3C 3J7
+
+
+
+     ----- End Forwarded Messages -----
+*start*
+00784 00024 USa
+Date: 19 Mar 87 16:26 PST
+From: Kiewiet.pasa
+Subject: Prolog 2.0
+To: Sybalsky.pa
+cc: Cheslow, Raim, Kiewiet.pasa
+
+John,
+
+At today's seminar (which I enjoyed, even tho' a lot of it was over my head. the parts which registered in my head were quite useful.) you mentioned to Sales that Prolog 2.0 would go into Beta Test in May.
+
+Not wanting to put you on the spot in front of all those folks, I'd now like to ask: are you are planning the same kind of Phase I/Phase II as we had for Lyric?  Where you support Phase I and we support Phase II?
+
+Customer Support has already indicated to Annette Adler that without Development/Engineering support, and not until after June 1, can we be in any position to launch and support a Beta Test of Prolog 2.0.
+
+--Lorraine
+
+*start*
+01113 00024 US 
+Return-Path: <@SUMEX-AIM.STANFORD.EDU:Jellinek.pa@Xerox.COM>
+Redistributed: Info-1100-Redistribute^.X
+Received: from SUMEX-AIM.STANFORD.EDU by Xerox.COM ; 24 MAR 87 11:29:55 PST
+Received: from Xerox.COM by SUMEX-AIM.STANFORD.EDU with TCP; Tue 24 Mar 87 10:29:11-PST
+Received: from Cabernet.ms by ArpaGateway.ms ; 24 MAR 87 10:20:01 PST
+Date: 24 Mar 87 10:18 PST
+From: Jellinek.pa
+Subject: Re: Xerox Quintus Prolog
+In-reply-to: Guy Lapalme <lapalme%iro.udem.cdn%ubc.csnet@RELAY.CS.NET>'s
+ message of 24 Mar 87 13:26 +0500
+To: lapalme%iro.udem.cdn%ubc.csnet@RELAY.CS.NET
+cc: bug-1100@SUMEX-AIM.STANFORD.EDU
+Message-ID: <870324-102001-1113@Xerox>
+
+Re:
+It seems that in writing long terms, XQP writes carriage returns at some
+strange place so that for example we end up with things like:
+        _123,_
+124)
+  and so when we try rereading this in Prolog, we come up with a syntax
+error. It would be "nice" if XQP would be able to reread what it
+wrote...
+
+The fix is to set the lisp variable FILELINELENGTH to something very
+large, e.g. MAX.SMALLP, before having Prolog write the file.
+
+		Herb
+*start*
+01113 00024 UU?
+Return-Path: <@SUMEX-AIM.STANFORD.EDU:Jellinek.pa@Xerox.COM>
+Redistributed: Info-1100-Redistribute^.X
+Received: from SUMEX-AIM.STANFORD.EDU by Xerox.COM ; 24 MAR 87 11:29:55 PST
+Received: from Xerox.COM by SUMEX-AIM.STANFORD.EDU with TCP; Tue 24 Mar 87 10:29:11-PST
+Received: from Cabernet.ms by ArpaGateway.ms ; 24 MAR 87 10:20:01 PST
+Date: 24 Mar 87 10:18 PST
+From: Jellinek.pa
+Subject: Re: Xerox Quintus Prolog
+In-reply-to: Guy Lapalme <lapalme%iro.udem.cdn%ubc.csnet@RELAY.CS.NET>'s
+ message of 24 Mar 87 13:26 +0500
+To: lapalme%iro.udem.cdn%ubc.csnet@RELAY.CS.NET
+cc: bug-1100@SUMEX-AIM.STANFORD.EDU
+Message-ID: <870324-102001-1113@Xerox>
+
+Re:
+It seems that in writing long terms, XQP writes carriage returns at some
+strange place so that for example we end up with things like:
+        _123,_
+124)
+  and so when we try rereading this in Prolog, we come up with a syntax
+error. It would be "nice" if XQP would be able to reread what it
+wrote...
+
+The fix is to set the lisp variable FILELINELENGTH to something very
+large, e.g. MAX.SMALLP, before having Prolog write the file.
+
+		Herb
+*start*
+00107 00024 US 
+Return-Path: <@SUMEX-AIM.STANFORD.EDU:narain%pluto@rand-unix.ARPA>
+Redistributed: I*start*
+01113 00024 US 
+Return-Path: <@SUMEX-AIM.STANFORD.EDU:Jellinek.pa@Xerox.COM>
+Redistributed: Info-1100-Redistribute^.X
+Received: from SUMEX-AIM.STANFORD.EDU by Xerox.COM ; 24 MAR 87 11:29:55 PST
+Received: from Xerox.COM by SUMEX-AIM.STANFORD.EDU with TCP; Tue 24 Mar 87 10:29:11-PST
+Received: from Cabernet.ms by ArpaGateway.ms ; 24 MAR 87 10:20:01 PST
+Date: 24 Mar 87 10:18 PST
+From: Jellinek.pa
+Subject: Re: Xerox Quintus Prolog
+In-reply-to: Guy Lapalme <lapalme%iro.udem.cdn%ubc.csnet@RELAY.CS.NET>'s
+ message of 24 Mar 87 13:26 +0500
+To: lapalme%iro.udem.cdn%ubc.csnet@RELAY.CS.NET
+cc: bug-1100@SUMEX-AIM.STANFORD.EDU
+Message-ID: <870324-102001-1113@Xerox>
+
+Re:
+It seems that in writing long terms, XQP writes carriage returns at some
+strange place so that for example we end up with things like:
+        _123,_
+124)
+  and so when we try rereading this in Prolog, we come up with a syntax
+error. It would be "nice" if XQP would be able to reread what it
+wrote...
+
+The fix is to set the lisp variable FILELINELENGTH to something very
+large, e.g. MAX.SMALLP, before having Prolog write the file.
+
+		Herb
+*start*
+01105 00024 US 
+Return-Path: <@SUMEX-AIM.STANFORD.EDU:narain%pluto@rand-unix.ARPA>
+Redistributed: Info-1100-Redistribute^.X
+Received: from SUMEX-AIM.STANFORD.EDU by Xerox.COM ; 24 MAR 87 12:15:29 PST
+Received: from rand-unix.arpa by SUMEX-AIM.STANFORD.EDU with TCP; Tue 24 Mar 87 11:01:09-PST
+Received: by rand-unix.arpa; Tue, 24 Mar 87 10:51:20 PST
+Received: from localhost by pluto.arpa; Tue, 24 Mar 87 10:57:09 PST
+Message-Id: <8703241857.AA28752@pluto.arpa>
+To: Guy Lapalme <lapalme%iro.udem.cdn%ubc.csnet@relay.cs.net>
+Cc: bug-1100@sumex-aim.stanford.edu
+Subject: Re: Xerox Quintus Prolog 
+In-Reply-To: Your message of 24 Mar 87 13:26:00 R.
+             <329*lapalme@iro.udem.cdn> 
+Date: Tue, 24 Mar 87 10:57:05 PST
+From: narain%pluto@rand-unix.ARPA
+
+
+>>In fact, the interpreter seems to us the one of the slowest in the world..
+
+I am curious to know what you mean by "slowest" since at the 1985 IJCAI a
+speed of about 50 KLips was being claimed for XQP, and that is quite good
+for many research projects. One would expect the speed to have gone up
+considerably in past two years.
+
+-- Sanjai
+*start*
+00667 00024 US 
+Date: 24 Mar 87 13:44 PST
+From: Wilkie.pa
+Subject: Re: [Guy Lapalme <lapalme%iro.udem.cdn%ubc.csnet@RELAY.CS.NET>: Xerox Quintus Prolog]
+In-reply-to: Adler.pa's message of 24 Mar 87 10:13 PST
+To: Adler.pa
+cc: Sybalsky.pa, Wilkie.pa
+
+Regarding the problem he mentioned....this is the same or similar to the WRITEQ problem which SDC discovered a long time ago.  The problem is that the Lisp defaul line length is 102 chars.  The fix is to advise the appropriate functions (i.e. QP.New.Stream)  to set the default at 65665 (or some  other huge number.  If you think it is worthwhile, I could look up the exact patch and pass it on to him.
+
+Cindy
+*start*
+02335 00024 US 
+Sender: santosa.PA
+Date: 27 Mar 87 17:30:34 PST (Friday)
+From: AIS-SysArch^.pa
+Subject: AIS-SysArch­.pa Microcode Release message No. 28
+To: LispCore^.pa,
+cc: AIS-SysArch^.pa, James.pa, Raim.pasa
+Reply-to: AIS-SysArch^.pa
+
+
+The following microcode file(s) have been released:
+---------------------------------------------------
+
+ 
+I. Dbreak :
+ 
+{Eris}<lispcore>next>PrologDove.db!1           26-Mar-87 13:19:03 PST
+ 
+[Pogo:AISNORTH:Xerox]<UCode>Basics>PrologDove.db!1
+
+II. What's new :
+
+This is basically an upgrade of Prolog microcode to include
+bug fixes that I anounced earlier this week for Lisp Dbreak.
+The df files are upgraded to include the new domain.  
+
+WARNING : 
+
+If you use PCE with this microcode version, you have to use
+the BIOS :
+
+[eris]<Internal>Library>PCE.BIOS!2                 5-Nov-86 16:41:52 PST
+
+---------------------------------------------------------------------------------   
+  
+IV. Details about the release:
+    **************************
+
+*.df files contain pointers to all microcode files. The *.df files that are 
+affected by this release are marked as such below. A detailed description of 
+the changes appears after the *.df file list.
+
+List of microcode *.df files:
+-----------------------------
+
+[Pogo:PARC:Xerox]<UCode>DF>Release.df!29			- Changed
+
+[Pogo:PARC:Xerox]<UCode>DF>DLionDoveCommonCPCode.df!32		- Not Changed
+
+[Pogo:PARC:Xerox]<UCode>DF>DLionIOP.df!5			- Not Changed
+[Pogo:PARC:Xerox]<UCode>DF>LispDLionCPMicrocode.df!35		- Not Changed
+[Pogo:PARC:Xerox]<UCode>DF>LispDlion.df!32			- Not Changed
+
+[Pogo:PARC:Xerox]<UCode>DF>InitialLispDlion.df!4		- Not Changed
+
+[Pogo:PARC:Xerox]<UCode>DF>LispDoveIOPIntegration.df!12		- Not Changed
+[Pogo:PARC:Xerox]<UCode>DF>LispDaybreakCPMicrocode.df!29	- Not Changed
+[Pogo:PARC:Xerox]<UCode>DF>LispDove.df!29			- Not Changed
+
+[Pogo:PARC:Xerox]<UCode>DF>DlionDovePrologCommonucode.df!6 	- Changed
+
+[Pogo:PARC:Xerox]<UCode>DF>PrologDlionCPMicrocode.df!4		- Not Changed
+[Pogo:PARC:Xerox]<UCode>DF>PrologDlion.df!4			- Not Changed
+
+[Pogo:PARC:Xerox]<UCode>DF>PrologDaybreakCPMicrocode.df!5 	- Changed
+[Pogo:PARC:Xerox]<UCode>DF>PrologDove.df!6			- Changed
+
+Note:
+
+
+1. Details :
+
+Source codes :
+
+DBProlog8KVersion.dfn, LispGc.mc, dbLispIO4K.mc
+
+
+-------THAT's ALL FOLKS!!!------------------------------------------------------ 
+
+*start*
+01661 00024 US 
+Date:  1 May 87 16:12:58 PDT (Friday)
+From: Charnley.pa
+Subject: My Prolog Tasks
+To: Wilkie, Keller, Shih, Murage, Cude, Feldman, Sybalsky
+cc: Charnley
+
+XQP2.0.tasks   30-Apr-87 14:25:43
+
+I     TASKS
+
+ 1.  Modifications to the 1186 microcode for:
+	R.interpret.me {totally new}
+	W.interpret.me {totally new}
+	apply {new tails for two of three cases}
+    [completed]
+ 2.  New 1186 microcode for:
+	R.dynamic.index
+	W.dynamic.index
+    [completed]
+ 3.  Rework new Prolog microcode with new record descriptions for new doubleword alligned records.
+    [not started yet]
+ 4.  Move some 1186 Prolog code to another bank to create space for new code.
+    [in progress]
+ 5.  Test all new and modified 1186 Prolog microcode.
+    [not started yet]
+ 6.  Monitor Prolog testing and fix discovered bugs.
+    [not started yet]
+ 7.  Move some 1109 Prolog code to another bank to create space for new code.
+    [not started yet]
+ 8.  Port new Prolog code to 1109.
+    [not started yet]
+
+II    DEPENDENCIES
+ 1.   none
+ 2.   none
+ 3. [new record layouts and Prolog code from Quintus/expected 5/5/87]
+ 4.   none
+ 5. [tasks 1, 2, 3, and 4 completed]
+    [Prolog sysout using new dynamic indexing from Quintus/expected 5/15/87]
+    [Technical assistance in debugging from Quintus (Peter Schachte)/expected 5/25/87]
+ 6. [task 5 completed]
+    [Alpha testing]
+ 7.   none
+ 8. [tasks 1, 2, 3, and 7 completed]
+
+III  COMPLETION DATES
+ 1.  4/28/87
+ 2.  4/28/87
+ 3.  5/12/87
+ 4.  5/6/87
+ 5.  6/9/87
+ 6.  6/26/87
+ 7.  none -- performed in spare time
+ 8.  none -- performed in spare time
+ 
+These dates take into account my vacation from May 25 to May 29.
+
+     don 
+
+
+*start*
+01466 00024 US 
+Date: 20 Jul 87 19:01 PDT
+From: Shih.pa
+Subject: XQP 2.0 Development status
+To: Wilkie
+cc: Shih.pa, Sybalsky.pa
+
+Peter had graciously agreed to be the guinee pig for the "cr hang" problem, after it was determined that the problem was reproducable on his machine.
+
+Debugging the CR problem at Quintus last week proved to be inconclusive, and his machine was seized and carted back to Hanover.  The initial installation of the loaner machine proved defective, and Julian brought over a new disk this morning.
+
+Consequently, Peter spent the day repartitioning, reloading from floppy, changing his initialization (since the loaner has a different Pup ID number, has a different TCP address, etc. etc.).
+
+Meanwhile, finally having a reproducable bug, Bill vanMelle, Don Charnley, and Julian Murage isolated the problem and they believe they have a fix in hand.
+
+Unfortunately, since they were so quick, Peter's work today is pretty much wasted since he will be getting his machine back imminently.
+
+Consequently, all that remains is for:
+
+1.  Don to make up another Prolog microcode file.
+2.  Julian to return Peter's machine.
+3.  Peter and I to recompile the call to MCODEP.
+
+and then we will be back to where we were at the beginning of last week.  That is to say, we are on the verge of testing XQP.....
+
+Cheers,
+
+-Frank.
+
+
+P.S.  The above means (if I am to participate in testing), that I should have an 1186 on hand.  Any status on my order?
+*start*
+00387 00024 US 
+Date: 10 Sep 87 18:08 PDT
+From: Wilkie.pa
+Subject: Request for new Installation Script
+To:Daniels
+cc: Sybalsky, Cude, Shih, James, Weisblatt, Charnley
+
+
+The additional partitioning option for Prolog is:
+
+	Lisp:  50K pages/25 MB
+	all remaining in Lispfiles
+
+This is needed by 10/18;  I assume that Cheryl and/or Frank are the "customers".  
+
+
+Thanks,
+
+Cindy
+
+   
+
+*start*
+01428 00024 US 
+Return-Path: <@SUMEX-AIM.STANFORD.EDU:munnari!aragorn.oz.au!eric@uunet.UU.NET>
+Redistributed: Info-1100-Redistribute^.X
+Received: from SUMEX-AIM.STANFORD.EDU by Xerox.COM ; 23 NOV 87 09:48:46 PST
+Received: from uunet.UU.NET by SUMEX-AIM.STANFORD.EDU with TCP; Mon, 23 Nov 87 08:44:39 PST
+Received: from munnari.UUCP by uunet.UU.NET (5.54/1.14) with UUCP 
+	id AA21151; Mon, 23 Nov 87 11:44:02 EST
+Message-Id: <8711231644.AA21151@uunet.UU.NET>
+Received: from aragorn (via mulga) by munnari.oz with SunIII (5.5)
+	id AA01625; Mon, 23 Nov 87 23:55:00 EST
+Received: by aragorn .Deakin (5.52)
+	id AA14396; Mon, 23 Nov 87 22:49:35 EST
+Date: 23 Nov 87 22:49:34 +1000 (Mon)
+From: "ERIC Y.H. TSUI" <munnari!aragorn.oz.au!eric@uunet.UU.NET>
+To: info-1100@sumex-aim.stanford.edu
+Subject: 'nofileerrors' in Xerox Quintus Prolog (1.5) 
+Department: Division of Computing and Mathematics
+Institution: Deakin University, Victoria 3217, Australia
+Phone: +61 52 471-552
+Telex: DUNIV AA35625
+Sender: munnari!aragorn.oz.au!eric@uunet.UU.NET
+
+Has anyone developed a fix for the malfunctioning of the 'nofileerrors' in
+Xerox Quintus Prolog (1.5) ? Also, could someone explain how to fix the 
+occasional problem of having an XQP window that does not echo what the user
+types in. The XQP window interprets what one types in (invisiably) but
+no echo is displayed.
+
+Eric Tsui                               eric@aragorn.oz
+---------
+*start*
+00749 00024 US 
+Date: 25 Nov 87 10:53 PST
+From: Shih.pa
+Subject: Prolog alpha test status
+To: Cude
+cc: Shih.pa, Sybalsky.pa
+
+Over the last few days, a number of bugs which were not reproducable at Quintus, have been traced to an apparent fork in the sources between Quintus and Xerox (partially due to a disk failure at Quintus).  Hopefully, I think that ours are more current than theirs, except for modifications somewhere after 10/20 (which are relatively few files).
+
+So, I'm taking over all of our sources to Quintus, to DIFF them with what Quintus has.  This means though that what testing Peter has been doing on bug fixes, was probably not with the most current sources.
+
+We will know how different they are this afternoon.
+
+-Frank.
+*start*
+00380 00024 US 
+Date: 19 Nov 87 14:43 PST
+From: Shih.pa
+Subject: Alpha test plan
+To: Cude
+cc: Shih.pa, Sybalsky.pa
+
+I spoke with Cindy today (in fact, she's paying us a social visit tomorrow), regarding what the Alpha test plan intended to be.  I updated the document, filed it as {ERINYES}<Test>Prolog>Lyric>TEST-PLAN.TEDIT, with my notes from my conversation with her.
+
+*start*
+01029 00024 US 
+Date: 25 Nov 87 17:38 PST
+From: Shih.pa
+Subject: re: Prolog alpha test status
+To: Cude
+cc: Shih.pa, Sybalsky.pa
+
+The results of the diff, as reported by Peter, are:
+
+1.  We have 9 files which are more current than Peter's*.
+2.  They have 1 file which is more current than ours**.
+3.  The files Peter has modified (bug fixes) are in neither of the above sets (amazingly), so no file was forked, although the sysouts were.
+
+Thus, probably on Monday or Tuesday, Peter will be bringing by files from 2 & 3 above.
+
+
+Also, some questions:
+
+1.  I presume there are *no* bug reports from AIL, since you haven't mentioned any such.  Is this true?
+
+2.  As I annotated on the XQP test plan, you have files from Cindy for the Basic IO tests.  Is this different than {ERINYES}<test>Prolog>iotest1.;4?
+
+
+-Frank.
+
+*  These files must not have been backed up at Quintus, and were lost when his 1186 disk crashed.
+
+** The file is only related to the way Prolog calls DInfo, so presumably this is only a mild perturbation.
+*start*
+01318 00024 US 
+Date:  9 Dec 87 11:38 PST
+From: Shih.pa
+Subject: [Shih.pa: re: Prolog alpha test status]
+To: Cude
+cc: Shih.pa, Sybalsky.pa
+
+I haven`t seen a reply from you on the latter of these two questions.
+
+
+-Frank.
+
+     ----- Begin Forwarded Messages -----
+
+Date: 25 Nov 87 17:38 PST
+From: Shih.pa
+Subject: re: Prolog alpha test status
+To: Cude
+cc: Shih.pa, Sybalsky.pa
+
+The results of the diff, as reported by Peter, are:
+
+1.  We have 9 files which are more current than Peter's*.
+2.  They have 1 file which is more current than ours**.
+3.  The files Peter has modified (bug fixes) are in neither of the above sets (amazingly), so no file was forked, although the sysouts were.
+
+Thus, probably on Monday or Tuesday, Peter will be bringing by files from 2 & 3 above.
+
+
+Also, some questions:
+
+1.  I presume there are *no* bug reports from AIL, since you haven't mentioned any such.  Is this true?
+
+2.  As I annotated on the XQP test plan, you have files from Cindy for the Basic IO tests.  Is this different than {ERINYES}<test>Prolog>iotest1.;4?
+
+
+-Frank.
+
+*  These files must not have been backed up at Quintus, and were lost when his 1186 disk crashed.
+
+** The file is only related to the way Prolog calls DInfo, so presumably this is only a mild perturbation.
+
+     ----- End Forwarded Messages -----
+*start*
+00662 00024 US 
+Date:  9 Dec 87 12:09 PST
+From: Cude.pa
+Subject: Re: [Shih.pa: re: Prolog alpha test status]
+In-reply-to: Shih.pa's message of 9 Dec 87 11:38 PST
+To: Shih.pa
+cc: Cude.pa, Sybalsky.pa
+
+Frank,
+
+Re: "you have files from Cindy for the Basic IO tests."
+
+ As far as I know I don't have any files for Basic IO tests. If I did, do you have any idea where they would be or what they would be called?
+
+Re: "Is this different than {ERINYES}<test>Prolog>iotest1.;4?"
+
+Since I don't know of any files that I have, I don't know of anything other than what's in the {ERINYES}<test> directory.
+
+I'm confused. What is it that I'm supposed to have?
+
+		Ron
+*start*
+02479 00024 US 
+Date: 10 Dec 87 02:28 PST
+From: Shih.pa
+Subject: Prolog mtg. tomorrow?
+To: Cude.pa
+cc: Shih.pa, Sybalsky.pa
+
+I will as usual attempt to be at the mtg. by 10:30.  I overhauled and ran the meager library test suites (with the exception of the IO tests*) and did spot testing of the examples in the library documentation, and uncovered no bugs, except one package problem which was also reported by AIL.
+
+    *Regarding them, as you will recall, two weeks ago I reviewed
+    the Alpha test plan with Cindy and annotated the verion online with
+    her comments, she mentioned that you had the IO tests?
+
+-----------
+
+I found Base Packer, and I think I've gotten my brain wrapped around it, I will run it this week and submit my report.  At that point I will claim that I've done everthing in the Alpha test plan (filed on {erinyes}<test>prolog>lyric>test-plan.tedit). 
+
+------------
+
+Status:  Peter needs to bring some files with fixes for the reported bugs, and we need to build a sysout.  We could then process it for beta.  Or, we could do regression testing (i.e. make sure those reported bugs are fixed, but that typically only applies to Absolutely bugs, of which there are none).
+
+I'd like to mention that delaying start of beta will not improve the quality of this product.  After this month, our contract with Quintus expires, and AIS will be unable to fix bugs in Prolog (without a time and materials contract with Quintus) since we lack their internal code.  Further, I suggest we get an opinion from Walt regarding the library packages, Cindy said she had a memo from him saying the library was not to hold up the release of XQP.  I looked for the memo in her IFS files but it wasn't there.
+
+------------
+
+Speaking of beta sites, I had some electronic discussion with Eric Tsui (Deakin University, Australia) who was quite interested in being a beta site.  They have a large conceptual structures reasoning system which runs XQP1.5.  They have 2 Prolog site licenses, and an additional 3 1186's running Smalltalk and Loops in their "Xerox AI Laboratory" (of which Eris is also System Administrator as well as researcher).  Their application appears unique in that it integrates Prolog with nice graphics.
+
+So, they are sophisticated users who might be able to test a number of things (heavy lisp interface, Prolog & Loops interface?). I hereby volunteer to do the customer install (with hardship pay of course, in the outback). G'day!
+
+
+-Frank.
+
+
+*start*
+00353 00024 US 
+Date: 26 Feb 88 13:56 PST
+From: Shih.pa
+Subject: Changes to XQP2.0
+To: James.pa
+cc: Shih.pa, Sybalsky.pa
+
+Peter Schachte called yesterday evening, with a couple of fixes he'd like to see get into XQP2.0.
+
+He will try to come by here today, if possible.  I suspect changes to roughly three files.  The changes are minor.
+
+-Frank.
+*start*
+00936 00024 US 
+Date: 26 Feb 88 14:38 PST
+From: Cude.pa
+Subject: Re: [Shih.pa: Changes to XQP2.0]
+In-reply-to: James.pa's message of 26 Feb 88 14:28 PST
+To: Shih
+cc: Cude.pa, James, Sybalsky
+
+Frank,
+
+Cheryl just forwarded me your msg. about some new changes that Peter would like to see get into XQP 2.0. As you know, since XQP 2.0 was frozen some time ago and has already been handed off to Pasadena, the changes that Peter has made won't be a part of the release unless it can be demonstrated that the problems they address are clearly of showstopper quality.
+
+My understanding is that there are no open Absolutely AR's so I assume that the problems Peter has fixed aren't in response to existant AR's. Do either you or Peter consider the fixes to be in the showstopper category from either a code or documentation standpoint? If not, it's clearly to late to include them in the release that's already been handed off.
+
+		Ron
+*start*
+02052 00024 US 
+Date: 26 Feb 88 15:01 PST
+From: Shih.pa
+Subject: Re: [Shih.pa: Changes to XQP2.0]
+In-reply-to: Cude.pa's message of 26 Feb 88 14:38 PST
+To: Cude.pa
+cc: Shih.pa, James.pa, Sybalsky.pa, Weisblatt.pa
+
+Based on a conversation with Bob, it was believed that Cheryl had to make a new sysout to include a Lyric patch, and so it seemed reasonable to include a patch to Prolog too.
+
+If there is no reason to remake a Prolog sysout, then these fixes probably do not qualify as Absolutely ARs (unless the old criteria of embarassment still counts).
+
+The bugs can be worked around if we are willing to add some notes to the XQP Release Notes.
+
+To summarize the problem (and the fixes):
+
+1.  Smashed Symbols
+
+Problem: Two symbols (gettopval and settopval) were accidentally smashed by the XQP security program, because they were left off of the list of "unsmashed symbols".
+
+Effect: The user cannot invoke those functions from Prolog, which do pretty much what the Lisp equivalents do.  These are prominently advertised in the Release notes.
+
+Fix:  Add those two symbols to the "unsmashed symbols" list, and roll a new sysout.
+
+Workaround:  Include instructions in the release notes to unsmash the symbols (the information is in the Antidote file).
+
+2.  Dinfo Nit
+
+Problem:  A Dinfo support program has hardwired to look for a file named R0101.
+
+Effect:  This can prevent the user from accessing the online help.
+
+Fix:  It should instead use a global symbol, and be set to the value R0000.
+
+Workaround:  The workaround is to include instructins in the Release Notes to create in the PROLOGHELPDIRECTORY a dummy file, named R0101.
+
+------
+
+Since these changes are basically to DATA and not CODE, possible adverse side effects seem highly unlikely.
+
+-Frank.
+
+p.s.  I know, I know, I'll try and get Peter to submit some ARs.
+
+
+        
+TIMESROMAN 
+         
+TIMESROMAN 
+          ¸              Ÿ              ¢              R       
+                     J              >              J       
+      C       zº*start*
+00446 00024 US 
+Date: 10 Mar 88 19:38 PST
+From: Sybalsky.pa
+Subject: The prolog patch
+To: Shih
+cc: Sybalsky.pa
+
+Just to make sure I was clear, I'd like to re-word our conversation:
+
+There are two bugs that need fixing
+	1) on-line doc doesn't work
+	2) a couple of atoms got smashed by accident
+
+What we need, I think, is a single patch file that, when loaded into an existing Prolog sysout, fixes both problems.  Is that feasible?
+
+--John
+*start*
+00658 00024 USa
+Date: 10 Mar 88 19:50 PST
+From: Shih.pa
+Subject: Re: The prolog patch
+In-reply-to: Sybalsky.pa's message of 10 Mar 88 19:38 PST
+To: Sybalsky.pa
+cc: Shih.pa
+
+Re:  What we need, I think, is a single patch file that, when loaded into an existing Prolog sysout, fixes both problems (online doc, accidentally smashed atoms).  Is that feasible?
+
+Yes.  It should be loaded in before the user has attempted to use the smashed atoms (otherwise, of course, he gets new ones interned into the package).
+
+XQP is pretty low on the Priority list.  When do we want it?  Its pretty easy, but I should test it.... how about next week, say, Tuesday?
+
+
+*start*
+00243 00024 US 
+Date: 10 Mar 88 20:16 PST
+From: Sybalsky.pa
+Subject: Re: The prolog patch
+In-reply-to: Shih.pa's message of 10 Mar 88 19:50 PST
+To: Shih.pa
+cc: Sybalsky.pa
+
+Tuesday sounds ducky to me!  [So much for priority lists....]
+*start*
+00468 00024 USa
+Date: 28 Mar 88 17:01 PST
+From: Shih.pa
+Subject: XQP2.0 patch file
+To: Sybalsky.pa
+cc: Shih.pa, James.pa
+
+On {Eris}<PrologCore>QP2.0> resides:
+
+XQPPATCHFILE.;2	28-MAR-88 14:15:48
+XQPPATCHFILE.LCOM;1	28-MAR-88 14:15:54
+
+which fix ARs 9920, 9921.
+
+I didn't test this patch because Erinyes has been unreliable (it broke the connection 4 times over the course of the day; hence, I can't download the sysout).
+
+However, I believe the patch works.
+
+
+*start*
+00285 00024 US 
+Date: 31 Mar 88 13:01 PST
+From: Sybalsky.pa
+Subject: Re: XQP2.0 patch file
+In-reply-to: Shih.pa's message of 28 Mar 88 17:01 PST
+To: Shih.pa
+cc: Sybalsky.pa
+
+This message just surfaced from my alternate mail server.  Sorry for all the other traffic on this....
+*start*
+00480 00024 US 
+Date:  8 Jun 88 17:54 PDT
+From: Shih.pa
+Subject: XQP2.0 and resources
+To: Sybalsky.pa
+cc: Shih.pa
+
+Mike Fisher had earlier asked about the status of the 9305 problem with XQP2.0.
+
+I told him at the time that I had no time to work on it, but perhaps Don would be free.
+
+I think Don should be finished with his Maiko tasks in about a week from this coming Monday (which is to say, he will probably be free by 6/20.  Don agrees with this estimate.
+
+
+-Frank.
+
+*start*
+01168 00024 US 
+Date:  9 Feb 89 17:18
+From: Frank Shih:AISNorth:Xerox
+Subject: Prolog.....lives
+To: Weisblatt:AISNorth:Xerox, Sybalsky:AISNorth:Xerox, Sweat:AISNorth:Xerox, Sagalowicz:AISNorth:Xerox, Burns:AISNorth:Xerox
+cc: Frank Shih:AISNorth:Xerox
+
+OK, this prolog sysout seems to work (more or less)......
+
+On:
+
+{Eris}<PrologCore>qp2.0>fastprolog-medley.sysout
+
+and everything (meaning the single highest version, both source and "compiled" files) under the following directories:
+
+{Eris}<PrologCore>qp2.0>library>
+{Eris}<PrologCore>qp2.0>manual>
+
+Warning: its a *lot* of files.
+
+My understanding is of the following events is, Bob Weisblatt will copy the files to an 1186 disk, which will then be given back to me, plus a copy of the QP2.0 documentation in his possession.
+
+I'll run the disk and documentation to Brad's office, and someone (John?) will then generate the paperwork that goes with it.  Brad will ship it to Tim Koschmann, we will bill him, etc. etc. etc., and then Tim will send us the disk back.
+
+I'm presuming Tim has already bought Medley, so he should already have a normal Medley kit (manuals, floppies, etc.).
+
+Sound right?
+
+-Frank.
+
+*start*
+00366 00024 US 
+Date:  9 Feb 89 17:53
+From: Frank Shih:AISNorth:Xerox
+Subject: prolog ... another file
+To: Weisblatt:AISNorth:Xerox, Sybalsky:AISNorth:Xerox, Sweat:AISNorth:Xerox, Sagalowicz:AISNorth:Xerox, Burns:AISNorth:Xerox
+cc: Frank Shih:AISNorth:Xerox
+
+Ooops, how could I forget the microcode?  Add the following:
+
+{ERIS}<PrologCore>PrologDove.db;3
+
+
+
+*start*
+00451 00024 US 
+Date: 17 Mar 89 10:52
+From: Carl Gadener:MV:envos
+Subject: Prolog more keys
+To: Shih:MV:envos, Sybalsky:MV:envos
+cc: Carl Gadener:MV:envos, AIsupport:MV:envos, Scot Reid:MV:envos
+
+Gave Tim Koschman two more temporary keys for Beta testing.
+Expirationdate : 30-MAY-89
+
+These machines are to be used by SIU which intends to purchase two copies. We'll give them non-expirable keys as soon as they send us a purchase order.
+
+Carl
+
+*start*
+02739 00024 USm
+Date: 17 Mar 89 18:30
+From: Frank Shih:MV:envos
+Subject: Re: XQP
+In-Reply-to: James Little:ih:ail's message of 16 Mar 89 02:16
+To: James Little:ih:ail
+cc: Shih:MV:envos, John D. Sybalsky:MV:ENVOS, MVINES:ih:ail
+
+[Sorry to reply so late, I was out sick this week -FS]
+
+Re:  I was informed by John Sybalsky that you were working on a new version of XQP. We may have a few customers who would like a copy of it even at beta test. Can you send us a copy of the sysout and documentation.
+
+Hmm, well, there are several issues:
+
+WHICH XQP
+
+There were actually two "new versions" of XQP (both are *only* available on the 1186):
+
+	XQP2.0-Lyric, and
+	XQP2.0-Medley1.1
+
+Which only differed in which basic Lisp code was mixed in with the Prolog (to build the sysout)  They both share the Lyric 1186 Prolog ucode (i.e. no merged Prolog ucode with Medley ucode).
+
+As I recall, Xerox contracted with AIL to test XQP2.0-Lyric; we received your test results, and fixed most of the bugs.
+XQP2.0-Medley's official status is a bit hazy, in terms of our relationship with Quintus.  XQP2.0-Lyric is clearly covered by our agreement with Quintus, I am unsure about XQP2.0-Medley.
+
+UNSUPPORTED
+
+Both versions are "unsupported" products, in that we make no warrantee as to its functionality, and no commitment to fixing any bugs which exist.
+
+We do know that the Lyric ucode (and thus both versions of XQP) have occasionally 9305'ed, we think due to a microcode bug.  Envos doesn't have sufficient economic reason (due to lack of customer demand) for fixing bugs in Prolog.
+
+TEST LEVEL
+
+Unsupported also means, XQP has not been tested as rigorously as our other products (e.g. no alpha, beta tests, etc.).  We do have an informal XQP2.0-Medley beta test currently ongoing with a customer site, but we will in all likelihood not fix any bugs which are uncovered.  However, if they say its useable, that's a good indicator.
+
+DISTRIBUTION MEDIA
+
+We are currently only distibuting XQP on an 1186 disk (190Mb, I think), which ups the price a bit but makes installation simpler.  The price isn't too high though, because of the unsupported nature of the product.
+
+Re:  Can you send us a copy of the sysout and documentation.
+
+Which version are you interested in?  What distribution channel/media are you interested in?  I can probably give you access to an XNS server, if you just want to try it out.
+
+Having never personally dealt with AIL, is there some existing procedure (do you buy it?  Do we need a letter from you?  Is XQP covered under some existing royalty arrangement?)
+
+-Frank.
+ 
+
+        
+TIMESROMAN 
+         
+TIMESROMAN 
+           Ô      6       
+      r             |             Q             „      
+ 
+zº*start*
+00410 00024 USm
+Date: 16 Mar 89 02:16
+From: James Little:ih:ail
+Subject: XQP
+To: Shih:MV:envos
+cc: John D. Sybalsky:MV:ENVOS, MVINES:ih:ail, James Little:ih:ail
+
+Frank,
+	I was informed by John Sybalsky that you were working on a new version of XQP. We may have a few customers who would like a copy of it even at beta test. Can you send us a copy of the sysout and documentation.
+
+
+james little
+AILtd
+

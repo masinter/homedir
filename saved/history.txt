@@ -1,0 +1,21 @@
+;; This buffer is for text that is not saved, and for Lisp evaluation.
+;; To create a file, visit it with C-x C-f and enter text in its buffer.
+
+  git branch -a --no-merged
+20118  git checkout IBM-EGA-fonts
+20119  git whatchanged
+20120  git whatchanged fonts
+20121  cd fonts/displayfonts/c0/
+20122  ls ibm*
+20125  git mv ibm14.strike IBM14-MRR-C0.DISPLAYFONT
+20126  git mv ibm16.strike IBM16-MRR-C0.DISPLAYFONT
+20128  git mv ibmrev14.strike IBMREV14-MRR-C0.DISPLAYFONT
+20130  git mv ibm-us14.strike IBM-US14
+20131  git mv ibmrev16.strike IBMREV16-MRR-C0.DISPLAYFONT
+20133  git mv ibm-us16.strike IBM-US16-MRR-C0.DISPLAYFONT
+20134  git branch -a
+20135  git status
+20136  git mv IBM-US14 IBM-US14-MRR-C0.DISPLAYFONT
+20138  git commit -m "move to names that will be recognized"
+20139  git push
+20140  git status

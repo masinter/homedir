@@ -1,0 +1,6 @@
+#!/bin/sh
+
+cd ~
+rm bin
+ln -s homedir/bin
+ln -s homedir/.emacs
