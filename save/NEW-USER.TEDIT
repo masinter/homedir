@@ -1,0 +1,17 @@
+This is Medley running on https://online.interlisp.org
+
+To get started, there's a tutorial on YouTube about using windows,
+  menus, mouse buttons, character. But you can try it here:
+
+   > open a Common Lisp exec
+
+   > open an Interlisp exec
+
+   > use of CAPS in Interlisp
+
+  > the "who line" at top
+               (from old Stanford/MIT AI)
+    > Trying out the primer
+
+   > go through the primer
+
