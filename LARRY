@@ -1,13 +1,12 @@
 (DEFINE-FILE-INFO PACKAGE "INTERLISP" READTABLE "INTERLISP" BASE 10)
 
-(FILECREATED "30-Mar-2023 07:49:06" {DSK}<home>larry>il>homedir>LARRY.;3 14489  
+(FILECREATED "29-Apr-2023 12:34:35" {DSK}<home>larry>il>homedir>LARRY.;4 14738  
 
       :EDIT-BY "lmm"
 
-      :CHANGES-TO (VARS LARRYCOMS)
-                  (FUNCTIONS DE)
+      :CHANGES-TO (FNS SHOWDIFFS)
 
-      :PREVIOUS-DATE "24-Mar-2023 06:35:44" {DSK}<home>larry>il>homedir>LARRY.;2)
+      :PREVIOUS-DATE "30-Mar-2023 07:49:06" {DSK}<home>larry>il>homedir>LARRY.;3)
 
 
 (PRETTYCOMPRINT LARRYCOMS)
@@ -242,16 +241,22 @@
     (HCFILES "{DSK}<home>larry>envos>" "{DSK}<home>larry>medley>tmp>psfiles>"])
 
 (SHOWDIFFS
-  [LAMBDA (DELETEFLG)                                        (* ; "Edited 20-Oct-2022 08:44 by lmm")
-    (FOR X IN FILELST BIND Y Z P E WHEN [SETQ Y (CDR (GET X 'FILE]
+  [LAMBDA (DELETEFLG FILES)                                  (* ; "Edited 29-Apr-2023 12:34 by lmm")
+                                                             (* ; "Edited 20-Oct-2022 08:44 by lmm")
+    (AND (NULL FILES)
+         (OR (LISTP DELETEFLG)
+             (AND DELETEFLG (NEQ DELETEFLG T)))
+         (SETQ FILES DELETEFLG))
+    (FOR X INSIDE FILES BIND Y Z P E WHEN [SETQ Y (CDR (GET X 'FILE]
        DO (PRINTOUT T X Y T)
           (FOR C IN Y DO (FOR D IN (CDR C) DO (PRINTOUT T X " " (CAR C)
                                                      " " D ": " [SETQ P (COMPAREDEFS
                                                                          D
                                                                          (CAR C)
-                                                                         '(NIL FILE]
+                                                                         '(FILE NIL]
                                                      T T)
-                                              (IF (AND DELETEFLG (EQ P 'SAME))
+                                              (IF (AND (EQ T DELETEFLG)
+                                                       (EQ P 'SAME))
                                                   THEN (DREMOVE D C)))
                          (IF (AND DELETEFLG (NULL (CDR C)))
                              THEN (DREMOVE C (GET X 'FILE])
@@ -315,7 +320,7 @@
 
 (FONTSET 'LARGER T)
 
-(DEFMACRO DE (X Y &REST Z)                                   (* ; "Edited 23-Oct-2022 07:30 by lmm")
+(DEFMACRO DE (X Y &REST Z)                                   (* ; "Edited 23-Oct-2022 07:30 by lmm")
    `(DEFINEQ [,X (LAMBDA ,Y
                    ,@Z]))
 (DECLARE%: DONTEVAL@LOAD DOEVAL@COMPILE DONTCOPY COMPILERVARS 
@@ -327,8 +332,8 @@
 (ADDTOVAR LAMA )
 )
 (DECLARE%: DONTCOPY
-  (FILEMAP (NIL (4940 12022 (3WAY 4950 . 5411) (CLOSEI 5413 . 5767) (COMPAREMOVDS 5769 . 7280) (
-FINDFONTVARS 7282 . 7737) (LOADALL 7739 . 8371) (LOOPSCOMPARE 8373 . 9372) (CDIRS 9374 . 9860) (
-LOWESTVERSION 9862 . 10256) (HCENVOS 10258 . 10459) (SHOWDIFFS 10461 . 11466) (shell 11468 . 12020)) (
-14162 14328 (DE 14162 . 14328)))))
+  (FILEMAP (NIL (4906 12279 (3WAY 4916 . 5377) (CLOSEI 5379 . 5733) (COMPAREMOVDS 5735 . 7246) (
+FINDFONTVARS 7248 . 7703) (LOADALL 7705 . 8337) (LOOPSCOMPARE 8339 . 9338) (CDIRS 9340 . 9826) (
+LOWESTVERSION 9828 . 10222) (HCENVOS 10224 . 10425) (SHOWDIFFS 10427 . 11723) (shell 11725 . 12277)) (
+14419 14577 (DE 14419 . 14577)))))
 STOP
