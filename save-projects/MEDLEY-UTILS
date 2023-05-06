@@ -1,0 +1,179 @@
+(DEFINE-FILE-INFO PACKAGE "INTERLISP" READTABLE "XCL" BASE 10)
+
+(FILECREATED "23-Apr-2023 06:42:39" |{DSK}<home>larry>il>medley>internal>MEDLEY-UTILS.;2| 10256  
+
+      :EDIT-BY "lmm"
+
+      :CHANGES-TO (VARS OKLIBRARY)
+
+      :PREVIOUS-DATE " 4-Aug-2022 09:50:04" |{DSK}<home>larry>il>medley>internal>MEDLEY-UTILS.;1|)
+
+
+(PRETTYCOMPRINT MEDLEY-UTILSCOMS)
+
+(RPAQQ MEDLEY-UTILSCOMS ((FNS GATHER-INFO MAKE-FULLER-DB MEDLEY-FIX-LINKS MEDLEY-FIX-DATES)
+                         (VARS MEDLEY-FIX-DIRS OKSOURCES OKLIBRARY OKLISPUSERS OKINTERNAL)
+                         (FNS MAKE-EXPORTS-ALL MAKE-WHEREIS-HASH)))
+(DEFINEQ
+
+(GATHER-INFO
+  (LAMBDA (PHASE)                                         (* \; "Edited 26-Dec-2021 18:56 by larry")
+                                                          (* \; "Edited 24-Oct-2021 09:43 by larry")
+    (SELECTQ PHASE
+        (ALL (|for| I |from| 0 |to| 4 |do| (GATHER-INFO I)))
+        (0 (SETQ SYSFILES (UNION SYSFILES FILELST))
+           (SETQ FILELST NIL)
+           (FILESLOAD (SOURCE)
+                  SYSEDIT))
+        (1 (SETQ LOADEDFILES (|for| X |in| LOADEDFILELST |collect| (FILENAMEFIELD X 'NAME)))
+           (FILESLOAD FILESETS)
+           (SETQ ALLFILESETSFILES (|for| X |in| FILESETS |join| (APPEND (EVAL X))))
+           (SETQ SOURCES (|for| X |in| (DIRECTORY (MEDLEYDIR "sources" "*.*;" T))
+                            |when| (NOT (MEMB (FILENAMEFIELD X 'EXTENSION)
+                                              '(LCOM DFASL TEDIT TXT)))
+                            |collect| (FILENAMEFIELD X 'NAME))))
+        (-1 (PRINTOUT T " loaded files not in SYSFILES or FILELST: "
+                   (|for| X |in| LOADEDFILES |when| (NOT (OR (FMEMB X SYSFILES)
+                                                             (FMEMB X FILELST))) |collect| X)
+                   T)
+            (PRINTOUT T "Sources not loaded: " (CL:SET-DIFFERENCE SOURCES (APPEND ALLFILESETSFILES 
+                                                                                 LOADEDFILES))
+                   T)
+            (PRINTOUT T "Files in FILESETS not loaded " (CL:SET-DIFFERENCE ALLFILESETSFILES 
+                                                               LOADEDFILES)
+                   T))
+        (2 (SETQ DEFINEDFNS (LET ((DEFD NIL))
+                                 (MAPATOMS (FUNCTION (CL:LAMBDA (X)
+                                                            (CL:WHEN (GETD X)
+                                                                (CL:SETQ DEFD (CONS X DEFD))))))
+                                 DEFD))
+           (|for| X |in| DEFINEDFNS |when| (CCODEP X)
+              |do| (LET ((Y (PUTPROP X 'CCC (CALLSCCODE X))))
+                        (|for| REV |in| '(BLOCK-CALLED-BY CALLED-BY SPECIAL-BY GLOBAL-BY)
+                           |as| VAL |in| Y |do| (|for| S |in| VAL
+                                                   |do| (PUTPROP S REV (CONS X (GETPROP S REV)))))))
+           (SETQ CALLEDFNS NIL)
+           (MAPATOMS (FUNCTION (LAMBDA (X)
+                                 (|if| (AND (NOT (GETD X))
+                                            (GETPROP X 'CALLED-BY))
+                                     |then| (CL:PUSH X CALLEDFNS))))))
+        (-2 (PRINTOUT T "Functions called and not defined" CALLEDFNS T))
+        (3 (|for| X |in| SYSFILES
+              |do| (LOAD X 'PROP)
+                   (PUTPROP X 'CONTENT (READFILE X))
+                   (|for| EXR |in| (GETPROP X 'CONTENT)
+                      |do| (SELECTQ (CAR EXR)
+                               (DEFINEQ (|for| DFN |in| (CDR EXR)
+                                           |do| (|if| (EQUAL (CADR DFN)
+                                                             (GETPROP (CAR DFN)
+                                                                    'EXPR))
+                                                    |then| (PRINTOUT T (CAR DFN)
+                                                                  " ")
+                                                          (PUTPROP (CAR DFN)
+                                                                 'EXPR
+                                                                 (CADR DFN))
+                                                  |else| (PRINTOUT T (CAR DFN)
+                                                                "* "))))
+                               NIL)))
+           (SETQ ALLCONTENT (|for| X |in| SYSFILES |collect| (CONS X (GETPROP X 'CONTENT))))
+                                                             (* \; " don't edit with SEDIT")
+           (LET (DUPS)
+                (|for| X |in| SYSFILES
+                   |do| (|for| FN |in| (FILEFNSLST X)
+                           |do| (|if| (GETPROP FN 'WHEREIS)
+                                    |then| (NCONC1 (GETPROP FN 'WHEREIS)
+                                                  X)
+                                          (OR (FMEMB FN DUPS)
+                                              (SETQ DUPS (CONS FN DUPS)))
+                                  |else| (PUTPROP FN 'WHEREIS (LIST X)))))
+                (SETQ DUPFNS DUPS))
+           (SETQ NO-SOURCE (|for| X |in| DEFINEDFNS |when| (NOT (GETPROP X 'EXPR)) |collect| X)))
+        (-3 (PRINTOUT T "Functions compiled but no expr" NO-SOURCE T)
+            (PRINTOUT T "Functions on more than one file: " DUPFNS T))
+        (4 (PRINTOUT T T "STARTING MASTERSCOPE PHASE ON " (DATE)
+                  T)
+           (FILESLOAD (SOURCE)
+                  SYSEDIT)
+           (|for| X |in| SYSFILES |do| (MSNOTICEFILE X))
+           (|for| X |in| SYSFILES |do| (PRINTOUT T T "Analyzing " X T)
+                                       (MASTERSCOPE `(ANALYZE ON ,(KWOTE X)))))
+        (-4 "No queries yet")
+        (HELP))))
+
+(MAKE-FULLER-DB
+  (LAMBDA NIL                                             (* \; "Edited 16-Jul-2022 22:07 by larry")
+                                                          (* \; "Edited 20-Jun-2022 17:23 by larry")
+    (FILESLOAD (SOURCE)
+           FILESETS)
+    (DRIBBLE (MEDLEYDIR "tmp" "fuller.dribble" T T))
+    (DOFILESLOAD (SUBSET (APPEND OKSOURCES OKLIBRARY OKLISPUSERS OKINTERNAL)
+                        'FINDFILE))
+    (GATHER-INFO 'ALL)
+    (MASTERSCOPE '(WHO CALLS XYZZY))
+    (DUMPDATABASE NIL (MKATOM (MEDLEYDIR "tmp" "fuller.database" T T)))
+    (DRIBBLE)
+    (MAKESYS (MEDLEYDIR "tmp" "fuller.sysout" T T)
+           "Welcome to Fuller sysout")))
+
+(MEDLEY-FIX-LINKS
+  (LAMBDA (UNIXPATH)                                      (* \; "Edited 18-Jan-2021 12:01 by larry")
+    (OR UNIXPATH (SETQ UNIXPATH (UNIX-GETENV "MEDLEYDIR"))
+        (ERROR "No Directory"))                           (* \; "Edited 18-Jan-2021 11:45 by larry")
+    (|ShellCommand| (CONCAT "cd " UNIXPATH " && /bin/sh scripts/fixlinks && /bin/sh /tmp/doit"))))
+
+(MEDLEY-FIX-DATES
+  (LAMBDA (DIRS)                                          (* \; "Edited 28-Jan-2021 12:15 by larry")
+    (|for| X |in| (OR DIRS MEDLEY-FIX-DIRS) |join| (FIX-DIRECTORY-DATES (MEDLEYDIR (PRINT X T))))))
+)
+
+(RPAQQ MEDLEY-FIX-DIRS ("sources" "library" "lispusers" "internal" "greetfiles" "doctools"))
+
+(RPAQQ OKSOURCES (RENAMEFNS VMEM READSYS CASH-FILE HASH-FILE MEDLEYDIR MAKEINIT))
+
+(RPAQQ OKLIBRARY
+       (POSTSCRIPTSTREAM CHATTERMINAL DMCHAT CHAT PRESS READNUMBER EDITBITMAP IMAGEOBJ TEDIT HRULE 
+              TABLEBROWSER FILEBROWSER GRAPHER SPY WHERE-IS COPYFILES MSANALYZE MSPARSE MSCOMMON 
+              MASTERSCOPE UNIXCOMM UNIXPRINT UNICODE HASH CLIPBOARD UNIXCHAT VT100KP VTCHAT SKETCH 
+              SKETCHBMELT SCALEBITMAP SKETCHOBJ SKETCHEDIT SKETCHELEMENTS SKETCHOPS MATMULT SAMEDIR 
+              BROWSER))
+
+(RPAQQ OKLISPUSERS (THINFILES ISO8859IO DINFO HELPSYS MODERNIZE WHEELSCROLL PRETTYFILEINDEX WHO-LINE
+                          BACKGROUND-YIELD OBJECTWINDOW REGIONMANAGER COMPARETEXT EXAMINEDEFS 
+                          COMPARESOURCES COMPAREDIRECTORIES PSEUDOHOSTS DATEFORMAT-EDITOR DOC-OBJECTS
+                          EQUATIONS BICLOCK FILEWATCH LIFE IDLEHAX GITFNS TMAX IMTOOLS))
+
+(RPAQQ OKINTERNAL (MEDLEY-UTILS))
+(DEFINEQ
+
+(MAKE-EXPORTS-ALL
+  (LAMBDA NIL                                             (* \; "Edited  9-Mar-2021 16:11 by larry")
+                                                             (* "Edited May 3, 2018 by Ron Kaplan--relative to MEDLEYDIR/lispcore/.  Don't know why it does the CORE/RENAME")
+                                                             (* 
+          "Edited Aug 17 94 by Sybalsky -- point it to /king/export/lispcore as the truth directory.")
+                                                             (* 
+                        "Edited July 5, 1990 by Sybalsky -- point it to Pele as the truth directory.")
+                                                             (* 
+                                                             "Edited September 29, 1986 by van Melle")
+    (CNDIR (MEDLEYDIR "sources"))
+    (LOAD 'FILESETS)
+    (GATHEREXPORTS EXPORTFILES (MEDLEYDIR "tmp" "exports.all" T))))
+
+(MAKE-WHEREIS-HASH
+  (LAMBDA NIL                                               (* \; "Edited 12-Mar-2022 12:46 by rmk")
+                                                          (* \; "Edited 24-Mar-2021 13:26 by larry")
+    (LET ((FILING.ENUMERATION.DEPTH 2)
+          HASHFILE)
+         (DRIBBLE (MEDLEYDIR "tmp" "whereis.dribble" T))
+         (SETQ HASHFILE (XCL::WHERE-IS-NOTICE (MEDLEYDIR "tmp" "whereis.hash-tmp" T)
+                               :FILES
+                               (|for| X |in| MEDLEY-FIX-DIRS |collect| (CONCAT (MEDLEYDIR X)
+                                                                              "*.;"))
+                               :HASH-FILE-SIZE 60000 :NEW T))
+         (RENAMEFILE HASHFILE (MEDLEYDIR "tmp" "whereis.hash" T))
+         (DRIBBLE))))
+)
+(DECLARE\: DONTCOPY
+  (FILEMAP (NIL (621 7378 (GATHER-INFO 631 . 6041) (MAKE-FULLER-DB 6043 . 6733) (MEDLEY-FIX-LINKS 6735
+ . 7132) (MEDLEY-FIX-DATES 7134 . 7376)) (8440 10233 (MAKE-EXPORTS-ALL 8450 . 9409) (MAKE-WHEREIS-HASH
+ 9411 . 10231)))))
+STOP
