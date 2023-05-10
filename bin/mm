@@ -1,0 +1,9 @@
+#!/bin/sh
+
+echo running medley via cygwin SDL with no nethub networking
+
+export LOGINDIR=$HOME/il
+cd $LOGINDIR/medley
+
+./run-medley -prog $LOGIN/maiko/build/lde -noscroll -dimensions 1880x1016 $@
+

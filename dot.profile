@@ -8,6 +8,9 @@
 # for ssh logins, install and configure the libpam-umask package.
 #umask 022
 
+echo running .profile
+
+
 # if running bash
 if [ -n "$BASH_VERSION" ]; then
     # include .bashrc if it exists
@@ -16,16 +19,3 @@ if [ -n "$BASH_VERSION" ]; then
     fi
 fi
 
-# set PATH so it includes user's private bin if it exists
-if [ -d "$HOME/bin" ] ; then
-    PATH="$HOME/bin:$PATH"
-fi
-
-# set PATH to include medley lsee
-# and homedir files
-if [ -d "$HOME/il/homedir/bin" ] ; then
-    PATH="$HOME/il/homedir/bin:$PATH"
-fi
-
-# set Lisp home
-export LOGINDIR=$HOME/il

@@ -1,3 +1,14 @@
-if [ -f ~/.bashrc ]; then . ~/.bashrc; fi
+echo running .bash_aliases
+
+
+
+. $HOME/.bashrc
+
+
+
+
+
+
+
 
 

@@ -1,4 +1,6 @@
 ##alias rmver='find . -name "*~" -exec rm {} \;'
+echo running .bash_aliases
+
 alias CD=cd
 alias BG=bg
 alias FG=fg

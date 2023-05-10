@@ -1,35 +1,25 @@
-#!/bin/sh
+#!/bin/sh -x
 
 cd ~
-echo setup ~/bin
-rm -rf bin
-cp -pr il/homedir/bin bin
-ls -l bin
+export HOME=`pwd`
+export LOGINDIR=$HOME/il
+homedir=$LOGINDIR/homedir
 
-echo setup ~/.emacs
+cd $HOME
+
 rm -f .emacs
-cp -p il/homedir/dot.emacs.el .emacs
-ls -l .emacs
+ln -s $homedir/dot.emacs.el .emacs
 
-echo setup ~/.bashrc
 rm -f .bashrc
-cp -p il/homedir/dot.bashrc .bashrc
-ls -l .bashrc
+ln -s $homedir/dot.bashrc .bashrc
 
-echo setup ~/.bash_aliases
 rm -f .bash_aliases
-cp -p il/homedir/dot.bash_aliases .bash_aliases
-ls -l .bash_aliases
+ln -s $homedir/dot.bash_aliases .bash_aliases
 
-echo setup ~/.profile
-rm -f .profile .bash-profile
-cp -p il/homedir/dot.profile .profile
-cp -p il/homedir/dot.bash_profile .bash_profile
-ls -l .profile .bash_profile
+rm -f .bash_profile
+ln -s $homedir/dot.bash_profile .bash_profile
 
+cd $LOGINDIR
+rm -f INIT
+ln -s $homedir/INIT
 
-echo setup INIT
-rm -f il/INIT
-cd il
-cp -p homedir/INIT INIT
-ls -l homedir/INIT
