@@ -5,6 +5,6 @@ echo running medley via cygwin SDL with no nethub networking
 export LOGINDIR=$HOME/il
 cd $LOGINDIR/medley
 
-./run-medley -prog $LOGINDIR/maiko/build/lde --display SDL $@  
+./run-medley -prog $LOGINDIR/maiko/build/lde -display SDL $@  
 
 ### -noscroll -dimensions 1880x1016 \
