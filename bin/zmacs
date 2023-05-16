@@ -1,3 +1,0 @@
-#!/bin/sh
-args=$@
-~/../../../apps/emacs/bin/runemacs.exe $args
