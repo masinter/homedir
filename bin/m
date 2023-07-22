@@ -1,6 +1,11 @@
 #!/bin/sh
 
+if [! -d .git ] ; then
+    echo No ./.git, trying cd ~/il/medley
+    cd ~/il/medley
+fi
+
 echo running medley with no nethub networking
 
-cd ~/il/medley
+
 ./run-medley -noscroll -dimensions 1880x1016 $@
