@@ -1,6 +1,6 @@
 #!/bin/sh
 
-if [! -d .git ] ; then
+if [ ! -d .git ] ; then
     echo No ./.git, trying cd ~/il/medley
     cd ~/il/medley
 fi
