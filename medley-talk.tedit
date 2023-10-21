@@ -1,221 +1,0 @@
-Residential environment supports
-Incremental Development 
-
- A "residential" environment is one in which you define, edit, debug in the live environment; write out to files to save for future session.  The system tracks what changed. Features work together.
-Demos of examples:
-DWIM - Do What I Mean, Spelling Correction
-
-(DEFINEQ (FOO1 (X) (PLUSS X X]     <-- PLUS misspelled. 
-                                   < Note [] superparenthesis.
-PP FOO1                                      
-(FOO1 6]
-y
-PP FOO1
-History and UNDO: Interlisp was the first. DWIM changes are undoable.
-
-??
-UNDO <dwim event>
-PP* FOO1
-2
-
-- File manager tracks what's been defined or changed. The file "coms" are like a manifest -determines what goes where.
-
-FILES?)           
-y FILEB
-(CLEANUP)
-SEE FILEB
-- Helpsys and DInfo interactive docs
-MAN INFILE
-MAN CL:WITH-OPEN-FILE
-MAN CLHS.OPENER
-<right click DInfo>
-- Masterscope (interactive cross reference)
-LOAD(HELPSYS PROP)
-. ANALYZE ON HELPSYS
-. SHOW WHERE ANY CALLS CLHS.OPENER
-USE EDIT FOR SHOW
-. SHOW PATHS FROM HELPSYS
-2
-
-Common Lisp and Interlisp Integration
-an Inter-medley of Uncommon Lisps
-- freely intermix CL and IL function, macro, variable definitions
-- All datatypes are common: lists, NIL, symbols, arrays, strings, structures, numbers
-- many functions and special forms are the same: CAR, COND, ED
-- Some are slightly different: CL:EVAL vs. IL:EVAL, CL:LAMBDA vs. IL:LAMBDA, ...
-- Extend CL to include IL and IL to include CL
-- Common Lisp definitions and declarations managed by Interlisp environment
-Demo: 
-. SHOW WHERE ANY ON HELPSYS CALLS CL:WHEN
-USE EDIT FOR SHOW
-2
-
- Medley Structure editors 
-EDITMODE(TELETYPE)  original structure editor: powerful, programmable, short commands (BO 3) P (SW 1 2). Useful for editing huge list structures or Lisp functions.
-EDITMODE(DEDIT)    (Load it to try). Like the TTY editor with menu and showing the results in a window.
-EDITMODE(SEDIT:SEDIT)  Default editor. SEdit maintains illusion that you are editing structure. Parentheses are balanced at all times, but you can just type and backspace. Keyboard controls and attached menu.
-     Common to all: user never counts parentheses, modifies whitespace, or needs to fiddle with line breaks or indentation
-2
-
-The Virtual Machine and OS
-- D-machines had microcode to interpret a bytecoded insruction set. Subsequently, the microcode was reimplemented in C (named"maiko".
-- "Sysouts" (memory images) can be moved from machine to machne; only maiko needs to be compiled for each OS and chip architecture.
-- Medley is small (relatively speaking). Bytecodes are compact. Medley online uses 16MB/user (64MB max). Installed, 256mb max. Time to make new image 15 seconds; restart a saved image "in the blink of an eye". 
-- Interlisp-D was the whole operating system:  scheduler, window manager, network, drivers. Now can rely on host OS for device drivers
-2
-2
-
-
-GIT: A Repository for Medley Definitions
-Conventionally, GIT tracks and compares files
-- Change detection and presentation based on line-editing semantics:  Mismatching character sequence => significant difference
-Medley's source files:   external archives for structured definitions with metadata
-- Saved and loaded, maybe printed, but never edited
-- A given definition can be represented in different (but semantically equivalent) line and character sequences
-Medley interface to GIT:  Definition-based change tracking  
-     P(ull)R(equest)C(ompare)   command   (demo)
- - Retrieve changed files from GIT, find/parse PR vs master alternative definitions, compare as Lisp-structure differences
-Idea: load and manage definitions @ commit level granularity
- - If function FOO is included in commits C and D, definitions FOO;C and FOO;D are co-resident.
-2
-2
-
-BACK TO POWERPOINT
-(Following presentation pages were removed, covered by powerpoint presentation)
-2
-
-Medley Interlisp
-2023 Project Update
-18 March 2023
-Interlisp.org
-2
- 
-What is Medley Interlisp?
-- The software for the Xerox Lisp machines, developed from 1960's (BBN), thru 1970's and 80's (Xerox), and 90's (Envos, Venue)
-- ACM Software System Award 1992
-      The features of structure editing, source code management, code analysis and cross-referencing combined to support rapid incremental development. The 1992 ACM Software System Award was awarded to the Interlisp system for pioneering work in programming environments.
--  Then: expensive, slow, unwieldy, and .,, unavailable
-- Now: on modern hardware of all sizes, 1000 times faster, open source ... enjoy
-2
-
- What have we been doing?
-+ Adapting the system to current environments and standards
-	hardware: keyboard, mouse, display, CPU (64bit, little endian)
-	software: standard C, Unicode, Posix, UI Guidelines
-+ Lower barriers to entry
-+ Demonstrate unique and original features
-+ Help with revival of other applications built using system
-+ Improve maintainability for future users
-+ Gather and update documentation
-2
-
-Who might use Medley Interlisp?
-- Retrocomputing enthusiasts
-- Researchers, IDE tool creators, looking into ideas
-- Software and AI historians (present and future) 
-- Software archivists (SPN, technical infrastructure)
-- Developers of new applications
-2
-
-Who is involved?
-+ Some of original developers from Xerox PARC (in 70's )
-+ Developers of s using Interlisp (recursive revivers)
-- Open Source contributors   
--  Students of computer science and history
-+ Friends, enthusiasts, and ... you?
-   (OPEN-URL "https://github.com/orgs/interlisp/people")
- (MEDLEY-CONTRIB "medley")
- (MEDLEY-CONTRIB "maiko")
- (MEDLEY-CONRIB "online")
- (MEDLEY-CONTRIB "Interlisp.github.io")
-2
-
-Medley Interlisp is an IDE
-     In Interlisp, you could refer to a function you hadn't written yet, run your code until it broke, and from the break have it pop open an editor with the signature of your function. You could also inspect the values of the arguments passed. You could then write the function and continue the computation. 
-     Similarly if your code broke with an error, you could edit the function on the stack to correct the error, and continue the computation. ...
-     When demonstrating this capability in Interlisp.the response was along the lines of "why would I ever want that?"  ... If you've never used an environment focused on programmer productivity you have no idea how to even think along those lines.    -- Simon Brooke
-2
-
-Revive LispUsers, Library, Internal
-(Favorite LispUsers)
-Some other development tools: SPY, File Browser
-
-2
-
-
-Revive Applications using Interlisp
-Notecards - early HyperText
-Rooms - Screen / Desktop management
-LOOPS - Lisp Object Oriented Programming System (not CLOS)
-Truckin' - LOOPS game for teaching "Knowledge Representation"
-LFG - Lexical Functional Grammar
-.... and others
-2
-
-More on Modernizing Medley
-Goals
-- Adapt Medley UI to current hardware
-- Make Medley work more like current applications for comfort
-Mouse: Wheel Scroll, Window move on title, Window resize on corner. Warning: Exec windows. Consolation: you can do it all with menus. Reduction: some menus are invoked by "middle" mouse button which on some mice is hard to press.
-Keyboard: Desired state: compatible keystrokes. Subtasks: decide what keystrokes do what; slash through umpteen layers of keyboard re-iterpretation.
-Display: Color, high-resolution displays, modern fonts.
-2
-
-Reduce Barriers to Entry
-- Running Online 
-         OPEN-URL("https://www.youtube.com/watch?v=mI3Ga5LyIlI")
-         OPEN-URL("https://online.interlisp.org")
-- Installation Instructions
-        OPEN-URL("https://interlisp.org/running/")
-2
-
-More notes on Running on Modern Systems
-- about K&R C and C standards; type declarations, big-endian vs. little endian, 32 bit vs 64 eliminating errors, file-sytem changes, process handles, bugs left over from 24- to 28-bit address space
-- docker, installers, CO/CI(?), two levels of virtualization
-- online.interlisp.org: connect in seconds. 
-- Mysteries in the code we inherited, "software archeology"
-- Robust "loadup process", all day vs seconds
-- bytecode virtual machine aids portability.
-fb {li}<maiko>bin/makefile-*.*-x
-Linux, Mac, Windows (WSL1, WSL2, Cygwin)
-Docker, FreeBSD, OpenBSD, SunOS5
-x86_64, i386, arm7l, arm64, and older
-2
- 
-Getting Involved
-- Try things out, report new problems, or new reproducible cases
-- Clean up old issues
-(OPEN-URL "https://github.com/interlisp/medley/issues")
-(FILESLOAD PICK)
-PICK ISSUE
-- Network emulation 
--Donate? See our GitHub sponsor page
-
-       .   ˛                                    .   ˛                                    .                                         .      "                                   . H H˙                                   .                                          .                                          /                         T               /       $                   T               .                                          .                                          .                                        /       $                   T               .                                          .                                           .                                          .                                         .                                          .       $                                   .       $                                          OPTIMA          OPTIMA          GACHA           MODERN 
-          GACHA          OPTIMA           OPTIMA          OPTIMA 
-          
-TIMESROMAN $          OPTIMA           OPTIMA              
-   !          
-                             ∆                          +                          #                    =                    .             	                                       F                                                                                 HRULE.GETFN  OPTIMA 
-                        w                                                    
-                                 %                                                         
-                    
-         ,                                       #                                                HRULE.GETFN  OPTIMA 
-               	         %                    "             B             V             ?             Q             /             L                          *                                   HRULE.GETFN  OPTIMA 
-               	                                    ë                    X                    º             {               HRULE.GETFN  OPTIMA 
-               	                             Ü             Ñ                           ¬                           [               HRULE.GETFN  OPTIMA 
-             HRULE.GETFN                              (                    .                          T             4             p             ;                                                                           {             =             `               HRULE.GETFN  OPTIMA 
-             HRULE.GETFN                              P               HRULE.GETFN  OPTIMA 
-                                                                                	     HRULE.GETFN  OPTIMA 
-                                                  !                                                                                          z             8             &                                    HRULE.GETFN  OPTIMA 
-                                            <             @             5                          +             =             +             "               HRULE.GETFN  OPTIMA 
-                                                   5             3             6             !               HRULE.GETFN  OPTIMA                                      9             7                          ,                                                      6                                                    '           	           HRULE.GETFN  OPTIMA                	                            6             í                           HRULE.GETFN  OPTIMA 
-               	         $                          0                            HRULE.GETFN  OPTIMA 
-               	                      $                          $             ;             >             !                            HRULE.GETFN  OPTIMA 
-               	                                          &             =                           ·                    ç             	       /               HRULE.GETFN  OPTIMA 
-                                                  A             2                          3               HRULE.GETFN  MODERN 
-               	         '                    ∆             =             -             <             .             ,                    !             )             !             %           
-      	     HRULE.GETFN  OPTIMA 
-                                     A                        
-         8                          
-           	                      %                                Ù¨z∫
