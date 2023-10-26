@@ -1,9 +1,12 @@
 (DEFINE-FILE-INFO PACKAGE "INTERLISP" READTABLE "INTERLISP" BASE 10)
-(FILECREATED "20-Jul-2023 07:50:45" {DSK}<home>larry>il>homedir>LARRY.;3 15158  
 
-      changes to%:  (VARS LARRYCOMS)
+(FILECREATED "21-Oct-2023 20:12:31" {DSK}<home>larry>il>homedir>LARRY.;2 15148  
 
-      previous date%: "16-May-2023 12:02:08" {DSK}<home>larry>il>homedir>LARRY.;2)
+      :EDIT-BY "lmm"
+
+      :CHANGES-TO (VARS LARRYCOMS)
+
+      :PREVIOUS-DATE "20-Jul-2023 07:50:45" {DSK}<home>larry>il>homedir>LARRY.;1)
 
 
 (PRETTYCOMPRINT LARRYCOMS)
@@ -45,7 +48,8 @@
            (RESTORE-BUTTONS (CONCAT LOGINHOST/DIR "homedir>")
                   T)
            (NLSETQ (POSTSCRIPT.INIT))
-           (FONTSET 'LARGER T))
+           (FONTSET 'LARGER T)
+           (BICLOCK))
         (FUNCTIONS DE)
         (COMMANDS "ED" "SHOW" "WHO")
         (DECLARE%: DONTEVAL@LOAD DOEVAL@COMPILE DONTCOPY COMPILERVARS (ADDVARS (NLAMA shell)
@@ -63,7 +67,7 @@
 
 (MOVD? 'VALUEOF 'IT)
 
-(PUTPROPS LARRY FILETYPE CL:COMPILE-FILE)
+(PUTPROPS LARRY FILETYPE COMPILE-FILE)
 
 [XCL:REINSTALL-ADVICE '(ERROR :IN \DO-DEFINE-FILE-INFO)
        :BEFORE
@@ -89,11 +93,10 @@
 (RPAQQ FB.DEFAULT.INFO (LENGTH CREATIONDATE))
 
 (RPAQQ NEWFONTVARS (\TTYIN.LAST.FONT \TTYIN.LAST.COMMENTFONT \DSKDISPLAY.FONT \DSKDISPLAY.BOLD 
-                              TEDIT.PROMPT.FONT TEDIT.ICON.FONT FB.MENUFONT FB.PROMPTFONT 
-                              FB.BROWSERFONT FB.BROWSER.DIRECTORY.FONT FB.ICONFONT IRM.CREF.FONT 
-                              *WHO-LINE-NAME-FONT* *WHO-LINE-VALUE-FONT* PAGE.WAIT.FONT FW-Font 
-                              *BUTTONS-LABEL-FONT* *BUTTONS-MENU-FONT* \GUARANTEEDDISPLAYFONT 
-                              DEFAULTFONT))
+                          TEDIT.PROMPT.FONT TEDIT.ICON.FONT FB.MENUFONT FB.PROMPTFONT FB.BROWSERFONT
+                          FB.BROWSER.DIRECTORY.FONT FB.ICONFONT IRM.CREF.FONT *WHO-LINE-NAME-FONT* 
+                          *WHO-LINE-VALUE-FONT* PAGE.WAIT.FONT FW-Font *BUTTONS-LABEL-FONT* 
+                          *BUTTONS-MENU-FONT* \GUARANTEEDDISPLAYFONT DEFAULTFONT))
 
 (RPAQQ LCASEFLG NIL)
 
@@ -102,19 +105,19 @@
 (RPAQQ DEFAULTPRINTERTYPE POSTSCRIPT)
 
 (RPAQQ INITIALSLST (("larry" "Larry" "lmm")
-                        ("masinter" "Larry" "lmm")
-                        ("lmm" "Larry" "lmm")
-                        ("pi" "Larry" "lmm")))
+                    ("masinter" "Larry" "lmm")
+                    ("lmm" "Larry" "lmm")
+                    ("pi" "Larry" "lmm")))
 
 (RPAQ INITIALS "lmm")
 
 (RPAQQ IDLE.PROFILE (TIMEOUT 10 DISPLAYFN IDLE.RANDOM SAVEVM 1 LOGOUT 3600))
 
 (RPAQ BICLOCKUSERPROPS `(COLOR BLACK MARKS T DIGITS NIL REGION
-                                   (,(+ (CAR (WINDOWPROP (LOGOW)
-                                                    'REGION))
-                                        27)
-                                    854 130 130)))
+                               (,(+ (CAR (WINDOWPROP (LOGOW)
+                                                'REGION))
+                                    27)
+                                854 130 130)))
 
 (RPAQQ *UPPER-CASE-FILE-NAMES* NIL)
 
@@ -313,22 +316,26 @@
 
 (FONTSET 'LARGER T)
 
-(DEFMACRO DE (X Y &REST Z)                           (* ; "Edited 23-Oct-2022 07:30 by lmm")
+(BICLOCK)
+
+(DEFMACRO DE (X Y &REST Z)                                   (* ; "Edited 23-Oct-2022 07:30 by lmm")
    `(DEFINEQ [,X (LAMBDA ,Y
                    ,@Z]))
 
-(DEFCOMMAND "ED" (&REST LINE) 
+(DEFCOMMAND "ED" (&REST LINE)
    (IF (EQ (CAR (LISTP LINE))
-               'WHERE)
+           'WHERE)
        THEN (MASTERSCOPE (CONS 'EDIT LINE))
      ELSEIF (AND (NULL (CDR LINE))
-                     (LISTP (CAR LINE)))
+                 (LISTP (CAR LINE)))
        THEN (APPLY 'ED (CAR LINE))
      ELSE (CL:APPLY #'ED LINE)))
 
-(DEFCOMMAND "SHOW" (&REST LINE) (MASTERSCOPE (CONS 'SHOW LINE)))
+(DEFCOMMAND "SHOW" (&REST LINE)
+   (MASTERSCOPE (CONS 'SHOW LINE)))
 
-(DEFCOMMAND "WHO" (&REST LINE) (MASTERSCOPE (CONS 'WHO LINE)))
+(DEFCOMMAND "WHO" (&REST LINE)
+   (MASTERSCOPE (CONS 'WHO LINE)))
 (DECLARE%: DONTEVAL@LOAD DOEVAL@COMPILE DONTCOPY COMPILERVARS 
 
 (ADDTOVAR NLAMA shell)
@@ -338,8 +345,8 @@
 (ADDTOVAR LAMA )
 )
 (DECLARE%: DONTCOPY
-  (FILEMAP (NIL (4890 12276 (3WAY 4900 . 5361) (CLOSEI 5363 . 5717) (COMPAREMOVDS 5719 . 7230) (
-FINDFONTVARS 7232 . 7687) (LOADALL 7689 . 8321) (LOOPSCOMPARE 8323 . 9322) (CDIRS 9324 . 9810) (
-LOWESTVERSION 9812 . 10206) (HCENVOS 10208 . 10409) (SHOWDIFFS 10411 . 11720) (shell 11722 . 12274))))
-)
+  (FILEMAP (NIL (4852 12238 (3WAY 4862 . 5323) (CLOSEI 5325 . 5679) (COMPAREMOVDS 5681 . 7192) (
+FINDFONTVARS 7194 . 7649) (LOADALL 7651 . 8283) (LOOPSCOMPARE 8285 . 9284) (CDIRS 9286 . 9772) (
+LOWESTVERSION 9774 . 10168) (HCENVOS 10170 . 10371) (SHOWDIFFS 10373 . 11682) (shell 11684 . 12236)) (
+14389 14555 (DE 14389 . 14555)))))
 STOP
