@@ -15,6 +15,8 @@ do
   # Switch back to the original branch
   git checkout $cb
 
+  echo Merging $pr into master/main
+  
   # Merge the PR branch
   git merge --no-ff --no-edit FETCH_HEAD || exit 1
 done
