@@ -1,7 +1,7 @@
 #!/bin/sh -x
 
 # Fetch the name of the current branch
-cb=$(git branch --show-current)
+cb=$(git branch --show-current | tac)
 
     # List all open pull requests
 op=$(gh pr list --state open --json number -q '.[].number')
