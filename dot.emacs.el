@@ -27,6 +27,8 @@
 	     "/home/larry/winhome/Dropbox")
 	    ((file-exists-p "/mnt/h/My Drive/Dropbox/")
 	     "/mnt/h/My Drive/Dropbox/")
+	    ((file-exists-p "/mnt/g/My Drive/Dropbox/")
+	     "/mnt/g/My Drive/Dropbox/")
 	    (t "~/dropbox")))
 (add-to-list 'load-path (expand-file-name (concat dropbox "/emacs")))
 
