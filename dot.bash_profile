@@ -26,3 +26,4 @@ fi
 
 
 
+source "/home/larry/il/emsdk/emsdk_env.sh"

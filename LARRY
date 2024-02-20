@@ -1,12 +1,12 @@
 (DEFINE-FILE-INFO PACKAGE "INTERLISP" READTABLE "INTERLISP" BASE 10)
 
-(FILECREATED "16-Nov-2023 21:33:59" {DSK}<home>larry>il>homedir>LARRY.;4 15190  
+(FILECREATED "17-Feb-2024 08:24:20" {DSK}<home>larry>il>homedir>LARRY.;4 13912  
 
       :EDIT-BY "lmm"
 
       :CHANGES-TO (VARS LARRYCOMS)
 
-      :PREVIOUS-DATE "21-Oct-2023 20:12:31" {DSK}<home>larry>il>homedir>LARRY.;3)
+      :PREVIOUS-DATE " 7-Feb-2024 10:12:18" {DSK}<home>larry>il>homedir>LARRY.;3)
 
 
 (PRETTYCOMPRINT LARRYCOMS)
@@ -39,11 +39,12 @@
               (*UPPER-CASE-FILE-NAMES* NIL)
               (AUTOBACKTRACEFLG 'ALWAYS!)
               (HOMEDIR (CONCAT LOGINHOST/DIR "homedir>"))
-              (*BUTTONS-SAVE-DIRECTORY* LOGINHOST/DIR))
+              (*BUTTONS-SAVE-DIRECTORY* LOGINHOST/DIR)
+              (NLSETQGAG NIL))
         (FILES BROWSER UNIXYCD PAGEHOLD BICLOCK GITFNS FILEWATCH SAMEDIR MEDLEY-UTILS VTCHAT PICK 
                BUTTONS WDWHACKS IDLEDEMO TILED-SEDIT)
         (FNS 3WAY CLOSEI COMPAREMOVDS FINDFONTVARS LOADALL LOOPSCOMPARE CDIRS LOWESTVERSION HCENVOS 
-             SHOWDIFFS shell)
+             shell)
         (ALISTS (FONTDEFS LARGER))
         (P (FILEWATCH :ON)
            (RESTORE-BUTTONS (CONCAT LOGINHOST/DIR "homedir>")
@@ -70,7 +71,7 @@
 
 (MOVD? 'VALUEOF 'IT)
 
-(PUTPROPS LARRY FILETYPE COMPILE-FILE)
+(PUTPROPS LARRY FILETYPE CL:COMPILE-FILE)
 
 [XCL:REINSTALL-ADVICE '(ERROR :IN \DO-DEFINE-FILE-INFO)
        :BEFORE
@@ -129,6 +130,8 @@
 (RPAQ HOMEDIR (CONCAT LOGINHOST/DIR "homedir>"))
 
 (RPAQ *BUTTONS-SAVE-DIRECTORY* LOGINHOST/DIR)
+
+(RPAQQ NLSETQGAG NIL)
 
 (FILESLOAD BROWSER UNIXYCD PAGEHOLD BICLOCK GITFNS FILEWATCH SAMEDIR MEDLEY-UTILS VTCHAT PICK BUTTONS
        WDWHACKS IDLEDEMO TILED-SEDIT)
@@ -239,27 +242,6 @@
   [LAMBDA NIL                                              (* ; "Edited 26-Jul-2022 12:16 by larry")
     (HCFILES "{DSK}<home>larry>envos>" "{DSK}<home>larry>medley>tmp>psfiles>"])
 
-(SHOWDIFFS
-  [LAMBDA (DELETEFLG FILES)                                  (* ; "Edited 29-Apr-2023 13:29 by lmm")
-                                                             (* ; "Edited 20-Oct-2022 08:44 by lmm")
-    (AND (NULL FILES)
-         (OR (LISTP DELETEFLG)
-             (AND DELETEFLG (NEQ DELETEFLG T)))
-         (SETQ FILES DELETEFLG))
-    (FOR X INSIDE (OR FILES FILELST) BIND Y Z P E WHEN [SETQ Y (CDR (GET X 'FILE]
-       DO (PRINTOUT T X Y T)
-          (FOR C IN Y DO (FOR D IN (CDR C) DO (PRINTOUT T X " " (CAR C)
-                                                     " " D ": " [SETQ P (COMPAREDEFS
-                                                                         D
-                                                                         (CAR C)
-                                                                         '(FILE NIL]
-                                                     T T)
-                                              (IF (AND (EQ T DELETEFLG)
-                                                       (EQ P 'SAME))
-                                                  THEN (DREMOVE D C)))
-                         (IF (AND DELETEFLG (NULL (CDR C)))
-                             THEN (DREMOVE C (GET X 'FILE])
-
 (shell
   [NLAMBDA LINE                                              (* ; "Edited 17-Oct-2022 08:38 by lmm")
                                                             (* ; "Edited  7-Sep-2020 13:28 by rmk:")
@@ -325,7 +307,7 @@
    `(DEFINEQ [,X (LAMBDA ,Y
                    ,@Z]))
 
-(DEFCOMMAND "ED" (&REST LINE)
+(DEFCOMMAND "ED" (&REST LINE) 
    (IF (EQ (CAR (LISTP LINE))
            'WHERE)
        THEN (MASTERSCOPE (CONS 'EDIT LINE))
@@ -334,11 +316,9 @@
        THEN (APPLY 'ED (CAR LINE))
      ELSE (CL:APPLY #'ED LINE)))
 
-(DEFCOMMAND "SHOW" (&REST LINE)
-   (MASTERSCOPE (CONS 'SHOW LINE)))
+(DEFCOMMAND "SHOW" (&REST LINE) (MASTERSCOPE (CONS 'SHOW LINE)))
 
-(DEFCOMMAND "WHO" (&REST LINE)
-   (MASTERSCOPE (CONS 'WHO LINE)))
+(DEFCOMMAND "WHO" (&REST LINE) (MASTERSCOPE (CONS 'WHO LINE)))
 (DECLARE%: DONTEVAL@LOAD DOEVAL@COMPILE DONTCOPY COMPILERVARS 
 
 (ADDTOVAR NLAMA shell)
@@ -348,8 +328,8 @@
 (ADDTOVAR LAMA )
 )
 (DECLARE%: DONTCOPY
-  (FILEMAP (NIL (4894 12280 (3WAY 4904 . 5365) (CLOSEI 5367 . 5721) (COMPAREMOVDS 5723 . 7234) (
-FINDFONTVARS 7236 . 7691) (LOADALL 7693 . 8325) (LOOPSCOMPARE 8327 . 9326) (CDIRS 9328 . 9814) (
-LOWESTVERSION 9816 . 10210) (HCENVOS 10212 . 10413) (SHOWDIFFS 10415 . 11724) (shell 11726 . 12278)) (
-14431 14597 (DE 14431 . 14597)))))
+  (FILEMAP (NIL (4944 11019 (3WAY 4954 . 5415) (CLOSEI 5417 . 5771) (COMPAREMOVDS 5773 . 7284) (
+FINDFONTVARS 7286 . 7741) (LOADALL 7743 . 8375) (LOOPSCOMPARE 8377 . 9376) (CDIRS 9378 . 9864) (
+LOWESTVERSION 9866 . 10260) (HCENVOS 10262 . 10463) (shell 10465 . 11017)) (13170 13336 (DE 13170 . 
+13336)))))
 STOP
