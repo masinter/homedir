@@ -4,7 +4,7 @@
 cb=$(git branch --show-current | tac)
 
     # List all open pull requests
-op=$(gh pr list --state open --json number -q '.[].number')
+op=$(gh pr list --state open --search draft:false --json number -q '.[].number')
 
 # Loop over each open PR
 for pr in $op

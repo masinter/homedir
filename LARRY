@@ -1,18 +1,19 @@
 (DEFINE-FILE-INFO PACKAGE "INTERLISP" READTABLE "INTERLISP" BASE 10)
 
-(FILECREATED "17-Feb-2024 08:24:20" {DSK}<home>larry>il>homedir>LARRY.;4 13912  
+(FILECREATED "19-Mar-2024 20:46:13" {DSK}<home>larry>il>homedir>LARRY.;7 13669  
 
       :EDIT-BY "lmm"
 
-      :CHANGES-TO (VARS LARRYCOMS)
+      :CHANGES-TO (VARS LARRYCOMS WHEELSCROLLDELTA DEFAULTCOPYRIGHTOWNER EDITCHARACTERS CUTEFLG 
+                        **COMMENT**FLG FB.DEFAULT.INFO NEWFONTVARS)
 
-      :PREVIOUS-DATE " 7-Feb-2024 10:12:18" {DSK}<home>larry>il>homedir>LARRY.;3)
+      :PREVIOUS-DATE "10-Mar-2024 08:03:06" {DSK}<home>larry>il>homedir>LARRY.;6)
 
 
 (PRETTYCOMPRINT LARRYCOMS)
 
 (RPAQQ LARRYCOMS
-       [(P (MOVD? 'NILL 'MAKE-EXTERNALFORMAT)
+       ((P (MOVD? 'NILL 'MAKE-EXTERNALFORMAT)
            (BKSYSBUF " ")
            (WINDOWPROP PROMPTWINDOW 'TITLE NIL)
            (DSPFONT '(HELVETICA 18 BRR)
@@ -39,24 +40,18 @@
               (*UPPER-CASE-FILE-NAMES* NIL)
               (AUTOBACKTRACEFLG 'ALWAYS!)
               (HOMEDIR (CONCAT LOGINHOST/DIR "homedir>"))
-              (*BUTTONS-SAVE-DIRECTORY* LOGINHOST/DIR)
-              (NLSETQGAG NIL))
-        (FILES BROWSER UNIXYCD PAGEHOLD BICLOCK GITFNS FILEWATCH SAMEDIR MEDLEY-UTILS VTCHAT PICK 
-               BUTTONS WDWHACKS IDLEDEMO TILED-SEDIT)
+              (*BUTTONS-SAVE-DIRECTORY* LOGINHOST/DIR))
+        (FILES BROWSER BICLOCK GITFNS FILEWATCH SAMEDIR MEDLEY-UTILS VTCHAT PICK BUTTONS WDWHACKS 
+               TILED-SEDIT)
         (FNS 3WAY CLOSEI COMPAREMOVDS FINDFONTVARS LOADALL LOOPSCOMPARE CDIRS LOWESTVERSION HCENVOS 
-             shell)
+             SHOWDIFFS)
         (ALISTS (FONTDEFS LARGER))
         (P (FILEWATCH :ON)
            (RESTORE-BUTTONS (CONCAT LOGINHOST/DIR "homedir>")
                   T)
            (NLSETQ (POSTSCRIPT.INIT))
            (FONTSET 'LARGER T)
-           (BICLOCK))
-        (FUNCTIONS DE)
-        (COMMANDS "ED" "SHOW" "WHO")
-        (DECLARE%: DONTEVAL@LOAD DOEVAL@COMPILE DONTCOPY COMPILERVARS (ADDVARS (NLAMA shell)
-                                                                             (NLAML)
-                                                                             (LAMA])
+           (BICLOCK))))
 
 (MOVD? 'NILL 'MAKE-EXTERNALFORMAT)
 
@@ -131,10 +126,8 @@
 
 (RPAQ *BUTTONS-SAVE-DIRECTORY* LOGINHOST/DIR)
 
-(RPAQQ NLSETQGAG NIL)
-
-(FILESLOAD BROWSER UNIXYCD PAGEHOLD BICLOCK GITFNS FILEWATCH SAMEDIR MEDLEY-UTILS VTCHAT PICK BUTTONS
-       WDWHACKS IDLEDEMO TILED-SEDIT)
+(FILESLOAD BROWSER BICLOCK GITFNS FILEWATCH SAMEDIR MEDLEY-UTILS VTCHAT PICK BUTTONS WDWHACKS 
+       TILED-SEDIT)
 (DEFINEQ
 
 (3WAY
@@ -242,14 +235,26 @@
   [LAMBDA NIL                                              (* ; "Edited 26-Jul-2022 12:16 by larry")
     (HCFILES "{DSK}<home>larry>envos>" "{DSK}<home>larry>medley>tmp>psfiles>"])
 
-(shell
-  [NLAMBDA LINE                                              (* ; "Edited 17-Oct-2022 08:38 by lmm")
-                                                            (* ; "Edited  7-Sep-2020 13:28 by rmk:")
-    [SETQ LINE (CONCATLIST (FOR X IN LINE JOIN (LIST X " "]
-    (CL:WITH-OPEN-FILE (STREAM "{NODIRCORE}shell-dribble.txt" :DIRECTION :IO)
-           (ShellCommand LINE STREAM)
-           (SETFILEPTR STREAM 0)
-           (UNTIL (EOFP STREAM) COLLECT (CL:READ-LINE STREAM :EOF-ERROR-P NIL :EOF-VALUE NIL])
+(SHOWDIFFS
+  [LAMBDA (DELETEFLG FILES)                                  (* ; "Edited 29-Apr-2023 13:29 by lmm")
+                                                             (* ; "Edited 20-Oct-2022 08:44 by lmm")
+    (AND (NULL FILES)
+         (OR (LISTP DELETEFLG)
+             (AND DELETEFLG (NEQ DELETEFLG T)))
+         (SETQ FILES DELETEFLG))
+    (FOR X INSIDE (OR FILES FILELST) BIND Y Z P E WHEN [SETQ Y (CDR (GET X 'FILE]
+       DO (PRINTOUT T X Y T)
+          (FOR C IN Y DO (FOR D IN (CDR C) DO (PRINTOUT T X " " (CAR C)
+                                                     " " D ": " [SETQ P (COMPAREDEFS
+                                                                         D
+                                                                         (CAR C)
+                                                                         '(FILE NIL]
+                                                     T T)
+                                              (IF (AND (EQ T DELETEFLG)
+                                                       (EQ P 'SAME))
+                                                  THEN (DREMOVE D C)))
+                         (IF (AND DELETEFLG (NULL (CDR C)))
+                             THEN (DREMOVE C (GET X 'FILE])
 )
 
 (ADDTOVAR FONTDEFS
@@ -302,34 +307,8 @@
 (FONTSET 'LARGER T)
 
 (BICLOCK)
-
-(DEFMACRO DE (X Y &REST Z)                                   (* ; "Edited 23-Oct-2022 07:30 by lmm")
-   `(DEFINEQ [,X (LAMBDA ,Y
-                   ,@Z]))
-
-(DEFCOMMAND "ED" (&REST LINE) 
-   (IF (EQ (CAR (LISTP LINE))
-           'WHERE)
-       THEN (MASTERSCOPE (CONS 'EDIT LINE))
-     ELSEIF (AND (NULL (CDR LINE))
-                 (LISTP (CAR LINE)))
-       THEN (APPLY 'ED (CAR LINE))
-     ELSE (CL:APPLY #'ED LINE)))
-
-(DEFCOMMAND "SHOW" (&REST LINE) (MASTERSCOPE (CONS 'SHOW LINE)))
-
-(DEFCOMMAND "WHO" (&REST LINE) (MASTERSCOPE (CONS 'WHO LINE)))
-(DECLARE%: DONTEVAL@LOAD DOEVAL@COMPILE DONTCOPY COMPILERVARS 
-
-(ADDTOVAR NLAMA shell)
-
-(ADDTOVAR NLAML )
-
-(ADDTOVAR LAMA )
-)
 (DECLARE%: DONTCOPY
-  (FILEMAP (NIL (4944 11019 (3WAY 4954 . 5415) (CLOSEI 5417 . 5771) (COMPAREMOVDS 5773 . 7284) (
-FINDFONTVARS 7286 . 7741) (LOADALL 7743 . 8375) (LOOPSCOMPARE 8377 . 9376) (CDIRS 9378 . 9864) (
-LOWESTVERSION 9866 . 10260) (HCENVOS 10262 . 10463) (shell 10465 . 11017)) (13170 13336 (DE 13170 . 
-13336)))))
+  (FILEMAP (NIL (4649 11497 (3WAY 4659 . 5120) (CLOSEI 5122 . 5476) (COMPAREMOVDS 5478 . 6989) (
+FINDFONTVARS 6991 . 7446) (LOADALL 7448 . 8080) (LOOPSCOMPARE 8082 . 9081) (CDIRS 9083 . 9569) (
+LOWESTVERSION 9571 . 9965) (HCENVOS 9967 . 10168) (SHOWDIFFS 10170 . 11495)))))
 STOP
