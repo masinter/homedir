@@ -1,10 +1,13 @@
 (DEFINE-FILE-INFO PACKAGE "INTERLISP" READTABLE "INTERLISP" BASE 10)
 
-(FILECREATED "18-Oct-2022 17:15:09" {DSK}<home>larry>ilisp>homedir>INIT.;1 519    
+(FILECREATED " 7-Apr-2024 07:44:09" {DSK}<home>larry>il>homedir>INIT.;2 575    
+
+      :EDIT-BY "lmm"
 
       :CHANGES-TO (VARS INITCOMS)
+                  (FILES LARRY)
 
-      :PREVIOUS-DATE "18-Oct-2022 11:25:43" {DSK}<home>larry>ilisp>INIT.;2)
+      :PREVIOUS-DATE "18-Oct-2022 17:15:09" {DSK}<home>larry>il>homedir>INIT.;1)
 
 
 (PRETTYCOMPRINT INITCOMS)

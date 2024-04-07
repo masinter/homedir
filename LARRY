@@ -1,13 +1,19 @@
 (DEFINE-FILE-INFO PACKAGE "INTERLISP" READTABLE "INTERLISP" BASE 10)
 
-(FILECREATED "19-Mar-2024 20:46:13" {DSK}<home>larry>il>homedir>LARRY.;7 13669  
+(FILECREATED " 7-Apr-2024 07:44:15" {DSK}<home>larry>il>homedir>LARRY.;4 14245  
 
       :EDIT-BY "lmm"
 
-      :CHANGES-TO (VARS LARRYCOMS WHEELSCROLLDELTA DEFAULTCOPYRIGHTOWNER EDITCHARACTERS CUTEFLG 
-                        **COMMENT**FLG FB.DEFAULT.INFO NEWFONTVARS)
+      :CHANGES-TO (FILES MEDLEY-UTILS GITFNS SAMEDIR VTCHAT WDWHACKS TILED-SEDIT)
+                  (VARS LARRYCOMS BREAKREGIONSPEC WHEELSCROLLDELTA DEFAULTCOPYRIGHTOWNER 
+                        CLEANUPOPTIONS EDITCHARACTERS CUTEFLG **COMMENT**FLG FB.DEFAULT.INFO 
+                        NEWFONTVARS)
+                  (FNS COMPAREMOVDS FINDFONTVARS GETLOOPS 3WAY CLOSEI LOADALL LOOPSCOMPARE CDIRS 
+                       LOWESTVERSION HCENVOS SHOWDIFFS)
+                  (ADVICE (ERROR :IN \DO-DEFINE-FILE-INFO))
+                  (ALISTS (FONTDEFS LARGER))
 
-      :PREVIOUS-DATE "10-Mar-2024 08:03:06" {DSK}<home>larry>il>homedir>LARRY.;6)
+      :PREVIOUS-DATE " 5-Apr-2024 23:02:55" {DSK}<home>larry>il>homedir>LARRY.;1)
 
 
 (PRETTYCOMPRINT LARRYCOMS)
@@ -41,9 +47,9 @@
               (AUTOBACKTRACEFLG 'ALWAYS!)
               (HOMEDIR (CONCAT LOGINHOST/DIR "homedir>"))
               (*BUTTONS-SAVE-DIRECTORY* LOGINHOST/DIR))
-        (FILES BROWSER BICLOCK GITFNS FILEWATCH SAMEDIR MEDLEY-UTILS VTCHAT PICK BUTTONS WDWHACKS 
-               TILED-SEDIT)
-        (FNS 3WAY CLOSEI COMPAREMOVDS FINDFONTVARS LOADALL LOOPSCOMPARE CDIRS LOWESTVERSION HCENVOS 
+        (FILES BROWSER BICLOCK GITFNS FILEWATCH SAMEDIR SEDIT-MAN MEDLEY-UTILS VTCHAT PICK BUTTONS 
+               WDWHACKS TILED-SEDIT)
+        (FNS 3WAY CLOSEI COMPAREMOVDS FINDFONTVARS GETLOOPS LOOPSCOMPARE CDIRS LOWESTVERSION HCENVOS
              SHOWDIFFS)
         (ALISTS (FONTDEFS LARGER))
         (P (FILEWATCH :ON)
@@ -126,8 +132,8 @@
 
 (RPAQ *BUTTONS-SAVE-DIRECTORY* LOGINHOST/DIR)
 
-(FILESLOAD BROWSER BICLOCK GITFNS FILEWATCH SAMEDIR MEDLEY-UTILS VTCHAT PICK BUTTONS WDWHACKS 
-       TILED-SEDIT)
+(FILESLOAD BROWSER BICLOCK GITFNS FILEWATCH SAMEDIR SEDIT-MAN MEDLEY-UTILS VTCHAT PICK BUTTONS 
+       WDWHACKS TILED-SEDIT)
 (DEFINEQ
 
 (3WAY
@@ -149,7 +155,8 @@
                                      (WINDOWPROP W 'INSPECTWINDOW)) DO (CLOSEW W])
 
 (COMPAREMOVDS
-  [LAMBDA NIL                                                (* ; "Edited  1-Nov-2022 22:01 by lmm")
+  [LAMBDA NIL                                                (* ; "Edited  7-Apr-2024 07:27 by lmm")
+                                                             (* ; "Edited  1-Nov-2022 22:01 by lmm")
     (FOR PAIR FL WH DEF IN \MAIKO.MOVDS
        DO (PRINTOUT T (CAR PAIR)
                  " => "
@@ -163,8 +170,7 @@
                                                      'NOERROR)
                                               (GETDEF (CAR PAIR)
                                                      'FNS "../SOURCES/MAIKOETHER")
-                                              (HELP (CAR PAIR)
-                                                    "NO 1DEF"))
+                                              (HELP (CAR PAIR "NO 1DEF")))
                                    (OR (FOR LOC IN (WHEREIS (CADR PAIR)
                                                           'FNS T) WHEN (SETQ FL (INFILEP LOC))
                                           WHEN (SETQ DEF (GETDEF (CADR PAIR)
@@ -174,19 +180,20 @@
                                              "NO DEF")))
                  T)
           (AND FL DEF (ED (CADR PAIR)
-                          'FNS FL])
+                          'FNS])
 
 (FINDFONTVARS
-  [LAMBDA NIL                                                (* ; "Edited 21-Oct-2022 21:15 by lmm")
+  [LAMBDA NIL                                                (* ; "Edited  7-Apr-2024 07:30 by lmm")
+                                                             (* ; "Edited 21-Oct-2022 21:15 by lmm")
     (MAPATOMS #'(LAMBDA (X)
                   (AND (BOUNDP X)
                        (FMEMB (TYPENAME (GETTOPVAL X))
                               '(FONTCLASS FONTDESCRIPTOR))
-                       (NOT (ASSOC X FONTVARS)
-                            (NOT (FMEMB X NEWFONTVARS)))
+                       (NOT (ASSOC X FONTVARS))
+                       (NOT (FMEMB X NEWFONTVARS))
                        (PUSH NEWFONTVARS X])
 
-(LOADALL
+(GETLOOPS
   [LAMBDA NIL                                                (* ; "Edited 19-Oct-2022 17:00 by lmm")
     (FILESLOAD LOADLOOPS)
     (LOADLOOPS)
@@ -308,7 +315,7 @@
 
 (BICLOCK)
 (DECLARE%: DONTCOPY
-  (FILEMAP (NIL (4649 11497 (3WAY 4659 . 5120) (CLOSEI 5122 . 5476) (COMPAREMOVDS 5478 . 6989) (
-FINDFONTVARS 6991 . 7446) (LOADALL 7448 . 8080) (LOOPSCOMPARE 8082 . 9081) (CDIRS 9083 . 9569) (
-LOWESTVERSION 9571 . 9965) (HCENVOS 9967 . 10168) (SHOWDIFFS 10170 . 11495)))))
+  (FILEMAP (NIL (5066 12073 (3WAY 5076 . 5537) (CLOSEI 5539 . 5893) (COMPAREMOVDS 5895 . 7460) (
+FINDFONTVARS 7462 . 8021) (GETLOOPS 8023 . 8656) (LOOPSCOMPARE 8658 . 9657) (CDIRS 9659 . 10145) (
+LOWESTVERSION 10147 . 10541) (HCENVOS 10543 . 10744) (SHOWDIFFS 10746 . 12071)))))
 STOP
