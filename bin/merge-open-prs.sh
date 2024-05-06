@@ -21,5 +21,6 @@ do
   git merge --no-ff --no-edit FETCH_HEAD || exit 1
 done
 
-# Push the changes to the remote repository
-git push origin $cb
+### Push the changes to the remote repository
+## echo git push origin $cb
+

@@ -1,6 +1,0 @@
-#!/bin/sh
-
-echo running medley with nethub setup talking to TV-PC
-
-cd ~/il/medley
-./run-medley -nh-host 192.150.23.201 -noscroll -dimensions 1880x1016 $@

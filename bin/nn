@@ -1,6 +1,0 @@
-#!/bin/sh
-
-echo running medley with no nethub networking
-
-cd ~/il/medley
-./medley --noscroll -g 1880x1016 $@
