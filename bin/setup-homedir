@@ -10,14 +10,17 @@ cd $HOME
 rm -f .emacs
 ln -s $homedir/dot.emacs.el .emacs
 
-rm -f .bashrc
+rm -f .bashrc .zshrc
+ln -s $homedir/dot.zshrc .zshrc
 ln -s $homedir/dot.bashrc .bashrc
 
-rm -f .bash_aliases
+rm -f .bash_aliases .zsh_aliases
 ln -s $homedir/dot.bash_aliases .bash_aliases
+ln -s $homedir/dot.zsh_aliases .zsh_aliases
 
-rm -f .bash_profile
+rm -f .bash_profile .zsh_profile
 ln -s $homedir/dot.bash_profile .bash_profile
+ln -s $homedir/dot.zsh_profile .zsh_profile
 
 cd $LOGINDIR
 rm -f INIT

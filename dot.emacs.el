@@ -1,5 +1,4 @@
 ;;; emacs initialization file
-
 (setq debug-on-error t)
 
 (line-number-mode 1)
@@ -22,8 +21,12 @@
 
 
 
-(setq dropbox 
-      (cond ((file-exists-p "/home/larry/winhome/Dropbox")
+(setq dropbox
+
+      
+      (cond ((file-exists-p "/Users/larry/h/My Drive/emacs")
+	     "/Users/larry/h/My Drive")
+	    ((file-exists-p "/home/larry/winhome/Dropbox")
 	     "/home/larry/winhome/Dropbox")
 	    ((file-exists-p "/mnt/h/My Drive/emacs")
 	     "/mnt/h/My Drive/")

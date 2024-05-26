@@ -1,0 +1,11 @@
+echo running zsh_profile
+
+export LOGINDIR=$HOME/il
+export PATH=$LOGINDIR/homedir/bin:"$PATH"
+
+
+. $HOME/.zshrc
+
+
+
+
