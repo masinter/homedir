@@ -1,5 +1,4 @@
-##alias rmver='find . -name "*~" -exec rm {} \;'
-echo running .bash_aliases
+echo running .zsh_aliases
 
 alias CD=cd
 alias BG=bg
@@ -11,3 +10,4 @@ alias GG='git status'
 ## alias open='cmd.exe /C start'
 ## alias emacs='$(/Applications/Emacs.app/Contents/MacOS/Emacs "$@")'
 
+alias m=~/il/medley/medley

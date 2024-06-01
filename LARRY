@@ -1,19 +1,10 @@
 (DEFINE-FILE-INFO PACKAGE "INTERLISP" READTABLE "INTERLISP" BASE 10)
 
-(FILECREATED " 7-Apr-2024 07:44:15" {DSK}<home>larry>il>homedir>LARRY.;4 14245  
+(FILECREATED "30-May-2024 14:50:50" {DSK}<Users>larry>il>HOMEDIR>LARRY.;2 7744   
 
       :EDIT-BY "lmm"
 
-      :CHANGES-TO (FILES MEDLEY-UTILS GITFNS SAMEDIR VTCHAT WDWHACKS TILED-SEDIT)
-                  (VARS LARRYCOMS BREAKREGIONSPEC WHEELSCROLLDELTA DEFAULTCOPYRIGHTOWNER 
-                        CLEANUPOPTIONS EDITCHARACTERS CUTEFLG **COMMENT**FLG FB.DEFAULT.INFO 
-                        NEWFONTVARS)
-                  (FNS COMPAREMOVDS FINDFONTVARS GETLOOPS 3WAY CLOSEI LOADALL LOOPSCOMPARE CDIRS 
-                       LOWESTVERSION HCENVOS SHOWDIFFS)
-                  (ADVICE (ERROR :IN \DO-DEFINE-FILE-INFO))
-                  (ALISTS (FONTDEFS LARGER))
-
-      :PREVIOUS-DATE " 5-Apr-2024 23:02:55" {DSK}<home>larry>il>homedir>LARRY.;1)
+      :PREVIOUS-DATE " 7-Apr-2024 07:34:23" {DSK}<home>larry>il>homedir>LARRY.;3)
 
 
 (PRETTYCOMPRINT LARRYCOMS)
@@ -47,7 +38,7 @@
               (AUTOBACKTRACEFLG 'ALWAYS!)
               (HOMEDIR (CONCAT LOGINHOST/DIR "homedir>"))
               (*BUTTONS-SAVE-DIRECTORY* LOGINHOST/DIR))
-        (FILES BROWSER BICLOCK GITFNS FILEWATCH SAMEDIR SEDIT-MAN MEDLEY-UTILS VTCHAT PICK BUTTONS 
+        (FILES BROWSER PDFSTREAM BICLOCK GITFNS FILEWATCH SAMEDIR MEDLEY-UTILS VTCHAT PICK BUTTONS 
                WDWHACKS TILED-SEDIT)
         (FNS 3WAY CLOSEI COMPAREMOVDS FINDFONTVARS GETLOOPS LOOPSCOMPARE CDIRS LOWESTVERSION HCENVOS
              SHOWDIFFS)
@@ -132,55 +123,12 @@
 
 (RPAQ *BUTTONS-SAVE-DIRECTORY* LOGINHOST/DIR)
 
-(FILESLOAD BROWSER BICLOCK GITFNS FILEWATCH SAMEDIR SEDIT-MAN MEDLEY-UTILS VTCHAT PICK BUTTONS 
+(FILESLOAD BROWSER PDFSTREAM BICLOCK GITFNS FILEWATCH SAMEDIR MEDLEY-UTILS VTCHAT PICK BUTTONS 
        WDWHACKS TILED-SEDIT)
 (DEFINEQ
 
-(3WAY
-  [LAMBDA (X)                                              (* ; "Edited  2-Jun-2022 20:23 by larry")
-    (LET [(CURRENT (INFILEP X))
-          (START (INFILEP (PACKFILENAME.STRING 'VERSION (LOWESTVERSION X)
-                                 'NAME X)))
-          (CLTL2 (INFILEP (PACKFILENAME.STRING 'DIRECTORY (MEDLEYDIR "CLTL2")
-                                 'NAME X]
-         (CSBROWSER START CURRENT)
-         (CSBROWSER START CLTL2])
 
-(CLOSEI
-  [LAMBDA NIL                                               (* ; "Edited 19-Feb-2021 14:33 by rmk:")
 
-    (* ;; "Close all inspector windows")
-
-    (FOR W IN (OPENWINDOWS) WHEN (OR (EQ 'INSPECTW.REPAINTFN (WINDOWPROP W 'REPAINTFN))
-                                     (WINDOWPROP W 'INSPECTWINDOW)) DO (CLOSEW W])
-
-(COMPAREMOVDS
-  [LAMBDA NIL                                                (* ; "Edited  7-Apr-2024 07:27 by lmm")
-                                                             (* ; "Edited  1-Nov-2022 22:01 by lmm")
-    (FOR PAIR FL WH DEF IN \MAIKO.MOVDS
-       DO (PRINTOUT T (CAR PAIR)
-                 " => "
-                 (CADR PAIR)
-                 T
-                 (SETQ WH (WHEREIS (CAR PAIR)
-                                 'FNS T))
-                 " - " .PPV (COMPARELISTS (OR (GETDEF (CAR PAIR)
-                                                     'FNS
-                                                     'MAIKOETHER
-                                                     'NOERROR)
-                                              (GETDEF (CAR PAIR)
-                                                     'FNS "../SOURCES/MAIKOETHER")
-                                              (HELP (CAR PAIR "NO 1DEF")))
-                                   (OR (FOR LOC IN (WHEREIS (CADR PAIR)
-                                                          'FNS T) WHEN (SETQ FL (INFILEP LOC))
-                                          WHEN (SETQ DEF (GETDEF (CADR PAIR)
-                                                                'FNS FL 'NOERROR))
-                                          DO (RETURN DEF))
-                                       (HELP (CADR PAIR)
-                                             "NO DEF")))
-                 T)
-          (AND FL DEF (ED (CADR PAIR)
-                          'FNS])
 
 (FINDFONTVARS
   [LAMBDA NIL                                                (* ; "Edited  7-Apr-2024 07:30 by lmm")
@@ -193,75 +141,11 @@
                        (NOT (FMEMB X NEWFONTVARS))
                        (PUSH NEWFONTVARS X])
 
-(GETLOOPS
-  [LAMBDA NIL                                                (* ; "Edited 19-Oct-2022 17:00 by lmm")
-    (FILESLOAD LOADLOOPS)
-    (LOADLOOPS)
-    (COND
-       ((CL:Y-OR-N-P "Load Truckin?")
-        (CNDIR "../truckin")
-        (FILESLOAD TRUCKINLOAD)
-        (OR (BOUNDP 'TRUCKINVARS)
-            (SETQ TRUCKINVRS))
-        (LoadTruckin)))
-    (COND
-       ((CL:Y-OR-N-P "Load sources?")
-        (pushnew DIRECTORIES TruckinPlayersDirectory)
-        (FOR X IN (REVERSE FILELST) WHEN (NOT (MEMBER X BEFOREFILES))
-           DO (LOAD X 'PROP)
-              (MASTERSCOPE `(ANALYZE ANY ON ',X])
 
-(LOOPSCOMPARE
-  [LAMBDA NIL                                                (* ; "Edited 28-Oct-2022 20:30 by lmm")
-                                                             (* ; "Edited 27-Oct-2022 07:19 by lmm")
-                                                             (* ; "Edited 22-Oct-2022 09:41 by lmm")
-    (CDIRS "/home/larry/ilisp/loops/" "/home/larry/ilisp/loops-redo/" '((system system)
-                                                                        (library library)
-                                                                        (users/rules users/rules)
-                                                                        (users users-src)
-                                                                        (truckin truckin-src)
-                                                                        (truckin/players 
-                                                                               truckin-src/players])
 
-(CDIRS
-  [LAMBDA (DIR1 DIR2 PAIRS)                                  (* ; "Edited 27-Oct-2022 07:18 by lmm")
-    (FOR DIR IN PAIRS do (CDBROWSER (COMPAREDIRECTORIES (DIRECTORYNAME (CONCAT DIR1 (CAR DIR)))
-                                           (DIRECTORYNAME (CONCAT DIR2 (CADR DIR)))
-                                           NIL NIL NIL NIL NIL NIL T))
-                         (UNTIL (CL:Y-OR-N-P (CL:FORMAT NIL "Done comparing ~a?" DIR)) do NIL])
 
-(LOWESTVERSION
-  [LAMBDA (X)                                              (* ; "Edited  2-Jun-2022 20:14 by larry")
-    (LET ((VERS (DIRECTORY (PACKFILENAME.STRING 'VERSION '* 'BODY X)))
-          (MIN 9999991))
-         (for Y in VERS bind Z when (< (SETQ Z (FILENAMEFIELD Y 'VERSION))
-                                       MIN) do (SETQ MIN Z))
-         MIN])
 
-(HCENVOS
-  [LAMBDA NIL                                              (* ; "Edited 26-Jul-2022 12:16 by larry")
-    (HCFILES "{DSK}<home>larry>envos>" "{DSK}<home>larry>medley>tmp>psfiles>"])
 
-(SHOWDIFFS
-  [LAMBDA (DELETEFLG FILES)                                  (* ; "Edited 29-Apr-2023 13:29 by lmm")
-                                                             (* ; "Edited 20-Oct-2022 08:44 by lmm")
-    (AND (NULL FILES)
-         (OR (LISTP DELETEFLG)
-             (AND DELETEFLG (NEQ DELETEFLG T)))
-         (SETQ FILES DELETEFLG))
-    (FOR X INSIDE (OR FILES FILELST) BIND Y Z P E WHEN [SETQ Y (CDR (GET X 'FILE]
-       DO (PRINTOUT T X Y T)
-          (FOR C IN Y DO (FOR D IN (CDR C) DO (PRINTOUT T X " " (CAR C)
-                                                     " " D ": " [SETQ P (COMPAREDEFS
-                                                                         D
-                                                                         (CAR C)
-                                                                         '(FILE NIL]
-                                                     T T)
-                                              (IF (AND (EQ T DELETEFLG)
-                                                       (EQ P 'SAME))
-                                                  THEN (DREMOVE D C)))
-                         (IF (AND DELETEFLG (NULL (CDR C)))
-                             THEN (DREMOVE C (GET X 'FILE])
 )
 
 (ADDTOVAR FONTDEFS
@@ -270,38 +154,47 @@
                  (FONTPROFILE (DEFAULTFONT 1 (GACHA 12)
                                      (GACHA 8)
                                      (TERMINAL 8)
+                                     (PDF (TERMINAL 8))
                                      (POSTSCRIPT (TERMINAL 8)))
                         (ITALICFONT 1 (HELVETICA 14 MIR)
                                (GACHA 8 MIR)
                                (MODERN 8 MIR)
+                               (PDF (MODERN 8 MIR))
                                (POSTSCRIPT (MODERN 8 MIR)))
                         (BOLDFONT 2 (HELVETICA 14 BRR)
                                (HELVETICA 8 BRR)
                                (MODERN 8 BRR)
+                               (PDF (MODERN 8 BRR))
                                (POSTSCRIPT (MODERN 8 BRR)))
                         (LITTLEFONT 3 (HELVETICA 12)
                                (HELVETICA 6 MIR)
                                (MODERN 8 MIR)
+                               (PDF (MODERN 8 MIR))
                                (POSTSCRIPT (MODERN 8 MIR)))
                         (TINYFONT 6 (GACHA 10)
                                (GACHA 6)
                                (TERMINAL 6)
+                               (PDF (TERMINAL 6))
                                (POSTSCRIPT (TERMINAL 6)))
                         (BIGFONT 4 (HELVETICA 16 BRR)
                                (HELVETICA 12 BRR)
                                (MODERN 10 BRR)
+                               (PDF (MODERN 10 BRR))
                                (POSTSCRIPT (MODERN 10 BRR)))
                         [MENUFONT 5 (HELVETICA 12)
                                (POSTSCRIPT (HELVETICA 12))
                                (POSTSCRIPT (POSTSCRIPT (HELVETICA 12)))
+                               [PDF (POSTSCRIPT (POSTSCRIPT (HELVETICA 12]
                                (POSTSCRIPT (POSTSCRIPT (POSTSCRIPT (HELVETICA 12]
                         (COMMENTFONT 6 (HELVETICA 10)
                                (HELVETICA 8)
                                (MODERN 8)
+                               (PDF (MODERN 8))
                                (POSTSCRIPT (MODERN 8)))
                         (TEXTFONT 7 (TIMESROMAN 12)
                                (TIMESROMAN 10)
                                (CLASSIC 10)
+                               (PDF (CLASSIC 10))
                                (POSTSCRIPT (CLASSIC 10])
 
 (FILEWATCH :ON)
@@ -315,7 +208,5 @@
 
 (BICLOCK)
 (DECLARE%: DONTCOPY
-  (FILEMAP (NIL (5066 12073 (3WAY 5076 . 5537) (CLOSEI 5539 . 5893) (COMPAREMOVDS 5895 . 7460) (
-FINDFONTVARS 7462 . 8021) (GETLOOPS 8023 . 8656) (LOOPSCOMPARE 8658 . 9657) (CDIRS 9659 . 10145) (
-LOWESTVERSION 10147 . 10541) (HCENVOS 10543 . 10744) (SHOWDIFFS 10746 . 12071)))))
+  (FILEMAP (NIL (4504 5084 (FINDFONTVARS 4517 . 5076)))))
 STOP

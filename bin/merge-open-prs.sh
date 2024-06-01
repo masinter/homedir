@@ -1,13 +1,24 @@
 #!/bin/sh -x
 
 # Fetch the name of the current branch
-cb=$(git branch --show-current | tac)
+cb=$(git branch --show-current)
 
-    # List all open pull requests
+if [ -z $cb ]; then
+    echo no branch
+    exit 1
+fi
+
+# List all open pull requests
 op=$(gh pr list --state open --search draft:false --json number -q '.[].number')
 
-# Loop over each open PR
+rev=""
 for pr in $op
+do 
+    rev="$pr $rev"
+done
+
+    # Loop over each open PR
+for pr in $rev
 do
   # Checkout to the PR branch
   gh pr checkout $pr || exit 1
