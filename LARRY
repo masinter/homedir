@@ -1,10 +1,16 @@
 (DEFINE-FILE-INFO PACKAGE "INTERLISP" READTABLE "INTERLISP" BASE 10)
 
-(FILECREATED "30-May-2024 14:50:50" {DSK}<Users>larry>il>HOMEDIR>LARRY.;2 7744   
+(FILECREATED "23-Jun-2024 15:50:11" {DSK}<Users>larry>il>HOMEDIR>LARRY.;4 14459  
 
       :EDIT-BY "lmm"
 
-      :PREVIOUS-DATE " 7-Apr-2024 07:34:23" {DSK}<home>larry>il>homedir>LARRY.;3)
+      :CHANGES-TO (ADVICE (ERROR :IN \DO-DEFINE-FILE-INFO))
+                  (VARS LARRYCOMS)
+                  (FNS 3WAY CLOSEI COMPAREMOVDS FINDFONTVARS GETLOOPS LOOPSCOMPARE CDIRS 
+                       LOWESTVERSION HCENVOS SHOWDIFFS)
+                  (ALISTS (FONTDEFS LARGER))
+
+      :PREVIOUS-DATE "23-Jun-2024 15:49:19" {DSK}<Users>larry>il>HOMEDIR>LARRY.;3)
 
 
 (PRETTYCOMPRINT LARRYCOMS)
@@ -127,8 +133,51 @@
        WDWHACKS TILED-SEDIT)
 (DEFINEQ
 
+(3WAY
+  [LAMBDA (X)                                              (* ; "Edited  2-Jun-2022 20:23 by larry")
+    (LET [(CURRENT (INFILEP X))
+          (START (INFILEP (PACKFILENAME.STRING 'VERSION (LOWESTVERSION X)
+                                 'NAME X)))
+          (CLTL2 (INFILEP (PACKFILENAME.STRING 'DIRECTORY (MEDLEYDIR "CLTL2")
+                                 'NAME X]
+         (CSBROWSER START CURRENT)
+         (CSBROWSER START CLTL2])
 
+(CLOSEI
+  [LAMBDA NIL                                               (* ; "Edited 19-Feb-2021 14:33 by rmk:")
 
+    (* ;; "Close all inspector windows")
+
+    (FOR W IN (OPENWINDOWS) WHEN (OR (EQ 'INSPECTW.REPAINTFN (WINDOWPROP W 'REPAINTFN))
+                                     (WINDOWPROP W 'INSPECTWINDOW)) DO (CLOSEW W])
+
+(COMPAREMOVDS
+  [LAMBDA NIL                                                (* ; "Edited  7-Apr-2024 07:27 by lmm")
+                                                             (* ; "Edited  1-Nov-2022 22:01 by lmm")
+    (FOR PAIR FL WH DEF IN \MAIKO.MOVDS
+       DO (PRINTOUT T (CAR PAIR)
+                 " => "
+                 (CADR PAIR)
+                 T
+                 (SETQ WH (WHEREIS (CAR PAIR)
+                                 'FNS T))
+                 " - " .PPV (COMPARELISTS (OR (GETDEF (CAR PAIR)
+                                                     'FNS
+                                                     'MAIKOETHER
+                                                     'NOERROR)
+                                              (GETDEF (CAR PAIR)
+                                                     'FNS "../SOURCES/MAIKOETHER")
+                                              (HELP (CAR PAIR "NO 1DEF")))
+                                   (OR (FOR LOC IN (WHEREIS (CADR PAIR)
+                                                          'FNS T) WHEN (SETQ FL (INFILEP LOC))
+                                          WHEN (SETQ DEF (GETDEF (CADR PAIR)
+                                                                'FNS FL 'NOERROR))
+                                          DO (RETURN DEF))
+                                       (HELP (CADR PAIR)
+                                             "NO DEF")))
+                 T)
+          (AND FL DEF (ED (CADR PAIR)
+                          'FNS])
 
 (FINDFONTVARS
   [LAMBDA NIL                                                (* ; "Edited  7-Apr-2024 07:30 by lmm")
@@ -141,11 +190,75 @@
                        (NOT (FMEMB X NEWFONTVARS))
                        (PUSH NEWFONTVARS X])
 
+(GETLOOPS
+  [LAMBDA NIL                                                (* ; "Edited 19-Oct-2022 17:00 by lmm")
+    (FILESLOAD LOADLOOPS)
+    (LOADLOOPS)
+    (COND
+       ((CL:Y-OR-N-P "Load Truckin?")
+        (CNDIR "../truckin")
+        (FILESLOAD TRUCKINLOAD)
+        (OR (BOUNDP 'TRUCKINVARS)
+            (SETQ TRUCKINVRS))
+        (LoadTruckin)))
+    (COND
+       ((CL:Y-OR-N-P "Load sources?")
+        (pushnew DIRECTORIES TruckinPlayersDirectory)
+        (FOR X IN (REVERSE FILELST) WHEN (NOT (MEMBER X BEFOREFILES))
+           DO (LOAD X 'PROP)
+              (MASTERSCOPE `(ANALYZE ANY ON ',X])
 
+(LOOPSCOMPARE
+  [LAMBDA NIL                                                (* ; "Edited 28-Oct-2022 20:30 by lmm")
+                                                             (* ; "Edited 27-Oct-2022 07:19 by lmm")
+                                                             (* ; "Edited 22-Oct-2022 09:41 by lmm")
+    (CDIRS "/home/larry/ilisp/loops/" "/home/larry/ilisp/loops-redo/" '((system system)
+                                                                        (library library)
+                                                                        (users/rules users/rules)
+                                                                        (users users-src)
+                                                                        (truckin truckin-src)
+                                                                        (truckin/players 
+                                                                               truckin-src/players])
 
+(CDIRS
+  [LAMBDA (DIR1 DIR2 PAIRS)                                  (* ; "Edited 27-Oct-2022 07:18 by lmm")
+    (FOR DIR IN PAIRS do (CDBROWSER (COMPAREDIRECTORIES (DIRECTORYNAME (CONCAT DIR1 (CAR DIR)))
+                                           (DIRECTORYNAME (CONCAT DIR2 (CADR DIR)))
+                                           NIL NIL NIL NIL NIL NIL T))
+                         (UNTIL (CL:Y-OR-N-P (CL:FORMAT NIL "Done comparing ~a?" DIR)) do NIL])
 
+(LOWESTVERSION
+  [LAMBDA (X)                                              (* ; "Edited  2-Jun-2022 20:14 by larry")
+    (LET ((VERS (DIRECTORY (PACKFILENAME.STRING 'VERSION '* 'BODY X)))
+          (MIN 9999991))
+         (for Y in VERS bind Z when (< (SETQ Z (FILENAMEFIELD Y 'VERSION))
+                                       MIN) do (SETQ MIN Z))
+         MIN])
 
+(HCENVOS
+  [LAMBDA NIL                                              (* ; "Edited 26-Jul-2022 12:16 by larry")
+    (HCFILES "{DSK}<home>larry>envos>" "{DSK}<home>larry>medley>tmp>psfiles>"])
 
+(SHOWDIFFS
+  [LAMBDA (DELETEFLG FILES)                                  (* ; "Edited 29-Apr-2023 13:29 by lmm")
+                                                             (* ; "Edited 20-Oct-2022 08:44 by lmm")
+    (AND (NULL FILES)
+         (OR (LISTP DELETEFLG)
+             (AND DELETEFLG (NEQ DELETEFLG T)))
+         (SETQ FILES DELETEFLG))
+    (FOR X INSIDE (OR FILES FILELST) BIND Y Z P E WHEN [SETQ Y (CDR (GET X 'FILE]
+       DO (PRINTOUT T X Y T)
+          (FOR C IN Y DO (FOR D IN (CDR C) DO (PRINTOUT T X " " (CAR C)
+                                                     " " D ": " [SETQ P (COMPAREDEFS
+                                                                         D
+                                                                         (CAR C)
+                                                                         '(FILE NIL]
+                                                     T T)
+                                              (IF (AND (EQ T DELETEFLG)
+                                                       (EQ P 'SAME))
+                                                  THEN (DREMOVE D C)))
+                         (IF (AND DELETEFLG (NULL (CDR C)))
+                             THEN (DREMOVE C (GET X 'FILE])
 )
 
 (ADDTOVAR FONTDEFS
@@ -208,5 +321,7 @@
 
 (BICLOCK)
 (DECLARE%: DONTCOPY
-  (FILEMAP (NIL (4504 5084 (FINDFONTVARS 4517 . 5076)))))
+  (FILEMAP (NIL (4792 11799 (3WAY 4802 . 5263) (CLOSEI 5265 . 5619) (COMPAREMOVDS 5621 . 7186) (
+FINDFONTVARS 7188 . 7747) (GETLOOPS 7749 . 8382) (LOOPSCOMPARE 8384 . 9383) (CDIRS 9385 . 9871) (
+LOWESTVERSION 9873 . 10267) (HCENVOS 10269 . 10470) (SHOWDIFFS 10472 . 11797)))))
 STOP

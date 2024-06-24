@@ -13,3 +13,4 @@ if [ -f ~/.zsh_aliases ]; then
 fi
 
 export LOGINDIR=~/il
+export OSTYPE="darwin"
