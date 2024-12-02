@@ -1,16 +1,10 @@
 (DEFINE-FILE-INFO PACKAGE "INTERLISP" READTABLE "INTERLISP" BASE 10)
 
-(FILECREATED "23-Jun-2024 15:50:11" {DSK}<Users>larry>il>HOMEDIR>LARRY.;4 14459  
+(FILECREATED " 2-Dec-2024 11:39:02" {DSK}<Users>larry>il>HOMEDIR>LARRY.;5 14474  
 
       :EDIT-BY "lmm"
 
-      :CHANGES-TO (ADVICE (ERROR :IN \DO-DEFINE-FILE-INFO))
-                  (VARS LARRYCOMS)
-                  (FNS 3WAY CLOSEI COMPAREMOVDS FINDFONTVARS GETLOOPS LOOPSCOMPARE CDIRS 
-                       LOWESTVERSION HCENVOS SHOWDIFFS)
-                  (ALISTS (FONTDEFS LARGER))
-
-      :PREVIOUS-DATE "23-Jun-2024 15:49:19" {DSK}<Users>larry>il>HOMEDIR>LARRY.;3)
+      :PREVIOUS-DATE "11-Sep-2024 11:47:05" {DSK}<Users>larry>il>HOMEDIR>LARRY.;4)
 
 
 (PRETTYCOMPRINT LARRYCOMS)
@@ -191,15 +185,20 @@
                        (PUSH NEWFONTVARS X])
 
 (GETLOOPS
-  [LAMBDA NIL                                                (* ; "Edited 19-Oct-2022 17:00 by lmm")
+  [LAMBDA NIL                                                (* ; "Edited 11-Sep-2024 11:43 by lmm")
+                                                             (* ; "Edited  7-Aug-2024 11:58 by lmm")
+                                                             (* ; "Edited 19-Oct-2022 17:00 by lmm")
+    (SETQ BEFOREFILES FILELST)
     (FILESLOAD LOADLOOPS)
+    (FILESLOAD LOOPSMS)
     (LOADLOOPS)
     (COND
        ((CL:Y-OR-N-P "Load Truckin?")
         (CNDIR "../truckin")
         (FILESLOAD TRUCKINLOAD)
         (OR (BOUNDP 'TRUCKINVARS)
-            (SETQ TRUCKINVRS))
+            (SETQ TRUCKINVARS))
+        (FILESLOAD LOOPSMS)
         (LoadTruckin)))
     (COND
        ((CL:Y-OR-N-P "Load sources?")
@@ -321,7 +320,7 @@
 
 (BICLOCK)
 (DECLARE%: DONTCOPY
-  (FILEMAP (NIL (4792 11799 (3WAY 4802 . 5263) (CLOSEI 5265 . 5619) (COMPAREMOVDS 5621 . 7186) (
-FINDFONTVARS 7188 . 7747) (GETLOOPS 7749 . 8382) (LOOPSCOMPARE 8384 . 9383) (CDIRS 9385 . 9871) (
-LOWESTVERSION 9873 . 10267) (HCENVOS 10269 . 10470) (SHOWDIFFS 10472 . 11797)))))
+  (FILEMAP (NIL (4505 11814 (3WAY 4515 . 4976) (CLOSEI 4978 . 5332) (COMPAREMOVDS 5334 . 6899) (
+FINDFONTVARS 6901 . 7460) (GETLOOPS 7462 . 8397) (LOOPSCOMPARE 8399 . 9398) (CDIRS 9400 . 9886) (
+LOWESTVERSION 9888 . 10282) (HCENVOS 10284 . 10485) (SHOWDIFFS 10487 . 11812)))))
 STOP
