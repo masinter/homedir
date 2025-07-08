@@ -15,6 +15,7 @@ if [[ -n "${WSL_DISTRO_NAME}" ]]; then
    fi
 fi
 
+export PATH=/usr/lib/git-core:"$PATH"
 
 . $HOME/.bashrc
 
